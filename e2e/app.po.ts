@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class Acai2Page {
+export class MarvinPage {
   navigateTo() {
     return browser.get('/');
   }

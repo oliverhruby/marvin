@@ -1,10 +1,10 @@
-import { Acai2Page } from './app.po';
+import { MarvinPage } from './app.po';
 
-describe('acai2 App', function() {
-  let page: Acai2Page;
+describe('marvin App', function() {
+  let page: MarvinPage;
 
   beforeEach(() => {
-    page = new Acai2Page();
+    page = new MarvinPage();
   });
 
   it('should display message saying app works', () => {
