@@ -25,8 +25,7 @@ export class Marvin {
         this.position = new BABYLON.Vector3(0, 0, 0);
 
         this._createVehicle();
-        this._createText();
-        this._sound = new BABYLON.Sound("hover", "sounds/button.wav", this.scene);
+        this._sound = new BABYLON.Sound("hover", "assets/sounds/button.wav", this.scene);
     }
 
     /*
@@ -54,7 +53,7 @@ export class Marvin {
         }, this.scene);
         body.position.y = 1.5;
 
-        var laser = new Laser(body);
+        //var laser = new Laser(body);
 
         //create wheels
         var rubber = new BABYLON.StandardMaterial("rubber", this.scene);
@@ -181,7 +180,7 @@ export class Marvin {
             body.rotation.y = angRad - Math.PI / 2;
             me.position = body.position;
 
-            document.getElementById("info").innerText = me.toJson();
+            //document.getElementById("info").innerText = me.toJson();
         });
     }
 
@@ -189,29 +188,4 @@ export class Marvin {
         this.LightL.setEnabled(!this.LightL.isEnabled());
         this.LightR.setEnabled(!this.LightR.isEnabled());
     }
-
-    private _createText = function () {
-        //data reporter
-        // var outputplane = BABYLON.Mesh.CreatePlane("outputplane", 25, this.scene, false);
-        // outputplane.material = new BABYLON.StandardMaterial("outputplane", this.scene);
-        // outputplane.position = new BABYLON.Vector3(-25, 15, 25);
-        // outputplane.scaling.y = 0.4;
-
-        // var outputplaneTexture = new BABYLON.DynamicTexture("dynamic texture", 512, this.scene, true);
-        // outputplane.material.diffuseTexture = outputplaneTexture;
-        // outputplane.material.specularColor = new BABYLON.Color3(0, 0, 0);
-        // outputplane.material.emissiveColor = new BABYLON.Color3(1, 1, 1);
-        // outputplane.material.backFaceCulling = false;
-
-        // outputplaneTexture.drawText("Angle", null, 140, "bold 140px verdana", "white", "#0000AA");
-
-        // var context2D = outputplaneTexture.getContext();
-        // var out = function (data) {
-        //     context2D.clearRect(0, 200, 512, 512);
-        //     outputplaneTexture.drawText(data, null, 380, "140px verdana", "white", null);
-        // }
-        // out(this.radarAngle);
-    };
-
-
 }

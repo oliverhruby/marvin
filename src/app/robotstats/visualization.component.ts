@@ -10,6 +10,7 @@ import { Marvin } from './scene/marvin';
 import { Laser } from './scene/laser';
 import { Camera } from './scene/camera';
 import { Stats } from './scene/stats';
+import { Axis } from './scene/axis';
 
 @Component({
   selector: 'robot-stats',
@@ -53,7 +54,7 @@ export class VisualizationComponent {
     // Now create a basic Babylon Scene object
     var scene = new BABYLON.Scene(engine);
     // Change the scene background color to green.
-    scene.clearColor = new BABYLON.Color3(0, 1, 0);
+    scene.clearColor = new BABYLON.Color3(0, 0, 0);
     // This creates and positions a free camera
     var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 0.8, 10, new BABYLON.Vector3(0, 0, 0), scene);
     // This targets the camera to scene origin
@@ -75,6 +76,7 @@ export class VisualizationComponent {
     var sector = new Sector(scene);
     var obstacle = new Obstacle(scene);
     var path = new Path(scene);
+    var axis = new Axis(scene);
     //var marvin = new Marvin(scene);
     //var world = new World(scene);
     //var camera = new Camera(scene, canvas);
