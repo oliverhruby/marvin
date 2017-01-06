@@ -1,6 +1,12 @@
 # Marvin
+![Build Status](https://travis-ci.org/oliverhruby/marvin.svg?branch=master)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+Marvin is an JavaScript and WebGL based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using keyboard commands or a gamepad. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, gamepad API, etc.
+
+The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience with 3D visualization provided by the BabylonJS library, written in Angular 2 and TypeScript, utilizing shaders, sound samples, web socket communication, etc. It also can server as a learning example or starter for creating a nice game.
+
+
+This project structure was originally generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
