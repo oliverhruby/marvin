@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// providers
+import {
+  WebSocketService,
+  GamepadService,
+  SoundService
+} from './services'
+
 // components
 import { AppComponent } from './app.component';
-import { VisualizationComponent } from './robotstats'
-
-// providers
-import { WebSocketService } from './robotstats/websocket.service'
-import { GamepadService } from './robotstats/gamepad.service'
+import { SceneComponent } from './scene'
 
 @NgModule({
   declarations: [
     AppComponent,
-    VisualizationComponent
+    SceneComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { GamepadService } from './robotstats/gamepad.service'
   ],
   providers: [
     WebSocketService,
-    GamepadService
+    GamepadService,
+    SoundService
   ],
   bootstrap: [AppComponent]
 })

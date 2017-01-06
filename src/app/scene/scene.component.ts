@@ -1,46 +1,35 @@
-import { WebSocketService } from './websocket.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import * as BABYLON from 'babylonjs/babylon';
 
-import { Sector } from './scene/sector';
-import { Obstacle } from './scene/obstacle';
-import { Path } from './scene/path';
-import { World } from './scene/world';
-import { Marvin } from './scene/marvin';
-import { Laser } from './scene/laser';
-import { Camera } from './scene/camera';
-import { Stats } from './scene/stats';
-import { Axis } from './scene/axis';
+import { WebSocketService } from '../services';
+
+import { Sector } from './objects/sector';
+import { Obstacle } from './objects/obstacle';
+import { Path } from './objects/path';
+import { World } from './objects/world';
+import { Marvin } from './objects/marvin';
+import { Laser } from './objects/laser';
+import { Camera } from './objects/camera';
+import { Axis } from './objects/axis';
 
 @Component({
-  selector: 'robot-stats',
-  providers: [WebSocketService],
-  template: `
-    <div>
-      <canvas #renderCanvas
-        [attr.width]='_size'
-        [attr.height]='_size'>
-      </canvas>
-      Speed: 0; Direction: 0
-      <div>Responses:</div>
-	    <div *ngFor="let message of messages">{{message}}</div>
-    </div>
-  `
+  selector: 'scene',
+  templateUrl: './scene.component.html',
+  styleUrls: ['./scene.component.css'],
+  providers: [WebSocketService]
 })
-export class VisualizationComponent {
-  private _size: number;
+export class SceneComponent {
+  private _engine: BABYLON.Engine;
   private _canvas: HTMLCanvasElement;
 
   private messages: string[] = [];
 
-  // get the element with the #renderCanvas on it
-  @ViewChild("renderCanvas") renderCanvas: ElementRef;
+  // get the element with the #mainCanvas on it
+  @ViewChild("mainCanvas") mainCanvas: ElementRef;
 
   constructor(
     private webSocketService: WebSocketService
   ) {
-    this._size = 300;
-
     this.webSocketService.GetInstanceStatus().subscribe((result) => {
       this.messages.push(result);
     });
@@ -48,11 +37,12 @@ export class VisualizationComponent {
 
   ngAfterViewInit() { // wait for the view to init before using the element
     // get the reference to the rendering canvas
-    let canvas: HTMLCanvasElement = this.renderCanvas.nativeElement;
+    let canvas: HTMLCanvasElement = this.mainCanvas.nativeElement;
     // Load the BABYLON 3D engine
     var engine = new BABYLON.Engine(canvas, true);
     // Now create a basic Babylon Scene object
     var scene = new BABYLON.Scene(engine);
+    this._engine = engine;
     // Change the scene background color to green.
     scene.clearColor = new BABYLON.Color3(0, 0, 0);
     // This creates and positions a free camera
@@ -78,9 +68,8 @@ export class VisualizationComponent {
     var path = new Path(scene);
     var axis = new Axis(scene);
     //var marvin = new Marvin(scene);
-    //var world = new World(scene);
+    var world = new World(scene);
     //var camera = new Camera(scene, canvas);
-    //var stats = new Stats(marvin);
 
     // Register a render loop to repeatedly render the scene
     engine.runRenderLoop(function () {
@@ -220,6 +209,10 @@ export class VisualizationComponent {
     };
 
     var gamepads = new BABYLON.Gamepads(gamepadConnected);
-
   }
+
+  onResize(event) {
+    this._engine.resize();
+  }
+
 }
