@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as BABYLON from 'babylonjs/babylon';
-import { GamepadService } from './services/gamepad.service'
-import { SoundService } from './services/sound.service'
+import {GamepadService} from './services/gamepad.service';
+import {SoundService} from './services/sound.service';
 
 @Component({
   selector: 'app-root',
