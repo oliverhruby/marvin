@@ -12,12 +12,16 @@ import {
 
 // components
 import { AppComponent } from './app.component';
-import { SceneComponent } from './scene'
+import { SceneComponent } from './scene/scene.component';
+import { StatsComponent } from './stats/stats.component';
+import { HorizonComponent } from './horizon/horizon.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    SceneComponent
+    SceneComponent,
+    StatsComponent,
+    HorizonComponent
   ],
   imports: [
     BrowserModule,

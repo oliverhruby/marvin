@@ -12,6 +12,9 @@ import { Laser } from './objects/laser';
 import { Camera } from './objects/camera';
 import { Axis } from './objects/axis';
 
+/**
+ * This component represents the overall 3D visualization scene rendered on a canvas
+ */
 @Component({
   selector: 'scene',
   templateUrl: './scene.component.html',

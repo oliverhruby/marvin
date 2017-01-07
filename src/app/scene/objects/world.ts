@@ -36,9 +36,9 @@ export class World {
         // ground.material = groundMaterial;
 
         // ground physics
-        ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsEngine.BoxImpostor, {
-           mass: 0
-        });
+        //ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsEngine.BoxImpostor, {
+        //   mass: 0
+        //});
     };
 
     // ----------------------------------------------------------------------

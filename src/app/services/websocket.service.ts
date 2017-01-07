@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Rx';
 
 /**
  * Service for communication using websockets
- * Example from here: http://plnkr.co/edit/MjZA5HOfllvMPjoCxe3I?p=preview&open=app%2Fapp.component.ts
+ * Some examples here: http://plnkr.co/edit/MjZA5HOfllvMPjoCxe3I?p=preview&open=app%2Fapp.component.ts
  */
 @Injectable()
 export class WebSocketService {
@@ -11,7 +11,7 @@ export class WebSocketService {
     private actionUrl: string;
     private websocket: any;
     private receivedMsg: any;
-    
+
     public sendMessage(text:string){
       this.websocket.send(text);
     }
@@ -23,7 +23,7 @@ export class WebSocketService {
       };
 
       return Observable.create(observer=>{
-          this.websocket.onmessage = (evt) => { 
+          this.websocket.onmessage = (evt) => {
               observer.next(evt);
           };
       })
