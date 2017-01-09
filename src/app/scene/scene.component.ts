@@ -73,7 +73,7 @@ export class SceneComponent {
     var obstacle = new Obstacle(scene);
     var path = new Path(scene);
     var axis = new Axis(scene);
-    //var marvin = new Marvin(scene);
+    var marvin = new Marvin(scene);
     //var camera = new Camera(scene, canvas);
 
     // Register a render loop to repeatedly render the scene

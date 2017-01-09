@@ -25,4 +25,12 @@ describe('StatsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have the proper content', async(() => {
+    let fixture = TestBed.createComponent(StatsComponent);
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div').textContent).toContain('works!');
+  }));
+
 });
