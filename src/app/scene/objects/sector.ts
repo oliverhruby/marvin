@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs/babylon';
+import * as BABYLON from '../../vendor/babylonjs/babylon';
 
 /**
  * Visualization of various guides (best path, danger zone, etc.)
@@ -28,7 +28,7 @@ export class Sector {
         path.push(path[0]);
 
         var circle = BABYLON.Mesh.CreateLines("circle", path, this._scene);
-        
+
         // render loop
         this._scene.registerBeforeRender(function () {
             circle.position.x += 0.1;

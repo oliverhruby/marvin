@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs/babylon';
+import * as BABYLON from '../../vendor/babylonjs/babylon';
 import { Laser } from './laser'
 
 /**

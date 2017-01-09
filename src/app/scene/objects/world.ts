@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs/babylon';
+import * as BABYLON from '../../vendor/babylonjs/babylon';
 
 export class World {
 
@@ -24,16 +24,16 @@ export class World {
         ground.position.y = -0.0001;
 
         // ground material
-        // var groundMaterial = new BABYLON.GridMaterial("groundMaterial", this._scene);
-        // groundMaterial.majorUnitFrequency = 5;
-        // groundMaterial.minorUnitVisibility = 0.45;
-        // groundMaterial.gridRatio = 20;
-        // groundMaterial.backFaceCulling = false;
-        // groundMaterial.mainColor = new BABYLON.Color3(1, 1, 1);
-        // groundMaterial.lineColor = new BABYLON.Color3(1.0, 1.0, 1.0);
-        // groundMaterial.opacity = 0.98;
+        var groundMaterial = new BABYLON.GridMaterial("groundMaterial", this._scene);
+        groundMaterial.majorUnitFrequency = 5;
+        groundMaterial.minorUnitVisibility = 0.45;
+        groundMaterial.gridRatio = 20;
+        groundMaterial.backFaceCulling = false;
+        groundMaterial.mainColor = new BABYLON.Color3(1, 1, 1);
+        groundMaterial.lineColor = new BABYLON.Color3(1.0, 1.0, 1.0);
+        groundMaterial.opacity = 0.98;
 
-        // ground.material = groundMaterial;
+        ground.material = groundMaterial;
 
         // ground physics
         //ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsEngine.BoxImpostor, {
@@ -45,11 +45,11 @@ export class World {
     // show the skybox
     // ----------------------------------------------------------------------
     private createSky() {
-        // var skyMaterial = new BABYLON.SkyMaterial("skyMaterial", this._scene);
-        // skyMaterial.backFaceCulling = false;
+        var skyMaterial = new BABYLON.SkyMaterial("skyMaterial", this._scene);
+        skyMaterial.backFaceCulling = false;
 
-        // var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, this._scene);
-        // skybox.material = skyMaterial;
+        var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, this._scene);
+        skybox.material = skyMaterial;
     }
 
     // ----------------------------------------------------------------------

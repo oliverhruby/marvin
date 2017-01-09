@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs/babylon';
+import * as BABYLON from '../../vendor/babylonjs/babylon';
 
 /**
 * Represents the distance sensor module used for scanning the space
@@ -44,8 +44,8 @@ export class Laser {
 
         // BABYLON.Effect.ShadersStore["customFragmentShader"] = `
         //         #extension GL_OES_standard_derivatives : enable
-        //         precision highp float;   
-                            
+        //         precision highp float;
+
         //         // Varying
         //         varying vec3 vPosition;
         //         varying vec3 vNormal;
@@ -54,9 +54,9 @@ export class Laser {
         //         // Refs
         //         uniform vec3 color;
         //         uniform vec3 cameraPosition;
-                            
-                
-        //         void main(void) {          
+
+
+        //         void main(void) {
         //             float x = vUV.x;
         //             float y = vUV.y;
         //             vec2 uv = -1. + 2. * vUV;

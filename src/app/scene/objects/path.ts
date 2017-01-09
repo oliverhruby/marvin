@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs/babylon';
+import * as BABYLON from '../../vendor/babylonjs/babylon';
 
 /**
  * Visualization of the path as the robot moves

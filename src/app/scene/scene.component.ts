@@ -1,8 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import * as BABYLON from 'babylonjs/babylon';
+import * as BABYLON from '../vendor/babylonjs/babylon';
 
+// services
 import { WebSocketService } from '../services';
 
+// scene objects
 import { Sector } from './objects/sector';
 import { Obstacle } from './objects/obstacle';
 import { Path } from './objects/path';
@@ -47,7 +49,7 @@ export class SceneComponent {
     var scene = new BABYLON.Scene(engine);
     this._engine = engine;
     // Change the scene background color to green.
-    scene.clearColor = new BABYLON.Color3(0, 0, 0);
+    scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     // This creates and positions a free camera
     var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 0.8, 10, new BABYLON.Vector3(0, 0, 0), scene);
     // This targets the camera to scene origin
@@ -66,12 +68,12 @@ export class SceneComponent {
     var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
 
     // add the custom models to the scene
+    var world = new World(scene);
     var sector = new Sector(scene);
     var obstacle = new Obstacle(scene);
     var path = new Path(scene);
     var axis = new Axis(scene);
     //var marvin = new Marvin(scene);
-    var world = new World(scene);
     //var camera = new Camera(scene, canvas);
 
     // Register a render loop to repeatedly render the scene
