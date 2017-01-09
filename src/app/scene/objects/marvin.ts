@@ -53,7 +53,7 @@ export class Marvin {
         }, this.scene);
         body.position.y = 1.5;
 
-        //var laser = new Laser(body);
+        var laser = new Laser(body);
 
         //create wheels
         var rubber = new BABYLON.StandardMaterial("rubber", this.scene);
