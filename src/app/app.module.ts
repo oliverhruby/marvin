@@ -14,14 +14,16 @@ import {
 import { AppComponent } from './app.component';
 import { SceneComponent } from './scene/scene.component';
 import { StatsComponent } from './stats/stats.component';
-import { HorizonComponent } from './horizon/horizon.component'
+import { HorizonComponent } from './horizon/horizon.component';
+import { AudioanalyzerComponent } from './audioanalyzer/audioanalyzer.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     SceneComponent,
     StatsComponent,
-    HorizonComponent
+    HorizonComponent,
+    AudioanalyzerComponent
   ],
   imports: [
     BrowserModule,
