@@ -5,11 +5,7 @@ import * as BABYLON from '../../vendor/babylonjs/babylon';
  */
 export class Sector {
 
-    private _scene: BABYLON.Scene;
-
-    constructor(scene: BABYLON.Scene) {
-        this._scene = scene;
-
+    constructor(private scene: BABYLON.Scene) {
         this.initialize();
     }
 
@@ -27,10 +23,10 @@ export class Sector {
         }
         path.push(path[0]);
 
-        var circle = BABYLON.Mesh.CreateLines("circle", path, this._scene);
+        var circle = BABYLON.Mesh.CreateLines("circle", path, this.scene);
 
         // render loop
-        this._scene.registerBeforeRender(function () {
+        this.scene.registerBeforeRender(function () {
             circle.position.x += 0.1;
         });
     }

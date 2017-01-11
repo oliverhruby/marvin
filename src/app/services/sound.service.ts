@@ -24,9 +24,11 @@ export class SoundService {
     oscillator.connect(gainNode); // Connect bass guitar to boost pedal
     gainNode.connect(context.destination); // Connect boost pedal to amplifier
     gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+    oscillator.frequency.value = frequency;
     oscillator.start();
-    // TODO: wait
-    oscillator.stop();
+    setTimeout(() => {
+      oscillator.stop();
+    }, time);
   }
 
   /**

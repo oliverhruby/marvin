@@ -5,11 +5,7 @@ import * as BABYLON from '../../vendor/babylonjs/babylon';
  */
 export class Obstacle {
 
-    private _scene: BABYLON.Scene;
-
-    constructor(scene: BABYLON.Scene) {
-        this._scene = scene;
-
+    constructor(private scene: BABYLON.Scene) {
         this.createObstacle();
     }
 
@@ -34,12 +30,12 @@ export class Obstacle {
         paths.push(path1);
         paths.push(path2);
 
-        var mat = new BABYLON.StandardMaterial("mat1", this._scene);
+        var mat = new BABYLON.StandardMaterial("mat1", this.scene);
         mat.alpha = 1.0;
         mat.diffuseColor = new BABYLON.Color3(0.5, 0.5, 1.0);
         mat.backFaceCulling = false;
 
-        var ribbon = BABYLON.Mesh.CreateRibbon("obstacle", paths, false, false, 0, this._scene);
+        var ribbon = BABYLON.Mesh.CreateRibbon("obstacle", paths, false, false, 0, this.scene);
         ribbon.material = mat;
 
         ribbon.visibility = 0.8;

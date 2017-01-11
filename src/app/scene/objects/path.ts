@@ -5,11 +5,7 @@ import * as BABYLON from '../../vendor/babylonjs/babylon';
  */
 export class Path {
 
-    private _scene: BABYLON.Scene;
-
-    constructor(scene: BABYLON.Scene) {
-        this._scene = scene;
-
+    constructor(private scene: BABYLON.Scene) {
         this.createPath();
     }
 
@@ -37,12 +33,12 @@ export class Path {
         paths.push(path1);
         paths.push(path2);
 
-        var mat = new BABYLON.StandardMaterial("mat2", this._scene);
+        var mat = new BABYLON.StandardMaterial("mat2", this.scene);
         mat.alpha = 0.5;
         mat.diffuseColor = new BABYLON.Color3(1, 1, 1);
         mat.backFaceCulling = false;
 
-        var ribbon = BABYLON.Mesh.CreateRibbon("paths", paths, false, false, 0, this._scene);
+        var ribbon = BABYLON.Mesh.CreateRibbon("paths", paths, false, false, 0, this.scene);
         ribbon.material = mat;
     }
 }

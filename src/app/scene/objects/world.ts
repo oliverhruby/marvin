@@ -2,10 +2,10 @@ import * as BABYLON from '../../vendor/babylonjs/babylon';
 
 export class World {
 
-    private _scene: BABYLON.Scene;
+    private scene: BABYLON.Scene;
 
     constructor(scene: BABYLON.Scene) {
-        this._scene = scene;
+        this.scene = scene;
 
         this.createGround();
         this.createSky();
@@ -20,11 +20,11 @@ export class World {
         var ground = BABYLON.MeshBuilder.CreateGround("ground", {
             width: 2000,
             height: 2000
-        }, this._scene);
+        }, this.scene);
         ground.position.y = -0.0001;
 
         // ground material
-        var groundMaterial = new BABYLON.GridMaterial("groundMaterial", this._scene);
+        var groundMaterial = new BABYLON.GridMaterial("groundMaterial", this.scene);
         groundMaterial.majorUnitFrequency = 5;
         groundMaterial.minorUnitVisibility = 0.45;
         groundMaterial.gridRatio = 20;
@@ -45,10 +45,10 @@ export class World {
     // show the skybox
     // ----------------------------------------------------------------------
     private createSky() {
-        var skyMaterial = new BABYLON.SkyMaterial("skyMaterial", this._scene);
+        var skyMaterial = new BABYLON.SkyMaterial("skyMaterial", this.scene);
         skyMaterial.backFaceCulling = false;
 
-        var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, this._scene);
+        var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, this.scene);
         skybox.material = skyMaterial;
     }
 
@@ -56,7 +56,7 @@ export class World {
     // create a basic light, aiming 0,1,0 - meaning, to the sky
     // ----------------------------------------------------------------------
     private createLight() {
-        var light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0.2), this._scene);
+        var light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0.2), this.scene);
         light.groundColor = new BABYLON.Color3(.2, .2, .2);
     }
 }
