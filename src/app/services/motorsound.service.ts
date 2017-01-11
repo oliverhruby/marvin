@@ -2,37 +2,34 @@ import { Injectable } from '@angular/core';
 
 /**
  * Service for generating motor sound using Web Audio
- *
- * Uses the linear generator from https://github.com/cemrich/js-motor-sound-generation
+ * It uses the linear generator from https://github.com/cemrich/js-motor-sound-generation
  */
 @Injectable()
 export class MotorSoundService {
 
-  private _scriptNode: ScriptProcessorNode;
-  private _context: AudioContext;
-  private _currentFrame: number;
-  private _speed: number;
-  private _isPlaying: boolean;
-  private _data: Array<number>;
-  private _gainNode: GainNode;
-  private _dataLength: number;
+  private scriptNode: ScriptProcessorNode;
+  private currentFrame: number;
+  private speed: number;
+  private isPlaying: boolean;
+  private data: Array<number>;
+  private gainNode: GainNode;
+  private dataLength: number;
 
-  constructor(context) {
-    this._data = [];
-    this._context = context;
-    this._currentFrame = 0;
-    this._speed = 0.6;
-    this._isPlaying = false;
-    this._dataLength = 1024;
+  constructor(private context: AudioContext) {
+    this.data = [];
+    this.currentFrame = 0;
+    this.speed = 0.6;
+    this.isPlaying = false;
+    this.dataLength = 1024;
 
     // scriptNode to change sound wave on the run
-    this._scriptNode = this._context.createScriptProcessor(1024);
-    this._scriptNode.onaudioprocess = this.process.bind(this);
+    this.scriptNode = this.context.createScriptProcessor(1024);
+    this.scriptNode.onaudioprocess = this.process.bind(this);
 
     // gainNode for volume control
-    this._gainNode = context.createGain();
-    this._gainNode.gain.value = 0.5;
-    this._scriptNode.connect(this._gainNode);
+    this.gainNode = context.createGain();
+    this.gainNode.gain.value = 0.5;
+    this.scriptNode.connect(this.gainNode);
 
     this.generate();
   }
@@ -44,20 +41,20 @@ export class MotorSoundService {
 
     for (var i = 0; i < channel.length; ++i) {
       // skip more data frames on higher speed
-      this._currentFrame += this._speed;
-      index = Math.floor(this._currentFrame) % this._data.length;
+      this.currentFrame += this.speed;
+      index = Math.floor(this.currentFrame) % this.data.length;
       // update buffer from data
-      channel[i] = this._data[index];
+      channel[i] = this.data[index];
     }
-    this._currentFrame %= this._data.length;
+    this.currentFrame %= this.data.length;
   }
 
   public start() {
-    this._gainNode.connect(this._context.destination);
+    this.gainNode.connect(this.context.destination);
   };
 
   public stop() {
-    this._gainNode.disconnect(this._context.destination);
+    this.gainNode.disconnect(this.context.destination);
   }
 
   private pushLinear(data, toValue, toPosition) {
@@ -80,28 +77,26 @@ export class MotorSoundService {
     data.push(lastValue);
 
     for (var i = 0.05; i < 1; i += Math.random() / 8 + 0.01) {
-      nextPosition = Math.floor(i * this._dataLength);
+      nextPosition = Math.floor(i * this.dataLength);
       nextValue = Math.random() * 2 - 1;
       this.pushLinear(data, nextValue, nextPosition);
     }
 
-    this.pushLinear(data, 1, this._dataLength);
-    this._data = data;
+    this.pushLinear(data, 1, this.dataLength);
+    this.data = data;
   }
 
   /**
    * Sets the volume of the motor
    */
   public setVolume(volume: number) {
-    this._gainNode.gain.value = volume;
+    this.gainNode.gain.value = volume;
   }
 
   /**
    * Sets the speed of the motor
    */
   public setSpeed(speed) {
-    this._speed = speed;
+    this.speed = speed;
   }
-
-
 }

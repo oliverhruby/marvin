@@ -9,13 +9,13 @@ export class Laser {
     public rotation: number;
     public angle: number;
 
-    private _scene: BABYLON.Scene;
+    private scene: BABYLON.Scene;
 
     constructor(body: BABYLON.Mesh) {
-        this._scene = body.getScene();
+        this.scene = body.getScene();
 
         // create the sensor box
-        var box = BABYLON.MeshBuilder.CreateBox("laserBox", { height: 1, width: 2, depth: 1 }, this._scene);
+        var box = BABYLON.MeshBuilder.CreateBox("laserBox", { height: 1, width: 2, depth: 1 }, this.scene);
 
         // attach it to the body
         box.parent = body;
@@ -68,7 +68,7 @@ export class Laser {
                     gl_FragColor = vec4(col, a);
                 }`;
 
-        var laserMaterial = new BABYLON.ShaderMaterial("shader", this._scene, {
+        var laserMaterial = new BABYLON.ShaderMaterial("shader", this.scene, {
             vertex: "custom",
             fragment: "custom",
         }, {
@@ -79,8 +79,8 @@ export class Laser {
 
 
         var laserlen = 200;
-        var plane = BABYLON.MeshBuilder.CreatePlane("pl", { width: 2, height: laserlen }, this._scene);
-        var plane2 = BABYLON.MeshBuilder.CreatePlane("pl", { width: 2, height: laserlen }, this._scene);
+        var plane = BABYLON.MeshBuilder.CreatePlane("pl", { width: 2, height: laserlen }, this.scene);
+        var plane2 = BABYLON.MeshBuilder.CreatePlane("pl", { width: 2, height: laserlen }, this.scene);
         //plane2.rotation.y = Math.PI / 2;
         var matrix = BABYLON.Matrix.Translation(0, laserlen / 2, 0);
         plane.setPivotMatrix(matrix);
@@ -99,7 +99,7 @@ export class Laser {
         plane.material = laserMaterial;
         plane2.material = laserMaterial;
         var k = 0;
-        this._scene.registerBeforeRender(function () {
+        this.scene.registerBeforeRender(function () {
             box.rotation.z = Math.sin(k) - Math.PI / 2;
             k += .05;
             this.rotation = k;

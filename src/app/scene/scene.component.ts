@@ -51,15 +51,11 @@ export class SceneComponent {
     // Change the scene background color to green.
     scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     // This creates and positions a free camera
-    var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 0.8, 10, new BABYLON.Vector3(0, 0, 0), scene);
+    var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 3, 1.2, 100, new BABYLON.Vector3(0, 0, 0), scene);
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
     // This attaches the camera to the canvas
     camera.attachControl(canvas, false);
-    // This creates a light, aiming 0,1,0 - to the sky.
-    var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
-    // Dim the light a small amount
-    light.intensity = .5;
 
     // add the custom models to the scene
     var world = new World(scene);

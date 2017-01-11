@@ -16,6 +16,7 @@ import { SceneComponent } from './scene/scene.component';
 import { StatsComponent } from './stats/stats.component';
 import { HorizonComponent } from './horizon/horizon.component';
 import { AudioanalyzerComponent } from './audioanalyzer/audioanalyzer.component'
+import { LogBrowserComponent } from './logbrowser/logbrowser.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AudioanalyzerComponent } from './audioanalyzer/audioanalyzer.component'
     SceneComponent,
     StatsComponent,
     HorizonComponent,
-    AudioanalyzerComponent
+    AudioanalyzerComponent,
+    LogBrowserComponent
   ],
   imports: [
     BrowserModule,

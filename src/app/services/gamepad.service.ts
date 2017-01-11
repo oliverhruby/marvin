@@ -3,7 +3,9 @@ import { Observable } from 'rxjs/Rx';
 import * as BABYLON from '../vendor/babylonjs/babylon';
 
 /**
- * Service for providing the gamepad control
+ * Service for providing the gamepad control using the BABYLON library.
+ * This functionality is dependent on the browser support. It works
+ * well in Edge and Chrome with XBox controller for example.
  */
 @Injectable()
 export class GamepadService {

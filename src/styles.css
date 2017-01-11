@@ -6,3 +6,14 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+div {
+  font-size: 11px;
+  font-family: 'Lucida Sans';
+  color: lawngreen;
+  text-shadow:
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
