@@ -1,15 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 
+/**
+ * Virtual horizont showing roll, tilt, direction, etc.
+ */
 @Component({
-  selector: 'horizon',
+  selector: 'app-horizon',
   templateUrl: './horizon.component.html',
   styleUrls: ['./horizon.component.css']
 })
 export class HorizonComponent implements OnInit, OnDestroy {
 
-  private ticks: number = 0;
+  public ticks: number = 0;
+
   private subscription: Subscription;
 
   constructor() { }

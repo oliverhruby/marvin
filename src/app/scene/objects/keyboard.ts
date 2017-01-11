@@ -25,10 +25,10 @@ export class Keyboard {
     }
 
     public inputLoop = (): void => {
-        for (var key in this.keyDown) {
-            var is_down: boolean = this.keyDown[key];
+        for (let key in this.keyDown) {
+            let is_down: boolean = this.keyDown[key];
             if (is_down) {
-                var callback: () => void = this.keyCallback[key];
+                let callback: () => void = this.keyCallback[key];
                 if (callback != null) {
                     callback();
                 }

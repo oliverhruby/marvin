@@ -8,14 +8,14 @@ import {
   WebSocketService,
   GamepadService,
   SoundService
-} from './services'
+} from './services';
 
 // components
 import { AppComponent } from './app.component';
 import { SceneComponent } from './scene/scene.component';
 import { StatsComponent } from './stats/stats.component';
 import { HorizonComponent } from './horizon/horizon.component';
-import { LogBrowserComponent } from './logbrowser/logbrowser.component'
+import { LogBrowserComponent } from './logbrowser/logbrowser.component';
 
 @NgModule({
   declarations: [

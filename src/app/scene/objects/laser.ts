@@ -15,7 +15,7 @@ export class Laser {
         this.scene = body.getScene();
 
         // create the sensor box
-        var box = BABYLON.MeshBuilder.CreateBox("laserBox", { height: 1, width: 2, depth: 1 }, this.scene);
+        let box = BABYLON.MeshBuilder.CreateBox('laserBox', { height: 1, width: 2, depth: 1 }, this.scene);
 
         // attach it to the body
         box.parent = body;
@@ -26,7 +26,7 @@ export class Laser {
 
         // TODO: load shaders from file
 
-        BABYLON.Effect.ShadersStore["customVertexShader"] = `
+        BABYLON.Effect.ShadersStore['customVertexShader'] = `
                 precision highp float;
                 attribute vec3 position;
                 attribute vec3 normal;
@@ -44,7 +44,7 @@ export class Laser {
                     vUV = uv;
                 }`;
 
-        BABYLON.Effect.ShadersStore["customFragmentShader"] = `
+        BABYLON.Effect.ShadersStore['customFragmentShader'] = `
                 #extension GL_OES_standard_derivatives : enable
                 precision highp float;
 
@@ -68,21 +68,21 @@ export class Laser {
                     gl_FragColor = vec4(col, a);
                 }`;
 
-        var laserMaterial = new BABYLON.ShaderMaterial("shader", this.scene, {
-            vertex: "custom",
-            fragment: "custom",
+        let laserMaterial = new BABYLON.ShaderMaterial('shader', this.scene, {
+            vertex: 'custom',
+            fragment: 'custom',
         }, {
                 needAlphaBlending: true,
-                attributes: ["position", "normal", "uv"],
-                uniforms: ["time", "worldViewProjection"]
+                attributes: ['position', 'normal', 'uv'],
+                uniforms: ['time', 'worldViewProjection']
             });
 
 
-        var laserlen = 200;
-        var plane = BABYLON.MeshBuilder.CreatePlane("pl", { width: 2, height: laserlen }, this.scene);
-        var plane2 = BABYLON.MeshBuilder.CreatePlane("pl", { width: 2, height: laserlen }, this.scene);
-        //plane2.rotation.y = Math.PI / 2;
-        var matrix = BABYLON.Matrix.Translation(0, laserlen / 2, 0);
+        let laserlen = 200;
+        let plane = BABYLON.MeshBuilder.CreatePlane('pl', { width: 2, height: laserlen }, this.scene);
+        let plane2 = BABYLON.MeshBuilder.CreatePlane('pl', { width: 2, height: laserlen }, this.scene);
+        // plane2.rotation.y = Math.PI / 2;
+        let matrix = BABYLON.Matrix.Translation(0, laserlen / 2, 0);
         plane.setPivotMatrix(matrix);
         plane2.setPivotMatrix(matrix);
         plane.parent = box;
@@ -98,7 +98,7 @@ export class Laser {
 
         plane.material = laserMaterial;
         plane2.material = laserMaterial;
-        var k = 0;
+        let k = 0;
         this.scene.registerBeforeRender(function () {
             box.rotation.z = Math.sin(k) - Math.PI / 2;
             k += .05;

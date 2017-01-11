@@ -10,20 +10,20 @@ export class Sector {
     }
 
     private initialize() {
-        var radius = 10;
-        var tes = 60;
-        var pi2 = Math.PI * 2;
-        var step = pi2 / tes;
-        var path = [];
-        for (var i = 0; i < pi2; i += step) {
-            var x = radius * Math.sin(i);
-            var z = radius * Math.cos(i);
-            var y = 0;
+        let radius = 10;
+        let tes = 60;
+        let pi2 = Math.PI * 2;
+        let step = pi2 / tes;
+        let path = [];
+        for (let i = 0; i < pi2; i += step) {
+            let x = radius * Math.sin(i);
+            let z = radius * Math.cos(i);
+            let y = 0;
             path.push(new BABYLON.Vector3(x, y, z));
         }
         path.push(path[0]);
 
-        var circle = BABYLON.Mesh.CreateLines("circle", path, this.scene);
+        let circle = BABYLON.Mesh.CreateLines('circle', path, this.scene);
 
         // render loop
         this.scene.registerBeforeRender(function () {

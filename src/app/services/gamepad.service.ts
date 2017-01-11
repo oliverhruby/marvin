@@ -12,16 +12,16 @@ export class GamepadService {
 
   constructor() {
 
-    var gamepadConnected = function (gamepad) {
-      console.log("gamepad connected");
+    let gamepadConnected = function (gamepad) {
+      console.log('gamepad connected');
     };
 
-    var gamepads = new BABYLON.Gamepads(gamepadConnected);
+    let gamepads = new BABYLON.Gamepads(gamepadConnected);
 
     function gameLoop() {
-      var gamepads = navigator.getGamepads();
-      for (var playerIndex = 0; playerIndex < gamepads.length; playerIndex++) {
-        var gamepad = gamepads[playerIndex];
+      let gamepads = navigator.getGamepads();
+      for (let playerIndex = 0; playerIndex < gamepads.length; playerIndex++) {
+        let gamepad = gamepads[playerIndex];
         if (gamepad) {
           if (gamepad.buttons[6].pressed || gamepad.buttons[7].pressed) {
             console.log('player ' + playerIndex);
