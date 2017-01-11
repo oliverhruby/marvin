@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { SceneComponent } from './scene/scene.component';
 import { StatsComponent } from './stats/stats.component';
 import { HorizonComponent } from './horizon/horizon.component';
+import { AudioAnalyzerComponent } from './audioanalyzer/audioanalyzer.component';
 import { LogBrowserComponent } from './logbrowser/logbrowser.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { LogBrowserComponent } from './logbrowser/logbrowser.component';
     SceneComponent,
     StatsComponent,
     HorizonComponent,
+    AudioAnalyzerComponent,
     LogBrowserComponent
   ],
   imports: [
