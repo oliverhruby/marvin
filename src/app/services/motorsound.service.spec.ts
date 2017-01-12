@@ -5,14 +5,18 @@ import { HttpModule } from '@angular/http';
 import { MotorSoundService } from './motorsound.service';
 
 describe('MotorSoundService', () => {
+
+  let service: MotorSoundService;
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpModule],
-      providers: [MotorSoundService]
-    });
+    service = new MotorSoundService(new AudioContext());
   });
 
-  it('should ...', inject([MotorSoundService], (service: MotorSoundService) => {
+  it('should initialize, start and stop', () => {
     expect(service).toBeTruthy();
-  }));
+    service.setSpeed(1);
+    service.setVolume(1);
+    service.start();
+    service.stop();
+  });
 });
