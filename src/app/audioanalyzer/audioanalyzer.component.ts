@@ -4,11 +4,11 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
  * Spectrum analyzer to visualize audio signal
  */
 @Component({
-  selector: 'audioanalyzer',
+  selector: 'app-audio-analyzer',
   templateUrl: './audioanalyzer.component.html',
   styleUrls: ['./audioanalyzer.component.css']
 })
-export class AudioanalyzerComponent implements OnInit {
+export class AudioAnalyzerComponent implements OnInit {
 
   @ViewChild("audioanalyzer") analyzer: ElementRef;
 
@@ -29,9 +29,9 @@ export class AudioanalyzerComponent implements OnInit {
     canvasCtx.clearRect(0, 0, 300, 100);
 
     analyser.fftSize = 256;
-    var bufferLength = analyser.frequencyBinCount;
+    let bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
-    var dataArray = new Uint8Array(bufferLength);
+    let dataArray = new Uint8Array(bufferLength);
 
     if (navigator.getUserMedia) {
       console.log('getUserMedia supported.');
@@ -43,8 +43,8 @@ export class AudioanalyzerComponent implements OnInit {
 
         // Success callback
         function (stream) {
-          var source = audioCtx.createMediaStreamSource(stream);
-          var gainNode = audioCtx.createGain();
+          let source = audioCtx.createMediaStreamSource(stream);
+          let gainNode = audioCtx.createGain();
           source.connect(analyser);
           analyser.connect(gainNode);
           gainNode.connect(audioCtx.destination);
@@ -69,11 +69,11 @@ export class AudioanalyzerComponent implements OnInit {
       canvasCtx.fillStyle = 'rgb(0, 0, 0)';
       canvasCtx.fillRect(0, 0, 300, 100);
 
-      var barWidth = (300 / bufferLength) * 2.5;
-      var barHeight;
-      var x = 0;
+      let barWidth = (300 / bufferLength) * 2.5;
+      let barHeight;
+      let x = 0;
 
-      for (var i = 0; i < bufferLength; i++) {
+      for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i];
 
         canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';

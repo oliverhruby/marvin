@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import * as BABYLON from '../vendor/babylonjs/babylon';
 
 // services
@@ -18,19 +18,19 @@ import { Axis } from './objects/axis';
  * This component represents the overall 3D visualization scene rendered on a canvas
  */
 @Component({
-  selector: 'scene',
+  selector: 'app-scene',
   templateUrl: './scene.component.html',
   styleUrls: ['./scene.component.css'],
   providers: [WebSocketService]
 })
-export class SceneComponent {
+export class SceneComponent implements AfterViewInit {
   private _engine: BABYLON.Engine;
   private _canvas: HTMLCanvasElement;
 
   private messages: string[] = [];
 
   // get the element with the #mainCanvas on it
-  @ViewChild("mainCanvas") mainCanvas: ElementRef;
+  @ViewChild('mainCanvas') mainCanvas: ElementRef;
 
   constructor(
     private webSocketService: WebSocketService
@@ -44,166 +44,166 @@ export class SceneComponent {
     // get the reference to the rendering canvas
     let canvas: HTMLCanvasElement = this.mainCanvas.nativeElement;
     // Load the BABYLON 3D engine
-    var engine = new BABYLON.Engine(canvas, true);
+    let engine = new BABYLON.Engine(canvas, true);
     // Now create a basic Babylon Scene object
-    var scene = new BABYLON.Scene(engine);
+    let scene = new BABYLON.Scene(engine);
     this._engine = engine;
     // Change the scene background color to green.
     scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     // This creates and positions a free camera
-    var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 3, 1.2, 100, new BABYLON.Vector3(0, 0, 0), scene);
+    let camera = new BABYLON.ArcRotateCamera('ArcRotateCamera', 3, 1.2, 100, new BABYLON.Vector3(0, 0, 0), scene);
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
     // This attaches the camera to the canvas
     camera.attachControl(canvas, false);
 
     // add the custom models to the scene
-    var world = new World(scene);
-    var sector = new Sector(scene);
-    var obstacle = new Obstacle(scene);
-    var path = new Path(scene);
-    var axis = new Axis(scene);
-    var marvin = new Marvin(scene);
-    //var camera = new Camera(scene, canvas);
+    let world = new World(scene);
+    let sector = new Sector(scene);
+    let obstacle = new Obstacle(scene);
+    let path = new Path(scene);
+    let axis = new Axis(scene);
+    let marvin = new Marvin(scene);
+    // let camera = new Camera(scene, canvas);
 
     // Register a render loop to repeatedly render the scene
     engine.runRenderLoop(function () {
       scene.render();
     });
 
-    var xbox360pad;
-    var genericpad;
+    let xbox360pad;
+    let genericpad;
 
-    var gamepadConnected = function (gamepad) {
+    let gamepadConnected = function (gamepad) {
       if (gamepad.index === 0) {
         gamepad.onleftstickchanged(function (values) {
-          // BABYLON.Tools.Log("X: " + values.x + " Y: " + values.y);
+          // BABYLON.Tools.Log('X: " + values.x + " Y: " + values.y);
         });
         gamepad.onrightstickchanged(function (values) {
-          // BABYLON.Tools.Log("X: " + values.x + " Y: " + values.y);
+          // BABYLON.Tools.Log('X: " + values.x + " Y: " + values.y);
         });
         if (gamepad instanceof BABYLON.Xbox360Pad) {
           xbox360pad = gamepad;
           xbox360pad.onlefttriggerchanged(function (value) {
-            // BABYLON.Tools.Log("LT: " + value.toString());
+            // BABYLON.Tools.Log('LT: " + value.toString());
           });
           xbox360pad.onrighttriggerchanged(function (value) {
-            // BABYLON.Tools.Log("RT: " + value.toString());
+            // BABYLON.Tools.Log('RT: " + value.toString());
           });
           xbox360pad.onbuttondown(function (button) {
             switch (button) {
               case 0:
-                // BABYLON.Tools.Log("A: pressed");
-                console.log("A: pressed");
+                // BABYLON.Tools.Log('A: pressed');
+                console.log('A: pressed');
                 break;
               case 1:
-                // BABYLON.Tools.Log("B: pressed");
+                // BABYLON.Tools.Log('B: pressed');
                 break;
               case 2:
-                // BABYLON.Tools.Log("X: pressed");
+                // BABYLON.Tools.Log('X: pressed');
                 break;
               case 3:
-                // BABYLON.Tools.Log("Y: pressed");
+                // BABYLON.Tools.Log('Y: pressed');
                 break;
               case 5:
-                // BABYLON.Tools.Log("Back: pressed");
+                // BABYLON.Tools.Log('Back: pressed');
                 break;
               case 4:
-                // BABYLON.Tools.Log("Start: pressed");
+                // BABYLON.Tools.Log('Start: pressed');
                 break;
               case 6:
-                // BABYLON.Tools.Log("LB: pressed");
+                // BABYLON.Tools.Log('LB: pressed');
                 break;
               case 7:
-                // BABYLON.Tools.Log("RB: pressed");
+                // BABYLON.Tools.Log('RB: pressed');
                 break;
               case 8:
-                // BABYLON.Tools.Log("LS: pressed");
+                // BABYLON.Tools.Log('LS: pressed');
                 break;
               case 9:
-                // BABYLON.Tools.Log("RS: pressed");
+                // BABYLON.Tools.Log('RS: pressed');
                 break;
             }
           });
           xbox360pad.onbuttonup(function (button) {
             switch (button) {
               case 0:
-                // BABYLON.Tools.Log("A: released");
+                // BABYLON.Tools.Log('A: released');
                 break;
               case 1:
-                // BABYLON.Tools.Log("B: released");
+                // BABYLON.Tools.Log('B: released');
                 break;
               case 2:
-                // BABYLON.Tools.Log("X: released");
+                // BABYLON.Tools.Log('X: released');
                 break;
               case 3:
-                // BABYLON.Tools.Log("Y: released");
+                // BABYLON.Tools.Log('Y: released');
                 break;
               case 5:
-                // BABYLON.Tools.Log("Back: released");
+                // BABYLON.Tools.Log('Back: released');
                 break;
               case 4:
-                // BABYLON.Tools.Log("Start: released");
+                // BABYLON.Tools.Log('Start: released');
                 break;
               case 6:
-                // BABYLON.Tools.Log("LB: released");
+                // BABYLON.Tools.Log('LB: released');
                 break;
               case 7:
-                // BABYLON.Tools.Log("RB: released");
+                // BABYLON.Tools.Log('RB: released');
                 break;
               case 8:
-                // BABYLON.Tools.Log("LS: released");
+                // BABYLON.Tools.Log('LS: released');
                 break;
               case 9:
-                // BABYLON.Tools.Log("RS: released");
+                // BABYLON.Tools.Log('RS: released');
                 break;
             }
           });
           xbox360pad.ondpaddown(function (button) {
             switch (button) {
               case 1:
-                // BABYLON.Tools.Log("Down: pressed");
+                // BABYLON.Tools.Log('Down: pressed');
                 break;
               case 2:
-                // BABYLON.Tools.Log("Left: pressed");
+                // BABYLON.Tools.Log('Left: pressed');
                 break;
               case 3:
-                // BABYLON.Tools.Log("Right: pressed");
+                // BABYLON.Tools.Log('Right: pressed');
                 break;
               case 0:
-                // BABYLON.Tools.Log("Up: pressed");
+                // BABYLON.Tools.Log('Up: pressed');
                 break;
             }
           });
           xbox360pad.ondpadup(function (button) {
             switch (button) {
               case 1:
-                // BABYLON.Tools.Log("Down: released");
+                // BABYLON.Tools.Log('Down: released');
                 break;
               case 2:
-                // BABYLON.Tools.Log("Left: released");
+                // BABYLON.Tools.Log('Left: released');
                 break;
               case 3:
-                // BABYLON.Tools.Log("Right: released");
+                // BABYLON.Tools.Log('Right: released');
                 break;
               case 0:
-                // BABYLON.Tools.Log("Up: released");
+                // BABYLON.Tools.Log('Up: released');
                 break;
             }
           });
         } else {
           genericpad = gamepad;
           genericpad.onbuttondown(function (buttonIndex) {
-            // BABYLON.Tools.Log("Button " + buttonIndex + " pressed");
+            // BABYLON.Tools.Log('Button " + buttonIndex + " pressed');
           });
           genericpad.onbuttonup(function (buttonIndex) {
-            // BABYLON.Tools.Log("Button " + buttonIndex + " released");
+            // BABYLON.Tools.Log('Button " + buttonIndex + " released');
           });
         }
       }
     };
 
-    var gamepads = new BABYLON.Gamepads(gamepadConnected);
+    let gamepads = new BABYLON.Gamepads(gamepadConnected);
   }
 
   onResize(event) {

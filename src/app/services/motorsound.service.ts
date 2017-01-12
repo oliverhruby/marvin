@@ -36,10 +36,10 @@ export class MotorSoundService {
 
   private process(event) {
     // this is the output buffer we can fill with new data
-    var channel = event.outputBuffer.getChannelData(0);
-    var index;
+    let channel = event.outputBuffer.getChannelData(0);
+    let index;
 
-    for (var i = 0; i < channel.length; ++i) {
+    for (let i = 0; i < channel.length; ++i) {
       // skip more data frames on higher speed
       this.currentFrame += this.speed;
       index = Math.floor(this.currentFrame) % this.data.length;
@@ -58,25 +58,25 @@ export class MotorSoundService {
   }
 
   private pushLinear(data, toValue, toPosition) {
-    var lastPosition = data.length - 1;
-    var lastValue = data.pop();
-    var positionDiff = toPosition - lastPosition;
-    var step = (toValue - lastValue) / positionDiff;
-    for (var i = 0; i < positionDiff; i++) {
+    let lastPosition = data.length - 1;
+    let lastValue = data.pop();
+    let positionDiff = toPosition - lastPosition;
+    let step = (toValue - lastValue) / positionDiff;
+    for (let i = 0; i < positionDiff; i++) {
       data.push(lastValue + step * i);
     }
     return data;
   };
 
   private generate() {
-    var data = [];
-    var lastValue = 1;
-    var lastPosition = 0;
-    var nextValue, nextPosition;
+    let data = [];
+    let lastValue = 1;
+    let lastPosition = 0;
+    let nextValue, nextPosition;
 
     data.push(lastValue);
 
-    for (var i = 0.05; i < 1; i += Math.random() / 8 + 0.01) {
+    for (let i = 0.05; i < 1; i += Math.random() / 8 + 0.01) {
       nextPosition = Math.floor(i * this.dataLength);
       nextValue = Math.random() * 2 - 1;
       this.pushLinear(data, nextValue, nextPosition);

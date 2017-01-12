@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 
+/**
+ * This component allows browsing the log messages
+ */
 @Component({
-  selector: 'logbrowser',
+  selector: 'app-log-browser',
   templateUrl: './logbrowser.component.html',
   styleUrls: ['./logbrowser.component.css']
 })
@@ -14,7 +17,7 @@ export class LogBrowserComponent implements OnInit, OnDestroy {
   private messages: Array<string>;
 
   constructor() {
-    this.messages = ["test1", "test2", "test3"];
+    this.messages = ['test1', 'test2', 'test3'];
   }
 
   ngOnInit() {

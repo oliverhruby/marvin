@@ -26,7 +26,7 @@ describe('StatsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  //TODO: fix testing with setInterval
+  // TODO: fix testing with setInterval
   // it('should have the proper content', async(() => {
   //   let fixture = TestBed.createComponent(StatsComponent);
   //   fixture.detectChanges();

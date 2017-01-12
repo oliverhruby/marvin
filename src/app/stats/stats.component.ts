@@ -1,18 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 
 /**
  * This component shows the complete state information.
  */
 @Component({
-  selector: 'stats',
+  selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit, OnDestroy {
 
-  private ticks: number;
+  public ticks: number;
+
   private subscription: Subscription;
 
   constructor() { }

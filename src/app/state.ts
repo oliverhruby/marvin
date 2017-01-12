@@ -8,8 +8,7 @@ interface State {
   stats: {
     // time since the vehicle was started
     uptime: number;
-  }
+  };
   // root for existing devices
-  //devices: Array<Device>
-}
+  // devices: Array<Device>
 }
