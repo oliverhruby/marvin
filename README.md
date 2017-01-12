@@ -1,6 +1,6 @@
 # Marvin
 [![Build Status](https://travis-ci.org/oliverhruby/marvin.svg?branch=master)](https://travis-ci.org/oliverhruby/marvin)
-[![Coverage Status](https://coveralls.io/repos/github/oliverhruby/marvin/badge.svg)](https://coveralls.io/github/oliverhruby/marvin)
+[![Coverage Status](https://coveralls.io/repos/github/oliverhruby/marvin/badge.svg?branch=master)](https://coveralls.io/github/oliverhruby/marvin?branch=master)
 
 Marvin is an JavaScript and WebGL based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using keyboard commands or a gamepad. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, gamepad API, etc.
 
