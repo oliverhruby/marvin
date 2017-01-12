@@ -9,7 +9,31 @@ branches:
   only:
   - master
 
+addons:
+  firefox: latest
+  apt:
+    packages:
+      - mesa-utils
+      - xvfb
+      - libosmesa6
+
+      - libgif-dev
+      - libpng-dev
+
+      - freeglut3-dev
+      - libxmu-dev
+      - libxi-dev
+      - libxxf86vm-dev
+      - libxrandr-dev
+
+cache:
+  directories:
+    - node_modules
+
 before_install:
+  - npm prune
+
+before_script:
  - export CHROME_BIN=/usr/bin/google-chrome
  - export DISPLAY=:99.0
  - sh -e /etc/init.d/xvfb start
