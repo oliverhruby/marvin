@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Jsonp, Response, Headers } from '@angular/http';
 
 /**
  * Service for communication with Wit.ai
@@ -7,12 +7,18 @@ import { Http } from '@angular/http';
 @Injectable()
 export class WitAiService {
 
-  constructor(private http: Http) {
+  private token = '';
+  private apiUrl = 'https://api.wit.ai/message?v=20170113&q=lights&access_token=' + this.token + '&callback=JSONP_CALLBACK';
+
+  constructor(private jsonp: Jsonp) {
 
   }
 
   public getResponse(question: string) {
-    return this.http.get('/books', {}).map(res => res.json());
+    let headers = new Headers();
+    this.jsonp.get(this.apiUrl)
+      .map(res => res.json())
+      .subscribe(data => console.log(data));
   }
 
 }

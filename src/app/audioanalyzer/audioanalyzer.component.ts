@@ -15,7 +15,10 @@ export class AudioAnalyzerComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() { // wait for the view to init before using the element
+  /**
+   * Wait for the view to init before using the element, then init everything
+   */
+  ngOnInit() {
 
     // create audio analyzer
     let audioCtx = new AudioContext();
@@ -66,8 +69,8 @@ export class AudioAnalyzerComponent implements OnInit {
 
       analyser.getByteFrequencyData(dataArray);
 
-      canvasCtx.fillStyle = 'rgb(0, 0, 0)';
-      canvasCtx.fillRect(0, 0, 300, 100);
+      // clear the previously drawn content
+      canvasCtx.clearRect(0, 0, 300, 100);
 
       let barWidth = (300 / bufferLength) * 2.5;
       let barHeight;

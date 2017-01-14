@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 // providers
 import {
   WebSocketService,
   GamepadService,
-  SoundService
+  SoundService,
+  WitAiService
 } from './services';
 
 // components
@@ -30,12 +31,14 @@ import { LogBrowserComponent } from './logbrowser/logbrowser.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule
   ],
   providers: [
     WebSocketService,
     GamepadService,
-    SoundService
+    SoundService,
+    WitAiService
   ],
   bootstrap: [AppComponent]
 })
