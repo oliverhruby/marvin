@@ -76,7 +76,7 @@ export class AudioAnalyzerComponent implements OnInit {
       for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i];
 
-        canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+        canvasCtx.fillStyle = 'rgb(0,' + (barHeight + 100) + ',0)';
         canvasCtx.fillRect(x, 100 - barHeight / 2, barWidth, barHeight / 2);
 
         x += barWidth + 1;
