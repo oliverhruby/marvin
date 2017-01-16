@@ -14,6 +14,9 @@ export class WitAiService {
 
   }
 
+  /**
+   * Retrieves the answer on a specified question
+   */
   public getResponse(question: string) {
     let headers = new Headers();
     this.jsonp.get(this.apiUrl)
