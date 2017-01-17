@@ -12,7 +12,8 @@ describe('WitService', () => {
     });
   });
 
-  it('should ...', inject([WitAiService], (service: WitAiService) => {
+  it('should retrieve response', inject([WitAiService], (service: WitAiService) => {
     expect(service).toBeTruthy();
+    service.getResponse("test");
   }));
 });

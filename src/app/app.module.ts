@@ -8,7 +8,8 @@ import {
   WebSocketService,
   GamepadService,
   SoundService,
-  WitAiService
+  WitAiService,
+  ConfigService
 } from './services';
 
 // components
@@ -38,7 +39,8 @@ import { LogBrowserComponent } from './logbrowser/logbrowser.component';
     WebSocketService,
     GamepadService,
     SoundService,
-    WitAiService
+    WitAiService,
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

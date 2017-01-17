@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
+import { ConfigService } from '../services';
 
 /**
  * This component shows the complete state information.
@@ -13,12 +14,17 @@ import { Observable } from 'rxjs/Rx';
 export class StatsComponent implements OnInit, OnDestroy {
 
   public ticks: number;
+  public config: any;
 
   private subscription: Subscription;
 
-  constructor() { }
+  constructor(private configService: ConfigService) { }
 
   ngOnInit() {
+    this.configService.getConfig().subscribe(
+      data => this.config = data
+    );
+
     let timer = Observable.timer(0, 1000);
     this.subscription = timer.subscribe(t => this.ticks = t);
   }

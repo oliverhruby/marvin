@@ -7,7 +7,7 @@ import { Jsonp, Response, Headers } from '@angular/http';
 @Injectable()
 export class WitAiService {
 
-  private token = '';
+  private token = 'FMCAQBI2KODATMDVWNQSBEYB2DMTHL5D';
   private apiUrl = 'https://api.wit.ai/message?v=20170113&q=lights&access_token=' + this.token + '&callback=JSONP_CALLBACK';
 
   constructor(private jsonp: Jsonp) {

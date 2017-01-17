@@ -2,7 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
+import { ConfigService } from '../services';
 import { StatsComponent } from './stats.component';
 
 describe('StatsComponent', () => {
@@ -11,9 +12,11 @@ describe('StatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatsComponent ]
+      imports: [HttpModule],
+      providers: [ConfigService],
+      declarations: [StatsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
