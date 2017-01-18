@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
+
+html,
+body {
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -11,9 +13,20 @@ div {
   font-size: 11px;
   font-family: 'Lucida Sans';
   color: lawngreen;
-  text-shadow:
-     -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.widget {
+  width: 320px;
+  border: 1px solid lightgreen;
+  opacity: 0.8;
+  margin: 5px;
+  padding: 10px;
+}
+
+.controls {
+  display: inline;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
