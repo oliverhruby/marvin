@@ -1,10 +1,18 @@
 # Marvin
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/oliverhruby/marvin.svg?branch=master)](https://travis-ci.org/oliverhruby/marvin)
 [![Coverage Status](https://coveralls.io/repos/github/oliverhruby/marvin/badge.svg?branch=master)](https://coveralls.io/github/oliverhruby/marvin?branch=master)
 
-Marvin is an JavaScript and WebGL based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using keyboard commands or a gamepad. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, gamepad API, etc.
+Marvin is a browser-based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using any input method you can think of. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, Web Sockets, gamepad API, etc.
 
-The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience with 3D visualization provided by the BabylonJS library, written in Angular 2 and TypeScript, utilizing shaders, sound samples, web socket communication, etc. It also can server as a learning example or starter for creating a nice game.
+The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience with 3D visualization, these are the components, features or technologies used:
+* [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser base technology that supports hardware accelerated 3D graphics
+* [Web Audio](http://webaudioapi.com) - browser based technology for generating sounds, playing samples, mixing and adding audio effects, etc.
+* [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
+* [WebSocket API](https://en.wikipedia.org/wiki/WebSocket) - for communication between the browser and the system that controls the real vehicle (Node-RED or other)
+* [Angular2](https://angular.io) - core framework defining the architecture of the application
+
+The application is built with focus on simplicity, recommended patterns and continuous integration.
 
 
 This project structure was originally generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
