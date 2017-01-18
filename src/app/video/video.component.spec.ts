@@ -1,7 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+
+// providers
+import {
+  ConfigService
+} from '../services';
 
 import { VideoComponent } from './video.component';
 
@@ -11,9 +17,11 @@ describe('VideoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoComponent ]
+      declarations: [ VideoComponent ],
+      imports: [ HttpModule ],
+      providers: [ ConfigService ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
