@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../services';
 
 @Component({
   selector: 'app-video',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoComponent implements OnInit {
 
-  constructor() { }
+  cameraUrl : string;
+
+  constructor(private configService: ConfigService) {
+    this.cameraUrl = "http://192.168.0.108:8081"; //configService.config.cameraUrl;
+  }
 
   ngOnInit() {
   }
