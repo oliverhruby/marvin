@@ -2,6 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/oliverhruby/marvin.svg?branch=master)](https://travis-ci.org/oliverhruby/marvin)
 [![Coverage Status](https://coveralls.io/repos/github/oliverhruby/marvin/badge.svg?branch=master)](https://coveralls.io/github/oliverhruby/marvin?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/5880a5cab194d40038f473f9/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5880a5cab194d40038f473f9)
 
 Marvin is a browser-based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using any input method you can think of. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, Web Sockets, gamepad API, etc.
 
