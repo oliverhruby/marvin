@@ -9,7 +9,8 @@ import {
   GamepadService,
   SoundService,
   WitAiService,
-  ConfigService
+  ConfigService,
+  SpeechService
 } from './services';
 
 // components
@@ -42,7 +43,8 @@ import { VideoComponent } from './video/video.component';
     GamepadService,
     SoundService,
     WitAiService,
-    ConfigService
+    ConfigService,
+    SpeechService
   ],
   bootstrap: [AppComponent]
 })
