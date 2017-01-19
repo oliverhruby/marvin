@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ConfigService } from '../services';
-import { StatsComponent } from './stats.component';
+import { StatsComponent } from '../stats';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;

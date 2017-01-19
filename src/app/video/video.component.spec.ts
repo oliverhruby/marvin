@@ -9,7 +9,7 @@ import {
   ConfigService
 } from '../services';
 
-import { VideoComponent } from './video.component';
+import { VideoComponent } from '../video';
 
 describe('VideoComponent', () => {
   let component: VideoComponent;

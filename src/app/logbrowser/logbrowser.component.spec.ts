@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LogBrowserComponent } from './logbrowser.component';
+import { LogBrowserComponent } from '../logbrowser';
 
 describe('LogbrowserComponent', () => {
   let component: LogBrowserComponent;

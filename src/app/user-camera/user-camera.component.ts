@@ -19,7 +19,7 @@ export class UserCameraComponent implements AfterViewInit {
         .then(stream => {
           _video.src = window.URL.createObjectURL(stream);
           _video.play();
-        })
+        });
     }
   }
 }

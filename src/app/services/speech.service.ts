@@ -30,8 +30,8 @@ export class SpeechService {
     };
 
     recognition.onresult = function (event) {
-      var interim_transcript = '';
-      for (var i = event.resultIndex; i < event.results.length; ++i) {
+      let interim_transcript = '';
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           final_transcript += event.results[i][0].transcript;
         } else {

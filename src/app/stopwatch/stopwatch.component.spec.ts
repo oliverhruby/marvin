@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { HorizonComponent } from '../horizon';
+import { StopwatchComponent } from '../stopwatch';
 
-describe('HorizonComponent', () => {
-  let component: HorizonComponent;
-  let fixture: ComponentFixture<HorizonComponent>;
+describe('StopwatchComponent', () => {
+  let component: StopwatchComponent;
+  let fixture: ComponentFixture<StopwatchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HorizonComponent ]
+      declarations: [ StopwatchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HorizonComponent);
+    fixture = TestBed.createComponent(StopwatchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -15,24 +15,26 @@ import {
 
 // components
 import { AppComponent } from './app.component';
-import { SceneComponent } from './scene/scene.component';
-import { StatsComponent } from './stats/stats.component';
-import { HorizonComponent } from './horizon/horizon.component';
-import { AudioAnalyzerComponent } from './audioanalyzer/audioanalyzer.component';
-import { LogBrowserComponent } from './logbrowser/logbrowser.component';
+import { SceneComponent } from './scene';
+import { StatsComponent } from './stats';
+import { HorizonComponent } from './horizon';
+import { AudioAnalyzerComponent } from './audioanalyzer';
+import { LogBrowserComponent } from './logbrowser';
 import { VideoComponent } from './video/video.component';
-import { UserCameraComponent } from './user-camera/user-camera.component';
+import { UserCameraComponent } from './user-camera';
+import { StopwatchComponent } from './stopwatch';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AudioAnalyzerComponent,
+    HorizonComponent,
+    LogBrowserComponent,
     SceneComponent,
     StatsComponent,
-    HorizonComponent,
-    AudioAnalyzerComponent,
-    LogBrowserComponent,
-    VideoComponent,
-    UserCameraComponent
+    StopwatchComponent,
+    UserCameraComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +43,12 @@ import { UserCameraComponent } from './user-camera/user-camera.component';
     JsonpModule
   ],
   providers: [
-    WebSocketService,
+    ConfigService,
     GamepadService,
     SoundService,
-    WitAiService,
-    ConfigService,
-    SpeechService
+    SpeechService,
+    WebSocketService,
+    WitAiService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UserCameraComponent } from './user-camera.component';
+import { UserCameraComponent } from '../user-camera';
 
 describe('UserCameraComponent', () => {
   let component: UserCameraComponent;
@@ -11,9 +11,9 @@ describe('UserCameraComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserCameraComponent ]
+      declarations: [UserCameraComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

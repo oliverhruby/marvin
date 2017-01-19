@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AudioAnalyzerComponent } from './audioanalyzer.component';
+import { AudioAnalyzerComponent } from '../audioanalyzer';
 
 describe('AudioAnalyzerComponent', () => {
   let component: AudioAnalyzerComponent;
