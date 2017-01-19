@@ -16,6 +16,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-remap-istanbul'),
+      require('karma-jasmine-html-reporter'),
       require('angular-cli/plugins/karma')
     ],
 
@@ -55,7 +56,7 @@ module.exports = function (config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: config.angularCli && config.angularCli.codeCoverage
       ? ['progress', 'karma-remap-istanbul']
-      : ['progress'],
+      : ['progress', 'kjhtml'],
 
     // web server port
     port: 9876,
