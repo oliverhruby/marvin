@@ -18,9 +18,9 @@ export class WebSocketService {
 
     public GetInstanceStatus(): Observable<any> {
         // dummy echo websocket service
-        this.websocket = new WebSocket("wss://echo.websocket.org/");
+        this.websocket = new WebSocket('wss://echo.websocket.org/');
         this.websocket.onopen = (evt) => {
-            this.websocket.send("Hello World");
+            this.websocket.send('Hello World');
         };
 
         return Observable.create(observer => {

@@ -10,7 +10,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class AudioAnalyzerComponent implements OnInit {
 
-  @ViewChild("audioanalyzer") analyzer: ElementRef;
+  @ViewChild('audioanalyzer') analyzer: ElementRef;
 
   constructor() {
   }
@@ -28,7 +28,7 @@ export class AudioAnalyzerComponent implements OnInit {
     analyser.smoothingTimeConstant = 0.85;
 
     // prepare the canvas to draw to
-    let canvasCtx: CanvasRenderingContext2D = this.analyzer.nativeElement.getContext("2d");
+    let canvasCtx: CanvasRenderingContext2D = this.analyzer.nativeElement.getContext('2d');
     canvasCtx.clearRect(0, 0, 300, 100);
 
     analyser.fftSize = 256;

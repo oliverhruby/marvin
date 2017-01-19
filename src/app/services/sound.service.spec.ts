@@ -14,6 +14,6 @@ describe('SoundService', () => {
 
   it('should work', inject([SoundService], (service: SoundService) => {
     expect(service).toBeTruthy();
-    service.beep(1,50);
+    service.beep(1, 50);
   }));
 });
