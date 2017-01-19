@@ -12,7 +12,7 @@ describe('SoundService', () => {
     });
   });
 
-  it('should work', inject([SoundService], (service: SoundService) => {
+  it('should beep', inject([SoundService], (service: SoundService) => {
     expect(service).toBeTruthy();
     service.beep(1, 50);
   }));

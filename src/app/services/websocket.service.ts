@@ -12,10 +12,6 @@ export class WebSocketService {
     private websocket: any;
     private receivedMsg: any;
 
-    public sendMessage(text: string) {
-        this.websocket.send(text);
-    }
-
     public GetInstanceStatus(): Observable<any> {
         // dummy echo websocket service
         this.websocket = new WebSocket('wss://echo.websocket.org/');

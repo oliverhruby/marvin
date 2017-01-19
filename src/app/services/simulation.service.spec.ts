@@ -10,7 +10,7 @@ describe('SimulationService', () => {
     });
   });
 
-  it('should ...', inject([SimulationService], (service: SimulationService) => {
+  it('should initialize', inject([SimulationService], (service: SimulationService) => {
     expect(service).toBeTruthy();
   }));
 });

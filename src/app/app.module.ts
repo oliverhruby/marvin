@@ -21,6 +21,7 @@ import { HorizonComponent } from './horizon/horizon.component';
 import { AudioAnalyzerComponent } from './audioanalyzer/audioanalyzer.component';
 import { LogBrowserComponent } from './logbrowser/logbrowser.component';
 import { VideoComponent } from './video/video.component';
+import { UserCameraComponent } from './user-camera/user-camera.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VideoComponent } from './video/video.component';
     HorizonComponent,
     AudioAnalyzerComponent,
     LogBrowserComponent,
-    VideoComponent
+    VideoComponent,
+    UserCameraComponent
   ],
   imports: [
     BrowserModule,

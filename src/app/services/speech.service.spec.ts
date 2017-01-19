@@ -10,7 +10,7 @@ describe('SpeechService', () => {
     });
   });
 
-  it('should work', inject([SpeechService], (service: SpeechService) => {
+  it('should initialize', inject([SpeechService], (service: SpeechService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -30,3 +30,7 @@ div {
   top: 10px;
   left: 10px;
 }
+
+.header {
+  text-transform: uppercase;
+}
