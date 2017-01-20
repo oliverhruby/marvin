@@ -5,24 +5,27 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 // providers
 import {
-  WebSocketService,
-  GamepadService,
-  SoundService,
-  WitAiService,
   ConfigService,
-  SpeechService
+  GamepadService,
+  LoggerService,
+  SoundService,
+  SpeechService,
+  SpeechSynthesisService,
+  WebSocketService,
+  WitAiService
 } from './services';
 
 // components
 import { AppComponent } from './app.component';
-import { SceneComponent } from './scene';
-import { StatsComponent } from './stats';
-import { HorizonComponent } from './horizon';
 import { AudioAnalyzerComponent } from './audioanalyzer';
+import { HorizonComponent } from './horizon';
 import { LogBrowserComponent } from './logbrowser';
-import { VideoComponent } from './video/video.component';
-import { UserCameraComponent } from './user-camera';
+import { SceneComponent } from './scene';
+import { SpeechComponent } from './speech';
+import { StatsComponent } from './stats';
 import { StopwatchComponent } from './stopwatch';
+import { UserCameraComponent } from './user-camera';
+import { VideoComponent } from './video';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { StopwatchComponent } from './stopwatch';
     HorizonComponent,
     LogBrowserComponent,
     SceneComponent,
+    SpeechComponent,
     StatsComponent,
     StopwatchComponent,
     UserCameraComponent,
@@ -45,8 +49,10 @@ import { StopwatchComponent } from './stopwatch';
   providers: [
     ConfigService,
     GamepadService,
+    LoggerService,
     SoundService,
     SpeechService,
+    SpeechSynthesisService,
     WebSocketService,
     WitAiService
   ],

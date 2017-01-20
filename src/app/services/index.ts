@@ -6,3 +6,7 @@ export * from './motorsound.service';
 export * from './websocket.service';
 export * from './witai.service';
 export * from './speech.service';
+export * from './speech-synthesis.service';
+export * from './logger.service';
+
+

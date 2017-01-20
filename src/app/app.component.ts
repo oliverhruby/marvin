@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+// providers
+import {
+  ConfigService,
+  GamepadService,
+  LoggerService,
+  SoundService,
+  SpeechService,
+  SpeechSynthesisService,
+  WebSocketService,
+  WitAiService
+} from './services';
+
 /**
  * Main application component
  */
@@ -11,11 +23,18 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   constructor(
-  ) {
-
-  }
+    private configService: ConfigService,
+    private gamepadService: GamepadService,
+    private loggerService: LoggerService,
+    private soundService: SoundService,
+    private speechService: SpeechService,
+    private speechSynthesisService: SpeechSynthesisService,
+    private webSocketService: WebSocketService,
+    private witAiService: WitAiService
+  ) { }
 
   ngOnInit() {
+    this.speechSynthesisService.speak("hi there");
   }
 
 }
