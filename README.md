@@ -6,7 +6,7 @@
 
 Marvin is a browser-based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using any input method you can think of. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, Web Sockets, gamepad API, etc.
 
-The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience. It can serve as a base or reference for building your own project. The application is built with focus on simplicity, recommended patterns and continuous integration.
+The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience. This application can serve as a base or reference for building your own project. The application is built with focus on simplicity, recommended patterns and continuous integration.
 
 Application architecture:
 * [Angular2](https://angular.io) - core framework defining the architecture of the application
@@ -16,7 +16,8 @@ Technologies used:
 * [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser base technology that supports hardware accelerated 3D graphics
 * [Web Audio](http://webaudioapi.com) - browser based technology for generating sounds, playing samples, mixing and adding audio effects, etc.
 * [WebSocket API](https://en.wikipedia.org/wiki/WebSocket) - for communication between the browser and the system that controls the real vehicle ([Node-RED](https://nodered.org) or other)
-* [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - speech recognition and speech synthesis directly in the browser, isn't that cool? :-)
+* [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - speech recognition and speech synthesis directly in the browser
+* [Gamepad API] (https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) - browser based support for gamepads
 
 Tools used:
 * [TypeScript](https://www.typescriptlang.org/index.html) - typed superset of JavaScript that compiles into plain JavaScript
