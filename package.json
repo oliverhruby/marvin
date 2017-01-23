@@ -10,7 +10,9 @@
     "test": "ng test --watch false",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
-    "docs": "typedoc --out docs src --mode file --ignoreCompilerErrors"
+    "docs": "typedoc --out docs src --mode file --ignoreCompilerErrors",
+    "electron": "ng build && copyfiles -f \"src/electron/*.*\" \"dist\" && electron \"dist/\"",
+    "package": "electron-packager dist Marvin --platform=win32 --arch=x64 --ignore=dist/ --out=electron"
   },
   "private": true,
   "dependencies": {
@@ -34,7 +36,9 @@
     "@types/node": "^7.0.0",
     "angular-cli": "1.0.0-beta.24",
     "codelyzer": "~2.0.0-beta.1",
-    "electron": "^1.4.14",
+    "copyfiles": "^1.0.0",
+    "electron": "^1.4.15",
+    "electron-packager": "^8.5.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "^3.2.0",
     "karma": "^1.4.0",

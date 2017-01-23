@@ -44,3 +44,7 @@ Thumbs.db
 
 # helper dir for caching external repositories
 /vendor
+
+
+# electron outputs
+/electron
