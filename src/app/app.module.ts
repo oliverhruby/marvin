@@ -19,6 +19,7 @@ import {
 // components
 import { AppComponent } from './app.component';
 import { AudioAnalyzerComponent } from './audioanalyzer';
+import { BatteryComponent } from './battery';
 import { HorizonComponent } from './horizon';
 import { LogBrowserComponent } from './logbrowser';
 import { SceneComponent } from './scene';
@@ -32,6 +33,7 @@ import { VideoComponent } from './video';
   declarations: [
     AppComponent,
     AudioAnalyzerComponent,
+    BatteryComponent,
     HorizonComponent,
     LogBrowserComponent,
     SceneComponent,

@@ -8,20 +8,23 @@ Marvin is a browser-based application for 3D visualization of a robot vehicle an
 
 The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience. This application can serve as a base or reference for building your own project. The application is built with focus on simplicity, recommended patterns and continuous integration.
 
-Application architecture:
-* [Angular2](https://angular.io) - core framework defining the architecture of the application
-* [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
-
 Technologies used:
 * [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser base technology that supports hardware accelerated 3D graphics
 * [Web Audio](http://webaudioapi.com) - browser based technology for generating sounds, playing samples, mixing and adding audio effects, etc.
 * [WebSocket API](https://en.wikipedia.org/wiki/WebSocket) - for communication between the browser and the system that controls the real vehicle ([Node-RED](https://nodered.org) or other)
 * [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - speech recognition and speech synthesis directly in the browser
-* [Gamepad API] (https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) - browser based support for gamepads
+* [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) - browser based support for gamepads
+* [Battery Status API](https://www.w3.org/TR/battery-status) - charging status, charging/discharging time and current level of the computer or phone battery
+* [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) - vector graphics using tag markup can be easily used to bind to real time data and animate
+
+Application architecture:
+* [Angular2](https://angular.io) - core framework defining the architecture of the application
+* [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
 
 Tools used:
 * [TypeScript](https://www.typescriptlang.org/index.html) - typed superset of JavaScript that compiles into plain JavaScript
-* [Webpack 2](https://webpack.js.org) - module bundler
+* [Webpack](https://webpack.js.org) - module bundler
+* [Electron](http://electron.atom.io/) - for packaging as a standalone application for Linux, Mac OS X and Windows
 * [Travis CI](https://travis-ci.org) - free service for continuous integration builds (see the bagde below the title)
 * [Karma](http://karma-runner.github.io/1.0/index.html) - test runner
 

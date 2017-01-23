@@ -1,3 +1,4 @@
+export * from './battery.service';
 export * from './config.service';
 export * from './gamepad.service';
 export * from './simulation.service';
