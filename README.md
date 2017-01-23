@@ -6,14 +6,24 @@
 
 Marvin is a browser-based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using any input method you can think of. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, Web Sockets, gamepad API, etc.
 
-The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience with 3D visualization, these are the components, features or technologies used:
+The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience. It can serve as a base or reference for building your own project. The application is built with focus on simplicity, recommended patterns and continuous integration.
+
+Application architecture:
+* [Angular2](https://angular.io) - core framework defining the architecture of the application
+* [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
+
+Technologies used:
 * [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser base technology that supports hardware accelerated 3D graphics
 * [Web Audio](http://webaudioapi.com) - browser based technology for generating sounds, playing samples, mixing and adding audio effects, etc.
-* [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
-* [WebSocket API](https://en.wikipedia.org/wiki/WebSocket) - for communication between the browser and the system that controls the real vehicle (Node-RED or other)
-* [Angular2](https://angular.io) - core framework defining the architecture of the application
+* [WebSocket API](https://en.wikipedia.org/wiki/WebSocket) - for communication between the browser and the system that controls the real vehicle ([Node-RED](https://nodered.org) or other)
+* [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - speech recognition and speech synthesis directly in the browser, isn't that cool? :-)
 
-The application is built with focus on simplicity, recommended patterns and continuous integration.
+Tools used:
+* [TypeScript](https://www.typescriptlang.org/index.html) - typed superset of JavaScript that compiles into plain JavaScript
+* [Webpack 2](https://webpack.js.org) - module bundler
+* [Travis CI](https://travis-ci.org) - free service for continuous integration builds (see the bagde below the title)
+* [Karma](http://karma-runner.github.io/1.0/index.html) - test runner
+
 
 
 This project structure was originally generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
