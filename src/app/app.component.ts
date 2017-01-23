@@ -7,6 +7,7 @@ import {
   LoggerService,
   SoundService,
   SpeechService,
+  SpeechRecognitionService,
   SpeechSynthesisService,
   WebSocketService,
   WitAiService
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
     private loggerService: LoggerService,
     private soundService: SoundService,
     private speechService: SpeechService,
+    private speechRecognitionService: SpeechRecognitionService,
     private speechSynthesisService: SpeechSynthesisService,
     private webSocketService: WebSocketService,
     private witAiService: WitAiService

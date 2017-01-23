@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
+import { SpeechSynthesisService } from '../services';
 import { SpeechComponent } from '../speech';
 
 describe('SpeechComponent', () => {
@@ -11,7 +11,8 @@ describe('SpeechComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpeechComponent ]
+      providers: [SpeechSynthesisService],
+      declarations: [SpeechComponent]
     })
     .compileComponents();
   }));

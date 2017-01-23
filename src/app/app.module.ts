@@ -10,6 +10,7 @@ import {
   LoggerService,
   SoundService,
   SpeechService,
+  SpeechRecognitionService,
   SpeechSynthesisService,
   WebSocketService,
   WitAiService
@@ -52,6 +53,7 @@ import { VideoComponent } from './video';
     LoggerService,
     SoundService,
     SpeechService,
+    SpeechRecognitionService,
     SpeechSynthesisService,
     WebSocketService,
     WitAiService

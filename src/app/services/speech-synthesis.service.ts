@@ -15,7 +15,7 @@ export class SpeechSynthesisService {
   }
 
   getVoices() {
-    return this.speech.getVoices();
+    return this.voices;
   }
 
   speak(text: string) {
