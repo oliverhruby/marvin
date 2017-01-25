@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import * as BABYLON from '../vendor/babylonjs/babylon';
+import * as BABYLON from 'app/vendor/babylonjs/babylon';
 
 /**
  * Service for providing the gamepad control using the BABYLON library.

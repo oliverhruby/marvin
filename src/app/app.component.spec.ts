@@ -3,75 +3,52 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { StoreModule } from "@ngrx/store";
 import { TestBed, async } from '@angular/core/testing';
 
 // services
 import {
-  ConfigService,
-  GamepadService,
-  LoggerService,
-  SoundService,
-  SpeechService,
-  SpeechRecognitionService,
-  SpeechSynthesisService,
-  WebSocketService,
-  WitAiService
+  ConfigService, GamepadService, LoggerService,
+  SoundService, SpeechService, SpeechRecognitionService,
+  SpeechSynthesisService, WebSocketService, WitAiService
 } from './services';
+
+// reducers
+import { mainStoreReducer } from "app/state-management/reducers/main-reducer";
 
 // components
 import { AppComponent } from './app.component';
-import { AudioAnalyzerComponent } from './components';
-import { BatteryComponent } from './components';
-import { HorizonComponent } from './components';
-import { LogBrowserComponent } from './components';
-import { SceneComponent } from './components';
-import { SpeechComponent } from './components';
-import { StatsComponent } from './components';
-import { StopwatchComponent } from './components';
-import { UserCameraComponent } from './components';
-import { VideoComponent } from './components';
+import {
+  AudioAnalyzerComponent, BatteryComponent,
+  HorizonComponent, LogBrowserComponent, SceneComponent,
+  SpeechComponent, StatsComponent, StopwatchComponent,
+  UserCameraComponent, VideoComponent
+} from './components';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        AudioAnalyzerComponent,
-        BatteryComponent,
-        HorizonComponent,
-        LogBrowserComponent,
-        SceneComponent,
-        SpeechComponent,
-        StatsComponent,
-        StopwatchComponent,
-        UserCameraComponent,
-        VideoComponent
+        AppComponent, AudioAnalyzerComponent, BatteryComponent,
+        HorizonComponent, LogBrowserComponent, SceneComponent,
+        SpeechComponent, StatsComponent, StopwatchComponent,
+        UserCameraComponent, VideoComponent
       ],
-      imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        JsonpModule
-      ],
+      imports: [BrowserModule, FormsModule, HttpModule, JsonpModule],
       providers: [
-        ConfigService,
-        GamepadService,
-        LoggerService,
-        SoundService,
-        SpeechService,
-        SpeechRecognitionService,
-        SpeechSynthesisService,
-        WebSocketService,
-        WitAiService
+        ConfigService, GamepadService, LoggerService,
+        SoundService, SpeechService, SpeechRecognitionService,
+        SpeechSynthesisService, WebSocketService, WitAiService,
+        StoreModule.provideStore({ mainStoreReducer })
       ]
     });
     TestBed.compileComponents();
   });
 
   // it('should create the app', async(() => {
-  //    let fixture = TestBed.createComponent(AppComponent);
-  //    let app = fixture.debugElement.componentInstance;
-  //    expect(app).toBeTruthy();
+  //   let fixture = TestBed.createComponent(AppComponent);
+  //   let app = fixture.debugElement.componentInstance;
+  //   expect(app).toBeTruthy();
   // }));
 
   // it('should render title in a h1 tag', async(() => {

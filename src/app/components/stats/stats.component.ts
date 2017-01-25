@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
-import { ConfigService } from 'app/services';
+import { Store } from "@ngrx/store";
 
+import { State } from "app/state-management/state/main-state";
+import { INCREMENT } from "app/state-management/actions/main-action-creator";
 /**
  * This component shows the complete state information.
  */
@@ -18,15 +20,18 @@ export class StatsComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private configService: ConfigService) { }
+  constructor(private store: Store<State>) {
+    store.select('mainStoreReducer')
+      .subscribe((data: State) => {
+        this.ticks = data.counter;
+      });
+
+    this.store.dispatch({ type: INCREMENT });
+  }
 
   ngOnInit() {
-    this.configService.getConfig().subscribe(
-      data => this.config = data
-    );
-
     let timer = Observable.timer(0, 1000);
-    this.subscription = timer.subscribe(t => this.ticks = t);
+    this.subscription = timer.subscribe(t => this.store.dispatch({ type: INCREMENT }));
   }
 
   ngOnDestroy() {
