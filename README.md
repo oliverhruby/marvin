@@ -19,6 +19,8 @@ Technologies used:
 
 Application architecture:
 * [Angular2](https://angular.io) - core framework defining the architecture of the application
+* [RxJS](http://reactivex.io/rxjs) - reactive programming for JavaScript
+* [ngrx](https://github.com/ngrx/ngrx.github.io) - RxJS powered state management for Angular2 apps, inspired by Redux
 * [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
 
 Tools used:
