@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
-import { ConfigService } from '../services';
+import { ConfigService } from 'app/services';
 
 /**
  * This component shows the complete state information.

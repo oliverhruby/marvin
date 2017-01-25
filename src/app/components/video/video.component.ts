@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../services';
+import { ConfigService } from '../../services';
 
 @Component({
   selector: 'app-video',

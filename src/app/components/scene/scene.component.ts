@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import * as BABYLON from '../vendor/babylonjs/babylon';
+import * as BABYLON from 'app/vendor/babylonjs/babylon';
 
 // services
-import { WebSocketService } from '../services';
+import { WebSocketService } from 'app/services';
 
 // scene objects
 import { Sector } from './objects/sector';

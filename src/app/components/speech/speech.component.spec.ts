@@ -1,31 +1,24 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpModule } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { SpeechSynthesisService } from 'app/services';
+import { SpeechComponent } from '../speech';
 
-// providers
-import {
-  ConfigService
-} from '../services';
-
-import { VideoComponent } from '../video';
-
-describe('VideoComponent', () => {
-  let component: VideoComponent;
-  let fixture: ComponentFixture<VideoComponent>;
+describe('SpeechComponent', () => {
+  let component: SpeechComponent;
+  let fixture: ComponentFixture<SpeechComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoComponent ],
-      imports: [ HttpModule ],
-      providers: [ ConfigService ]
+      providers: [SpeechSynthesisService],
+      declarations: [SpeechComponent]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoComponent);
+    fixture = TestBed.createComponent(SpeechComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

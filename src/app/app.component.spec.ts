@@ -5,27 +5,47 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { TestBed, async } from '@angular/core/testing';
 
-// providers
+// services
 import {
-  WebSocketService,
+  ConfigService,
   GamepadService,
-  SoundService
+  LoggerService,
+  SoundService,
+  SpeechService,
+  SpeechRecognitionService,
+  SpeechSynthesisService,
+  WebSocketService,
+  WitAiService
 } from './services';
 
 // components
 import { AppComponent } from './app.component';
-import { SceneComponent } from './scene/scene.component';
-import { StatsComponent } from './stats/stats.component';
-import { HorizonComponent } from './horizon/horizon.component';
+import { AudioAnalyzerComponent } from './components';
+import { BatteryComponent } from './components';
+import { HorizonComponent } from './components';
+import { LogBrowserComponent } from './components';
+import { SceneComponent } from './components';
+import { SpeechComponent } from './components';
+import { StatsComponent } from './components';
+import { StopwatchComponent } from './components';
+import { UserCameraComponent } from './components';
+import { VideoComponent } from './components';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        AudioAnalyzerComponent,
+        BatteryComponent,
+        HorizonComponent,
+        LogBrowserComponent,
         SceneComponent,
+        SpeechComponent,
         StatsComponent,
-        HorizonComponent
+        StopwatchComponent,
+        UserCameraComponent,
+        VideoComponent
       ],
       imports: [
         BrowserModule,
@@ -34,9 +54,15 @@ describe('AppComponent', () => {
         JsonpModule
       ],
       providers: [
-        WebSocketService,
+        ConfigService,
         GamepadService,
-        SoundService
+        LoggerService,
+        SoundService,
+        SpeechService,
+        SpeechRecognitionService,
+        SpeechSynthesisService,
+        WebSocketService,
+        WitAiService
       ]
     });
     TestBed.compileComponents();

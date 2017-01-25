@@ -1,4 +1,4 @@
-import * as BABYLON from '../../vendor/babylonjs/babylon';
+import * as BABYLON from 'app/vendor/babylonjs/babylon';
 
 /**
 * Represents the distance sensor module used for scanning the space

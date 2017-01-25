@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpeechSynthesisService } from '../services';
+import { SpeechSynthesisService } from '../../services';
 
 @Component({
   selector: 'app-speech',

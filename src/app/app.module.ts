@@ -18,16 +18,16 @@ import {
 
 // components
 import { AppComponent } from './app.component';
-import { AudioAnalyzerComponent } from './audioanalyzer';
-import { BatteryComponent } from './battery';
-import { HorizonComponent } from './horizon';
-import { LogBrowserComponent } from './logbrowser';
-import { SceneComponent } from './scene';
-import { SpeechComponent } from './speech';
-import { StatsComponent } from './stats';
-import { StopwatchComponent } from './stopwatch';
-import { UserCameraComponent } from './user-camera';
-import { VideoComponent } from './video';
+import { AudioAnalyzerComponent } from './components';
+import { BatteryComponent } from './components';
+import { HorizonComponent } from './components';
+import { LogBrowserComponent } from './components';
+import { SceneComponent } from './components';
+import { SpeechComponent } from './components';
+import { StatsComponent } from './components';
+import { StopwatchComponent } from './components';
+import { UserCameraComponent } from './components';
+import { VideoComponent } from './components';
 
 @NgModule({
   declarations: [
