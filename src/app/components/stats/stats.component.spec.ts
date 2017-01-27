@@ -4,10 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
-
-import { StatsComponent } from '../stats';
-import { ConfigService } from 'app/services';
 import { mainStoreReducer } from 'app/state-management/reducers/main-reducer';
+import { ConfigService } from 'app/services';
+import { StatsComponent } from '../stats';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;
@@ -15,9 +14,9 @@ describe('StatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [StatsComponent],
       imports: [HttpModule, StoreModule.provideStore({ mainStoreReducer })],
-      providers: [ConfigService],
-      declarations: [StatsComponent]
+      providers: [ConfigService]
     })
       .compileComponents();
   }));

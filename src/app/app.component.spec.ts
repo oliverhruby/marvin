@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { StoreModule } from "@ngrx/store";
+import { StoreModule } from '@ngrx/store';
 import { TestBed, async } from '@angular/core/testing';
 
 // services
@@ -34,12 +34,14 @@ describe('AppComponent', () => {
         SpeechComponent, StatsComponent, StopwatchComponent,
         UserCameraComponent, VideoComponent
       ],
-      imports: [BrowserModule, FormsModule, HttpModule, JsonpModule],
+      imports: [
+        BrowserModule, FormsModule, HttpModule, JsonpModule,
+        StoreModule.provideStore({ mainStoreReducer })
+      ],
       providers: [
         ConfigService, GamepadService, LoggerService,
         SoundService, SpeechService, SpeechRecognitionService,
-        SpeechSynthesisService, WebSocketService, WitAiService,
-        StoreModule.provideStore({ mainStoreReducer })
+        SpeechSynthesisService, WebSocketService, WitAiService
       ]
     });
     TestBed.compileComponents();

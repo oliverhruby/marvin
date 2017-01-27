@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+import { State } from 'app/state-management/state/main-state';
 
 /**
  * This component allows browsing the log messages
@@ -16,7 +18,7 @@ export class LogBrowserComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private messages: Array<string>;
 
-  constructor() {
+  constructor(private store: Store<State>) {
     this.messages = ['test1', 'test2', 'test3'];
   }
 

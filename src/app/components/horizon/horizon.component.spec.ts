@@ -2,7 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
+import { StoreModule } from '@ngrx/store';
+import { mainStoreReducer } from 'app/state-management/reducers/main-reducer';
 import { HorizonComponent } from '../horizon';
 
 describe('HorizonComponent', () => {
@@ -11,9 +12,10 @@ describe('HorizonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HorizonComponent ]
+      declarations: [HorizonComponent],
+      imports: [StoreModule.provideStore({ mainStoreReducer })]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

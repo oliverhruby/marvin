@@ -1,5 +1,7 @@
 import { Component, OnInit, Attribute } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+import { State } from 'app/state-management/state/main-state';
 
 /**
  * For showing mission time, clock, etc.
@@ -16,7 +18,12 @@ export class StopwatchComponent {
   private timer;
   private intervalSet = false;
 
-  constructor( @Attribute("format") format, @Attribute("data") data, @Attribute('timer') timer) {
+  constructor(
+    @Attribute("format") format,
+    @Attribute("data") data,
+    @Attribute('timer') timer,
+    private store: Store<State>
+  ) {
     this.format = format || 'HH:mm:ss';
     this.data = new Date();
   }

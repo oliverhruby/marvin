@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+import { State } from 'app/state-management/state/main-state';
 
 /**
  * Virtual horizont showing roll, tilt, direction, etc.
@@ -16,7 +18,7 @@ export class HorizonComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
     let timer = Observable.timer(0, 10);

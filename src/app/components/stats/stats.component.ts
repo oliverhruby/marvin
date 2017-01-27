@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 
-import { State } from "app/state-management/state/main-state";
-import { INCREMENT } from "app/state-management/actions/main-action-creator";
+import { State } from 'app/state-management/state/main-state';
+import { INCREMENT } from 'app/state-management/actions/main-action-creator';
 /**
  * This component shows the complete state information.
  */

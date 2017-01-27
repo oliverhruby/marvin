@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+import { State } from 'app/state-management/state/main-state';
+import { BatteryService } from 'app/services';
 
 /**
  * Visualizes current state of the battery and charging
@@ -16,7 +19,9 @@ export class BatteryComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor() { }
+  constructor(private batteryService: BatteryService, private store: Store<State>) {
+    
+  }
 
   ngOnInit() {
     let timer = Observable.timer(0, 100);
