@@ -9,9 +9,10 @@ import { mainStoreReducer } from 'app/state-management/reducers/main-reducer';
 
 // providers
 import {
-  ConfigService, GamepadService, LoggerService,
-  SoundService, SpeechService, SpeechRecognitionService,
-  SpeechSynthesisService, WebSocketService, WitAiService
+  BatteryService, ConfigService, GamepadService,
+  LoggerService, SoundService, SpeechService,
+  SpeechRecognitionService, SpeechSynthesisService,
+  WebSocketService, WitAiService
 } from './services';
 
 // components
@@ -35,9 +36,10 @@ import {
     StoreModule.provideStore({ mainStoreReducer })
   ],
   providers: [
-    ConfigService, GamepadService, LoggerService,
-    SoundService, SpeechService, SpeechRecognitionService,
-    SpeechSynthesisService, WebSocketService, WitAiService
+    BatteryService, ConfigService, GamepadService,
+    LoggerService, SoundService, SpeechService,
+    SpeechRecognitionService, SpeechSynthesisService,
+    WebSocketService, WitAiService
   ],
   bootstrap: [AppComponent]
 })
