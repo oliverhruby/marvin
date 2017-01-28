@@ -15,8 +15,8 @@ export const initialState: BatteryState = {
 export default function (state = initialState, action: Action): BatteryState {
   switch (action.type) {
     case BATTERY_UPDATE:
-      return state; // TODO: add meaningful logic
+      return { isCharging: true, level: (state.level + 1) % 100 };
     default:
-      return initialState;
+      return state;
   }
 };

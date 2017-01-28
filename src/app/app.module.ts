@@ -5,7 +5,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 
 // state management
-//import appReducer from './reducers';
 import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
 import batteryReducer, * as fromBattery from './reducers/battery';
 import counterReducer, * as fromCounter from './reducers/counter';
@@ -41,11 +40,8 @@ import {
         accelerometer: accelerometerReducer,
         battery: batteryReducer,
         counter: counterReducer,
-      }, {
-        accelerometer: { x: 0, y: 0, z: 0 },
-        battery: { isCharging: true, level: 100 },
-        counter: { value: 0 }
-      })
+      }
+    )
   ],
   providers: [
     BatteryService, ConfigService, GamepadService,

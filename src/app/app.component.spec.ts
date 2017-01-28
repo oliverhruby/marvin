@@ -14,7 +14,9 @@ import {
 } from './services';
 
 // reducers
-import { mainStoreReducer } from "app/state-management/reducers/main-reducer";
+import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
+import batteryReducer, * as fromBattery from './reducers/battery';
+import counterReducer, * as fromCounter from './reducers/counter';
 
 // components
 import { AppComponent } from './app.component';
@@ -36,7 +38,13 @@ describe('AppComponent', () => {
       ],
       imports: [
         BrowserModule, FormsModule, HttpModule, JsonpModule,
-        StoreModule.provideStore({ mainStoreReducer })
+        StoreModule.provideStore(
+          {
+            accelerometer: accelerometerReducer,
+            battery: batteryReducer,
+            counter: counterReducer,
+          }
+        )
       ],
       providers: [
         ConfigService, GamepadService, LoggerService,

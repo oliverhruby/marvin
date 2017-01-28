@@ -19,6 +19,6 @@ export default function (state = initialState, action: Action): AccelerometerSta
     case ACCELEROMETER_UPDATE:
       return state; // TODO: add meaningful logic
     default:
-      return initialState;
+      return state;
   }
 };
