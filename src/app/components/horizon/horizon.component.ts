@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
-import { State } from 'app/state-management/state/main-state';
+import { State } from 'app/reducers';
+import { AccelerometerState } from 'app/reducers/accelerometer';
 
 /**
  * Virtual horizont showing roll, tilt, direction, etc.
@@ -14,15 +15,16 @@ import { State } from 'app/state-management/state/main-state';
 })
 export class HorizonComponent implements OnInit, OnDestroy {
 
-  public ticks: number = 0;
+  accelerometer: AccelerometerState;
 
   private subscription: Subscription;
 
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    let timer = Observable.timer(0, 10);
-    this.subscription = timer.subscribe(t => this.ticks = t);
+    this.subscription = this.store
+      .select<AccelerometerState>('accelerometer')
+      .subscribe((data) => this.accelerometer = data);
   }
 
   ngOnDestroy() {

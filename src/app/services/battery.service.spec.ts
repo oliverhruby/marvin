@@ -2,14 +2,26 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
-import { mainStoreReducer } from 'app/state-management/reducers/main-reducer';
+
+import accelerometerReducer, * as fromAccelerometer from 'app/reducers/accelerometer';
+import batteryReducer, * as fromBattery from 'app/reducers/battery';
+import counterReducer, * as fromCounter from 'app/reducers/counter';
+
 import { BatteryService } from '../services';
 
 describe('BatteryService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [BatteryService],
-      imports: [StoreModule.provideStore({ mainStoreReducer })]
+      imports: [
+        StoreModule.provideStore(
+          {
+            accelerometer: accelerometerReducer,
+            battery: batteryReducer,
+            counter: counterReducer,
+          }
+        )
+      ]
     });
   });
 

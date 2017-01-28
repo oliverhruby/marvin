@@ -4,25 +4,37 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
-import { mainStoreReducer } from 'app/state-management/reducers/main-reducer';
-import { ConfigService } from 'app/services';
-import { StatsComponent } from '../stats';
 
-describe('StatsComponent', () => {
-  let component: StatsComponent;
-  let fixture: ComponentFixture<StatsComponent>;
+// state management
+import accelerometerReducer, * as fromAccelerometer from 'app/reducers/accelerometer';
+import batteryReducer, * as fromBattery from 'app/reducers/battery';
+import counterReducer, * as fromCounter from 'app/reducers/counter';
+
+import { StateComponent } from '../state';
+
+describe('StateComponent', () => {
+  let component: StateComponent;
+  let fixture: ComponentFixture<StateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StatsComponent],
-      imports: [HttpModule, StoreModule.provideStore({ mainStoreReducer })],
-      providers: [ConfigService]
+      declarations: [StateComponent],
+      imports: [HttpModule,
+        StoreModule.provideStore(
+          {
+            accelerometer: accelerometerReducer,
+            battery: batteryReducer,
+            counter: counterReducer,
+          }
+        )
+      ],
+      providers: []
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatsComponent);
+    fixture = TestBed.createComponent(StateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

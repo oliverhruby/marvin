@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
-import { State } from 'app/state-management/state/main-state';
+import { State } from 'app/reducers';
 
 /**
  * This component allows browsing the log messages

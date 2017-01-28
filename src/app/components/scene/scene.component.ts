@@ -1,6 +1,10 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import * as BABYLON from 'app/vendor/babylonjs/babylon';
 
+// state management
+import { Store } from '@ngrx/store';
+import { State } from 'app/reducers';
+
 // services
 import { WebSocketService } from 'app/services';
 
@@ -33,6 +37,7 @@ export class SceneComponent implements AfterViewInit {
   @ViewChild('mainCanvas') mainCanvas: ElementRef;
 
   constructor(
+    private store: Store<State>,
     private webSocketService: WebSocketService
   ) {
     this.webSocketService.GetInstanceStatus().subscribe((result) => {
@@ -63,7 +68,7 @@ export class SceneComponent implements AfterViewInit {
     let obstacle = new Obstacle(scene);
     let path = new Path(scene);
     let axis = new Axis(scene);
-    let marvin = new Marvin(scene);
+    let marvin = new Marvin(scene, this.store);
     // let camera = new Camera(scene, canvas);
 
     // Register a render loop to repeatedly render the scene

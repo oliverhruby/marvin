@@ -1,7 +1,7 @@
 import { Component, OnInit, Attribute } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
-import { State } from 'app/state-management/state/main-state';
+import { State } from 'app/reducers';
 
 /**
  * For showing mission time, clock, etc.

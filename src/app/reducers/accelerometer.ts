@@ -17,7 +17,7 @@ export const initialState: AccelerometerState = {
 export default function (state = initialState, action: Action): AccelerometerState {
   switch (action.type) {
     case ACCELEROMETER_UPDATE:
-      return state; // TODO: add meaningful logic
+      return { x: Math.random() * 100, y: Math.random() * 100, z: Math.random() * 100 };  // TODO: add meaningful logic
     default:
       return state;
   }

@@ -4,7 +4,7 @@ export * from './horizon';
 export * from './logbrowser';
 export * from './scene';
 export * from './speech';
-export * from './stats';
+export * from './state';
 export * from './stopwatch';
 export * from './user-camera';
 export * from './video';

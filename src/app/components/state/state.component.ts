@@ -10,11 +10,11 @@ import { INCREMENT } from 'app/reducers/counter';
  * This component shows the complete state information.
  */
 @Component({
-  selector: 'app-stats',
-  templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.css']
+  selector: 'app-state',
+  templateUrl: './state.component.html',
+  styleUrls: ['./state.component.css']
 })
-export class StatsComponent implements OnInit, OnDestroy {
+export class StateComponent implements OnInit, OnDestroy {
 
   public state: any;
 

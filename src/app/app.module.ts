@@ -22,7 +22,7 @@ import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent, BatteryComponent,
   HorizonComponent, LogBrowserComponent, SceneComponent,
-  SpeechComponent, StatsComponent, StopwatchComponent,
+  SpeechComponent, StateComponent, StopwatchComponent,
   UserCameraComponent, VideoComponent
 } from './components';
 
@@ -30,7 +30,7 @@ import {
   declarations: [
     AppComponent, AudioAnalyzerComponent, BatteryComponent,
     HorizonComponent, LogBrowserComponent, SceneComponent,
-    SpeechComponent, StatsComponent, StopwatchComponent,
+    SpeechComponent, StateComponent, StopwatchComponent,
     UserCameraComponent, VideoComponent
   ],
   imports: [
