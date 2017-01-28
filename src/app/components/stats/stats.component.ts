@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
-import { State } from 'app/state-management/state/main-state';
-import { INCREMENT } from 'app/state-management/actions/main-action-creator';
+import { State } from 'app/reducers';
+import { INCREMENT } from 'app/reducers/counter';
+
 /**
  * This component shows the complete state information.
  */
@@ -15,17 +16,12 @@ import { INCREMENT } from 'app/state-management/actions/main-action-creator';
 })
 export class StatsComponent implements OnInit, OnDestroy {
 
-  public ticks: number;
-  public config: any;
+  public state: any;
 
   private subscription: Subscription;
 
   constructor(private store: Store<State>) {
-    store.select('mainStoreReducer')
-      .subscribe((data: State) => {
-        this.ticks = data.counter;
-      });
-
+    store.subscribe((data) => this.state = JSON.stringify(data, undefined, 2));
     this.store.dispatch({ type: INCREMENT });
   }
 
