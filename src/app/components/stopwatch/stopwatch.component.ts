@@ -2,6 +2,10 @@ import { Component, OnInit, Attribute } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
+import {
+  STOPWATCH_START, STOPWATCH_PAUSE, STOPWATCH_RESET,
+  StopwatchState
+} from 'app/reducers/stopwatch';
 
 /**
  * For showing mission time, clock, etc.
@@ -31,6 +35,16 @@ export class StopwatchComponent {
   ngOnInit() {
     let timer = Observable.timer(2000, 1000);
     timer.subscribe(t => this.data = new Date());
+  }
+
+  /** toggles the running state of the timer */
+  startStop() {
+    this.store.dispatch({ type: STOPWATCH_START });
+  }
+
+  /** resets the timer to 0 */
+  reset() {
+    this.store.dispatch({ type: STOPWATCH_RESET });
   }
 
 }

@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
 import batteryReducer, * as fromBattery from './reducers/battery';
 import counterReducer, * as fromCounter from './reducers/counter';
+import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
+import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // providers
 import {
@@ -40,6 +42,8 @@ import {
         accelerometer: accelerometerReducer,
         battery: batteryReducer,
         counter: counterReducer,
+        stopwatch: stopwatchReducer,
+        vehicle: vehicleReducer
       }
     )
   ],

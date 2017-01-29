@@ -17,13 +17,15 @@ import {
 import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
 import batteryReducer, * as fromBattery from './reducers/battery';
 import counterReducer, * as fromCounter from './reducers/counter';
+import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
+import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // components
 import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent, BatteryComponent,
   HorizonComponent, LogBrowserComponent, SceneComponent,
-  SpeechComponent, StatsComponent, StopwatchComponent,
+  SpeechComponent, StateComponent, StopwatchComponent,
   UserCameraComponent, VideoComponent
 } from './components';
 
@@ -33,7 +35,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent, AudioAnalyzerComponent, BatteryComponent,
         HorizonComponent, LogBrowserComponent, SceneComponent,
-        SpeechComponent, StatsComponent, StopwatchComponent,
+        SpeechComponent, StateComponent, StopwatchComponent,
         UserCameraComponent, VideoComponent
       ],
       imports: [
@@ -43,6 +45,8 @@ describe('AppComponent', () => {
             accelerometer: accelerometerReducer,
             battery: batteryReducer,
             counter: counterReducer,
+            stopwatch: stopwatchReducer,
+            vehicle: vehicleReducer
           }
         )
       ],

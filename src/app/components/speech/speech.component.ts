@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SpeechSynthesisService } from '../../services';
+import { Store } from '@ngrx/store';
+
+import { SpeechSynthesisService } from 'app/services';
+import { State } from 'app/reducers';
 
 @Component({
   selector: 'app-speech',
@@ -8,14 +11,22 @@ import { SpeechSynthesisService } from '../../services';
 })
 export class SpeechComponent implements OnInit {
 
-  public voices : SpeechSynthesisVoice[];
+  text: string;
+  voices: SpeechSynthesisVoice[];
 
-  constructor(private speechSynthesisService: SpeechSynthesisService) {
+  constructor(
+    private store: Store<State>,
+    private speechSynthesisService: SpeechSynthesisService
+  ) {
 
   }
 
   ngOnInit() {
     this.voices = this.speechSynthesisService.getVoices();
+  }
+
+  submit() {
+    this.speechSynthesisService.speak(this.text);
   }
 
 }
