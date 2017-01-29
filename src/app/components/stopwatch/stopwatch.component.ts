@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import {
-  STOPWATCH_START, STOPWATCH_PAUSE, STOPWATCH_RESET,
+  STOPWATCH_START, STOPWATCH_STOP, STOPWATCH_RESET, STOPWATCH_TIME,
   StopwatchState
 } from 'app/reducers/stopwatch';
 
@@ -33,13 +33,18 @@ export class StopwatchComponent {
   }
 
   ngOnInit() {
-    let timer = Observable.timer(2000, 1000);
-    timer.subscribe(t => this.data = new Date());
+    let timer = Observable.timer(0, 1000);
+    timer.subscribe(t => this.store.dispatch({ type: STOPWATCH_TIME }));
   }
 
-  /** toggles the running state of the timer */
-  startStop() {
+  /** starts the timer */
+  start() {
     this.store.dispatch({ type: STOPWATCH_START });
+  }
+
+  /** stops the timer */
+  stop() {
+    this.store.dispatch({ type: STOPWATCH_STOP });
   }
 
   /** resets the timer to 0 */

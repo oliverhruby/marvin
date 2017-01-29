@@ -19,6 +19,7 @@ div {
 .widget {
   width: 320px;
   border: 1px solid lawngreen;
+  background: rgba(0, 0, 0, .5);
   opacity: 0.8;
   margin: 5px;
   padding: 10px;
