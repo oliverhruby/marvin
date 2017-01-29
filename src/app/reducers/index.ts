@@ -1,25 +1,33 @@
 import { compose } from '@ngrx/core/compose';
 import { combineReducers } from '@ngrx/store';
 
-// TODO: is this working also? which version is better?
-// import { accelerometerReducer, AccelerometerState } from './accelerometer';
-// import { batteryReducer, BatteryState } from './battery';
-// import { counterReducer, CounterState } from './counter';
 import accelerometerReducer, * as fromAccelerometer from './accelerometer';
 import batteryReducer, * as fromBattery from './battery';
+import commandReducer, * as fromCommand from './command';
 import counterReducer, * as fromCounter from './counter';
+import laserReducer, * as fromLaser from './laser';
+import stopwatchReducer, * as fromStopwatch from './stopwatch';
+import vehicleReducer, * as fromVehicle from './vehicle';
 
 /** State interface */
 export interface State {
    accelerometer: fromAccelerometer.AccelerometerState,
    battery: fromBattery.BatteryState,
-   counter: fromCounter.CounterState
+   command: fromCommand.CommandState,
+   counter: fromCounter.CounterState,
+   laser: fromLaser.LaserState
+   stopwatch: fromStopwatch.StopwatchState,
+   vehicle: fromVehicle.VehicleState
 };
 
 export default compose(combineReducers)({
     accelerometer: accelerometerReducer,
     battery: batteryReducer,
-    counter: counterReducer
+    command: commandReducer,
+    counter: counterReducer,
+    laser: laserReducer,
+    stopwatch: stopwatchReducer,
+    vehicle: vehicleReducer
 });
 
 // TODO: look at http://bodiddlie.github.io/ng-2-toh-with-ngrx-suite/

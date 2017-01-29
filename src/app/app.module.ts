@@ -7,7 +7,9 @@ import { StoreModule } from '@ngrx/store';
 // state management
 import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
 import batteryReducer, * as fromBattery from './reducers/battery';
+import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
+import laserReducer, * as fromLaser from './reducers/laser';
 import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
 import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
@@ -42,6 +44,7 @@ import {
         accelerometer: accelerometerReducer,
         battery: batteryReducer,
         counter: counterReducer,
+        command: commandReducer,
         stopwatch: stopwatchReducer,
         vehicle: vehicleReducer
       }

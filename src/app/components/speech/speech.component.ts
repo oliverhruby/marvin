@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { SpeechSynthesisService } from 'app/services';
 import { State } from 'app/reducers';
+import { CommandState } from 'app/reducers/command';
+import { SpeechSynthesisService } from 'app/services';
+import { WitAiService } from 'app/services';
 
 @Component({
   selector: 'app-speech',
@@ -16,6 +18,7 @@ export class SpeechComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
+    private witAiService: WitAiService,
     private speechSynthesisService: SpeechSynthesisService
   ) {
 
@@ -23,10 +26,16 @@ export class SpeechComponent implements OnInit {
 
   ngOnInit() {
     this.voices = this.speechSynthesisService.getVoices();
+    
+    // subscribe to commands, retrieve response from wit.ai and speak it
+    this.store.select<CommandState>('command').subscribe((data) => 
+        this.witAiService.getResponse(data.command).subscribe(
+          (data) => this.speechSynthesisService.speak(data)
+        )
+    );
   }
 
   submit() {
-    this.speechSynthesisService.speak(this.text);
+    this.store.dispatch({type: 'COMMAND_SEND', payload: this.text });
   }
-
 }

@@ -1,4 +1,5 @@
 /* tslint:disable:no-unused-variable */
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -21,6 +22,7 @@ describe('SpeechComponent', () => {
       providers: [SpeechSynthesisService],
       declarations: [SpeechComponent],
       imports: [
+        FormsModule,
         StoreModule.provideStore(
           {
             accelerometer: accelerometerReducer,

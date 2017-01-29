@@ -19,9 +19,8 @@ export class WitAiService {
    */
   public getResponse(question: string) {
     let headers = new Headers();
-    this.jsonp.get(this.apiUrl)
-      .map(res => res.json())
-      .subscribe(data => console.log(data));
+    return this.jsonp.get(this.apiUrl)
+      .map(res => res.json());
   }
 
 }
