@@ -25,17 +25,17 @@ import {
 import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent, BatteryComponent,
-  HorizonComponent, LogBrowserComponent, SceneComponent,
-  SpeechComponent, StateComponent, StopwatchComponent,
-  UserCameraComponent, VideoComponent
+  HorizonComponent, LogBrowserComponent, MosquittoComponent,
+  SceneComponent, SpeechComponent, StateComponent,
+  StopwatchComponent, UserCameraComponent, VideoComponent
 } from './components';
 
 @NgModule({
   declarations: [
     AppComponent, AudioAnalyzerComponent, BatteryComponent,
-    HorizonComponent, LogBrowserComponent, SceneComponent,
-    SpeechComponent, StateComponent, StopwatchComponent,
-    UserCameraComponent, VideoComponent
+    HorizonComponent, LogBrowserComponent, MosquittoComponent,
+    SceneComponent, SpeechComponent, StateComponent,
+    StopwatchComponent, UserCameraComponent, VideoComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, JsonpModule,

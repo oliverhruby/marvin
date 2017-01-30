@@ -29,7 +29,7 @@ export class AudioAnalyzerComponent implements OnInit {
 
     // prepare the canvas to draw to
     let canvasCtx: CanvasRenderingContext2D = this.analyzer.nativeElement.getContext('2d');
-    canvasCtx.clearRect(0, 0, 300, 100);
+    canvasCtx.clearRect(0, 0, 320, 100);
 
     analyser.fftSize = 256;
     let bufferLength = analyser.frequencyBinCount;
@@ -45,9 +45,9 @@ export class AudioAnalyzerComponent implements OnInit {
         // Success callback
         function (stream) {
           let source = audioCtx.createMediaStreamSource(stream);
-          let gainNode = audioCtx.createGain();
           source.connect(analyser);
-          analyser.connect(gainNode);
+          // let gainNode = audioCtx.createGain();
+          // analyser.connect(gainNode);
           // don't play what comes from the microphone, just visualize
           // analyser.connect(gainNode);
           // gainNode.connect(audioCtx.destination);
