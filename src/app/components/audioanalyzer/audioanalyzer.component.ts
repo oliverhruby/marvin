@@ -33,11 +33,9 @@ export class AudioAnalyzerComponent implements OnInit {
 
     analyser.fftSize = 256;
     let bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
     let dataArray = new Uint8Array(bufferLength);
 
     if (navigator.getUserMedia) {
-      console.log('getUserMedia supported.');
       navigator.getUserMedia(
         // constraints - only audio needed for this app
         {
@@ -50,7 +48,7 @@ export class AudioAnalyzerComponent implements OnInit {
           let gainNode = audioCtx.createGain();
           source.connect(analyser);
           analyser.connect(gainNode);
-          gainNode.connect(audioCtx.destination);
+          //gainNode.connect(audioCtx.destination);
 
           draw();
         },
