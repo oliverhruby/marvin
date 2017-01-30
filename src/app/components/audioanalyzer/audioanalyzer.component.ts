@@ -37,7 +37,6 @@ export class AudioAnalyzerComponent implements OnInit {
     let dataArray = new Uint8Array(bufferLength);
 
     if (navigator.getUserMedia) {
-      console.log('getUserMedia supported.');
       navigator.getUserMedia(
         // constraints - only audio needed for this app
         {
@@ -49,8 +48,9 @@ export class AudioAnalyzerComponent implements OnInit {
           let source = audioCtx.createMediaStreamSource(stream);
           let gainNode = audioCtx.createGain();
           source.connect(analyser);
-          analyser.connect(gainNode);
-          gainNode.connect(audioCtx.destination);
+          // don't play what comes from the microphone, just visualize
+          // analyser.connect(gainNode);
+          // gainNode.connect(audioCtx.destination);
 
           draw();
         },
