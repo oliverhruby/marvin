@@ -48,7 +48,9 @@ export class AudioAnalyzerComponent implements OnInit {
           let gainNode = audioCtx.createGain();
           source.connect(analyser);
           analyser.connect(gainNode);
-          //gainNode.connect(audioCtx.destination);
+          // don't play what comes from the microphone, just visualize
+          // analyser.connect(gainNode);
+          // gainNode.connect(audioCtx.destination);
 
           draw();
         },
