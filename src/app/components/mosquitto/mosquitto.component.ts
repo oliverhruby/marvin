@@ -20,12 +20,15 @@ export class MosquittoComponent {
     this.mqttService = new MqttService({
       protocol: 'ws',
       hostname: '192.168.0.108',
-      port: 1884,
+      port: 9001,
       path: ''
     });
 
+    this.mqttService.observe("#").subscribe((data)=>{
+      // console.log(data);
+    });
     this.mqttService.publish("pokus", "pokus msg", {qos: 0}).subscribe((err)=>{
-      console.log(err);
+      // console.log(err);
     });
 
   }

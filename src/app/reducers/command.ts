@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export const COMMAND_TAG = 'COMMAND_TAG';
+export const COMMAND_SEND = 'COMMAND_SEND';
 
 export interface CommandState {
   tag: string;
@@ -9,14 +10,20 @@ export interface CommandState {
 };
 
 export const initialState: CommandState = {
-  tag:'',
+  tag: '',
   command: ''
 };
 
 export default function (state = initialState, action: Action): CommandState {
   switch (action.type) {
     case COMMAND_TAG:
-      return { tag: action.payload, command: state.command };
+      return Object.assign({}, state, {
+        tag: action.payload
+      });
+    case COMMAND_SEND:
+      return Object.assign({}, state, {
+        command: action.payload
+      });
     default:
       return state;
   }
