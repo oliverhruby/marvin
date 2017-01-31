@@ -11,11 +11,13 @@ The main purpose is to demonstrate the possibilities of pure browser based techn
 Technologies used:
 * [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser base technology that supports hardware accelerated 3D graphics
 * [Web Audio](http://webaudioapi.com) - browser based technology for generating sounds, playing samples, mixing and adding audio effects, etc.
-* [WebSocket API](https://en.wikipedia.org/wiki/WebSocket) - for communication between the browser and the system that controls the real vehicle ([Node-RED](https://nodered.org) or other)
 * [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - speech recognition and speech synthesis directly in the browser
 * [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) - browser based support for gamepads
 * [Battery Status API](https://www.w3.org/TR/battery-status) - charging status, charging/discharging time and current level of the computer or phone battery
 * [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) - vector graphics using tag markup can be easily used to bind to real time data and animate
+* [MQTT](http://mqtt.org) - MQTT is a machine-to-machine ("Internet of Things") connectivity protocol, used for remote control and receiving sensor data
+* [WebSocket](https://en.wikipedia.org/wiki/WebSocket) - communication protocol (for MQTT over Websockets)
+* [Node-RED](https://nodered.org) - an instance on Node-RED could be optionally used with this application for "drag-and-drop plumbing" to control anything
 
 Application architecture:
 * [Angular2](https://angular.io) - core framework defining the architecture of the application
