@@ -72,7 +72,6 @@ export abstract class AbstractSpeechEngine {
 
     //this.start_timestamp = event.timeStamp;
     this.engine.start();
-    console.log('info_allow');
     return true;
   }
   stop() {

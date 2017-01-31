@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { MqttService, MqttMessage } from 'angular2-mqtt';
 
 /**
  * This component allows browsing MQTT messages
@@ -10,7 +12,22 @@ import { Component } from '@angular/core';
 })
 export class MosquittoComponent {
 
+  public msgs: Observable<MqttMessage> = null;
+  private mqttService: MqttService;
+
   constructor() {
+
+    this.mqttService = new MqttService({
+      protocol: 'ws',
+      hostname: '192.168.0.108',
+      port: 1884,
+      path: ''
+    });
+
+    this.mqttService.publish("pokus", "pokus msg", {qos: 0}).subscribe((err)=>{
+      console.log(err);
+    });
+
   }
 
 }
