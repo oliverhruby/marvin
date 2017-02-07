@@ -127,7 +127,7 @@ export abstract class AbstractSpeechEngine {
     this.zone.run(() => {
       this.obs$.emit({
         type: 'hint',
-        value: 'sound detecetd'
+        value: 'sound detected'
       });
     });
   }
@@ -136,7 +136,7 @@ export abstract class AbstractSpeechEngine {
     this.zone.run(() => {
       this.obs$.emit({
         type: 'hint',
-        value: 'audio detecetd'
+        value: 'audio detected'
       });
     });
   }

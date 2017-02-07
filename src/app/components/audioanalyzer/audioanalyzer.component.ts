@@ -46,12 +46,6 @@ export class AudioAnalyzerComponent implements OnInit {
         function (stream) {
           let source = audioCtx.createMediaStreamSource(stream);
           source.connect(analyser);
-          // let gainNode = audioCtx.createGain();
-          // analyser.connect(gainNode);
-          // don't play what comes from the microphone, just visualize
-          // analyser.connect(gainNode);
-          // gainNode.connect(audioCtx.destination);
-
           draw();
         },
 
@@ -70,7 +64,7 @@ export class AudioAnalyzerComponent implements OnInit {
       analyser.getByteFrequencyData(dataArray);
 
       // clear the previously drawn content
-      canvasCtx.clearRect(0, 0, 300, 100);
+      canvasCtx.clearRect(0, 0, 320, 100);
 
       let barWidth = (300 / bufferLength) * 2.5;
       let barHeight;
