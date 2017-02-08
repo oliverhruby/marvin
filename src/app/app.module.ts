@@ -10,13 +10,14 @@ import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
 import laserReducer, * as fromLaser from './reducers/laser';
+import midiReducer, * as fromMidi from './reducers/midi';
 import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
 import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // providers
 import {
   BatteryService, ConfigService, GamepadService,
-  LoggerService, SoundService, SpeechService,
+  LoggerService, MidiService, SoundService, SpeechService,
   SpeechRecognitionService, SpeechSynthesisService,
   WebSocketService, WitAiService
 } from './services';
@@ -25,7 +26,7 @@ import {
 import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent, BatteryComponent,
-  HorizonComponent, LogBrowserComponent, MosquittoComponent,
+  HorizonComponent, LogBrowserComponent, MidiComponent, MosquittoComponent,
   SceneComponent, SpeechComponent, StateComponent,
   StopwatchComponent, UserCameraComponent, VideoComponent
 } from './components';
@@ -33,7 +34,7 @@ import {
 @NgModule({
   declarations: [
     AppComponent, AudioAnalyzerComponent, BatteryComponent,
-    HorizonComponent, LogBrowserComponent, MosquittoComponent,
+    HorizonComponent, LogBrowserComponent, MidiComponent, MosquittoComponent,
     SceneComponent, SpeechComponent, StateComponent,
     StopwatchComponent, UserCameraComponent, VideoComponent
   ],
@@ -45,6 +46,7 @@ import {
         battery: batteryReducer,
         counter: counterReducer,
         command: commandReducer,
+        midi: midiReducer,
         stopwatch: stopwatchReducer,
         vehicle: vehicleReducer
       }

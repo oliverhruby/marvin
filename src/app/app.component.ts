@@ -5,6 +5,7 @@ import {
   ConfigService,
   GamepadService,
   LoggerService,
+  MidiService,
   SoundService,
   SpeechService,
   SpeechRecognitionService,

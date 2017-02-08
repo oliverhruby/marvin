@@ -2,6 +2,7 @@ export * from './audioanalyzer';
 export * from './battery';
 export * from './horizon';
 export * from './logbrowser';
+export * from './midi';
 export * from './mosquitto';
 export * from './scene';
 export * from './speech';

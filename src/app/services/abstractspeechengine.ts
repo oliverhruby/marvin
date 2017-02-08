@@ -152,7 +152,6 @@ export abstract class AbstractSpeechEngine {
 
   private onstart() {
     this.zone.run(() => {
-      console.log('reconizing');
       this.recognizing = true;
     });
   }
@@ -163,19 +162,15 @@ export abstract class AbstractSpeechEngine {
     this.recognizing = false;
 
     if (event.error == 'no-speech') {
-      console.error('no-speech');
       this.err$.emit(SpeechErrors.NoSpeech);
     }
     if (event.error == 'audio-capture') {
-      console.error('audio-capture');
       this.err$.emit(SpeechErrors.NoMic);
     }
     if (event.error == 'not-allowed') {
       if (event.timeStamp - this.start_timestamp < 100) {
-        console.error('not-allowed');
         this.err$.emit(SpeechErrors.Blocked);
       } else {
-        console.error('denied');
         this.err$.emit(SpeechErrors.Denied);
       }
     }
