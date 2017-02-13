@@ -5,9 +5,6 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 
-// services
-import { WebSocketService } from 'app/services';
-
 // scene objects
 import { Sector } from './objects/sector';
 import { Obstacle } from './objects/obstacle';
@@ -24,25 +21,19 @@ import { Axis } from './objects/axis';
 @Component({
   selector: 'app-scene',
   templateUrl: './scene.component.html',
-  styleUrls: ['./scene.component.css'],
-  providers: [WebSocketService]
+  styleUrls: ['./scene.component.css']
 })
 export class SceneComponent implements AfterViewInit {
   private _engine: BABYLON.Engine;
   private _canvas: HTMLCanvasElement;
 
-  private messages: string[] = [];
-
   // get the element with the #mainCanvas on it
   @ViewChild('mainCanvas') mainCanvas: ElementRef;
 
   constructor(
-    private store: Store<State>,
-    private webSocketService: WebSocketService
+    private store: Store<State>
   ) {
-    this.webSocketService.GetInstanceStatus().subscribe((result) => {
-      this.messages.push(result);
-    });
+
   }
 
   ngAfterViewInit() { // wait for the view to init before using the element
