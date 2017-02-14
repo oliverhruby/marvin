@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
@@ -7,20 +7,20 @@ import { State } from 'app/reducers';
 import { BatteryState, BATTERY_UPDATE } from 'app/reducers/battery';
 import { BatteryService } from 'app/services';
 
-// interface BatteryManager {
-//   charging: boolean;
-//   chargingTime: number;
-//   dischargingTime: number;
-//   level: number;
-//   onchargingchange: () => any;
-//   onchargingtimechange: () => any;
-//   ondischargingtimechange: () => any;
-//   onlevelchange: () => any;
-// }
+interface BatteryManager {
+  charging: boolean;
+  chargingTime: number;
+  dischargingTime: number;
+  level: number;
+  onchargingchange: () => any;
+  onchargingtimechange: () => any;
+  ondischargingtimechange: () => any;
+  onlevelchange: () => any;
+}
 
-// interface Navigator {
-//   getBattery(): any;//BatteryManager;
-// }
+interface Navigator {
+  getBattery(): BatteryManager;
+}
 
 /**
  * Visualizes current state of the battery and charging
@@ -37,7 +37,6 @@ export class BatteryComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(
-    private zone: NgZone,
     private batteryService: BatteryService,
     private store: Store<State>
   ) {
@@ -46,12 +45,9 @@ export class BatteryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.zone.run(() => {
-      (<any>navigator).getBattery().then(battery =>
-        function (battery) {
-          console.log(battery); // TODO: not working!!!
-        });
-    });
+      (<any>navigator).getBattery().then(function(data) {
+        console.log(data);
+      });
   }
 
   ngOnDestroy() {
