@@ -32,7 +32,7 @@ interface Navigator {
 })
 export class BatteryComponent implements OnInit, OnDestroy {
 
-  level: number = 0;
+  battery: BatteryState;
 
   private subscription: Subscription;
 
@@ -42,7 +42,7 @@ export class BatteryComponent implements OnInit, OnDestroy {
     private store: Store<State>
   ) {
     this.subscription = this.store.select<BatteryState>('battery')
-      .subscribe((data) => this.level = data.level);
+      .subscribe((data) => this.battery = data);
   }
 
   ngOnInit() {

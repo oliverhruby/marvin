@@ -3,32 +3,31 @@
     "version": "1.0.0",
     "name": "marvin"
   },
-  "apps": [
-    {
-      "root": "src",
-      "outDir": "dist",
-      "assets": [
-        "assets",
-        "marvin.ico"
-      ],
-      "index": "index.html",
-      "main": "main.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.json",
-      "prefix": "app",
-      "mobile": false,
-      "styles": [
-        "styles.css"
-      ],
-      "scripts": [],
-      "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
+  "apps": [{
+    "root": "src",
+    "outDir": "dist",
+    "assets": [
+      "assets",
+      "marvin.ico"
+    ],
+    "index": "index.html",
+    "main": "main.ts",
+    "test": "test.ts",
+    "tsconfig": "tsconfig.json",
+    "prefix": "app",
+    "mobile": false,
+    "styles": [
+      "styles.css",
+      "../node_modules/font-awesome/css/font-awesome.css"
+    ],
+    "scripts": [],
+    "environments": {
+      "source": "environments/environment.ts",
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
     }
-  ],
-  "addons": [],
+  }],
+  "addons": ["../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"],
   "packages": [],
   "e2e": {
     "protractor": {

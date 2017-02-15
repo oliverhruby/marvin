@@ -9,6 +9,7 @@ import accelerometerReducer, * as fromAccelerometer from './reducers/acceleromet
 import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
+import gamepadReducer, * as fromGamepad from './reducers/gamepad';
 import laserReducer, * as fromLaser from './reducers/laser';
 import midiReducer, * as fromMidi from './reducers/midi';
 import mqttReducer, * as fromMqtt from './reducers/mqtt';
@@ -47,6 +48,7 @@ import {
         battery: batteryReducer,
         counter: counterReducer,
         command: commandReducer,
+        gamepad: gamepadReducer,
         midi: midiReducer,
         mqtt: mqttReducer,
         stopwatch: stopwatchReducer,
