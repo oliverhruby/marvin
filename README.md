@@ -24,12 +24,14 @@ Application architecture:
 * [RxJS](http://reactivex.io/rxjs) - reactive programming for JavaScript
 * [ngrx](https://github.com/ngrx/ngrx.github.io) - RxJS powered state management for Angular2 apps, inspired by Redux
 * [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
+* [Font Awesome](http://fontawesome.io) - free iconic font and css toolkit
 
 Tools used:
 * [TypeScript](https://www.typescriptlang.org/index.html) - typed superset of JavaScript that compiles into plain JavaScript
 * [Webpack](https://webpack.js.org) - module bundler
 * [Electron](http://electron.atom.io/) - for packaging as a standalone application for Linux, Mac OS X and Windows
 * [Travis CI](https://travis-ci.org) - free service for continuous integration builds (see the bagde below the title)
+* [Jasmine](https://jasmine.github.io) - testing framework
 * [Karma](http://karma-runner.github.io/1.0/index.html) - test runner
 
 

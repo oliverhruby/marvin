@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-import accelerometerReducer, * as fromAccelerometer from 'app/reducers/accelerometer';
+import gyroscopeReducer, * as fromGyroscope from 'app/reducers/gyroscope';
 import batteryReducer, * as fromBattery from 'app/reducers/battery';
 import counterReducer, * as fromCounter from 'app/reducers/counter';
 
@@ -21,7 +21,7 @@ describe('BatteryComponent', () => {
       imports: [
         StoreModule.provideStore(
           {
-            accelerometer: accelerometerReducer,
+            gyroscope: gyroscopeReducer,
             battery: batteryReducer,
             counter: counterReducer,
           }

@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
 // state management
-import midiReducer, * as fromAccelerometer from 'app/reducers/midi';
+import midiReducer, * as fromMidi from 'app/reducers/midi';
 
 import { MidiComponent } from '../midi';
 

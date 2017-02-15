@@ -29,9 +29,6 @@ export class SpeechComponent implements OnInit {
 
   ngOnInit() {
     let me = this;
-    window.addEventListener('deviceorientation', function () {
-      me.store.dispatch({ type: 'COMMAND_TAG', payload: 'orientation' });
-    });
 
     try {
       let engine = new HTML5SpeechEngine(this.zone);
@@ -46,9 +43,9 @@ export class SpeechComponent implements OnInit {
     // subscribe to commands, retrieve response from wit.ai and speak it
     this.store.select<CommandState>('command').subscribe(data => {
       if (data.command.length > 0) {
-        this.witAiService.getResponse(data.command).subscribe(data => {
-          //this.speechSynthesisService.speak(data);
-        })
+        // this.witAiService.getResponse(data.command).subscribe(data => {
+        //   this.speechSynthesisService.speak(data);
+        // })
       }
     });
   }

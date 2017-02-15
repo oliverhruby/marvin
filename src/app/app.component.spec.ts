@@ -8,13 +8,13 @@ import { TestBed, async } from '@angular/core/testing';
 
 // services
 import {
-  ConfigService, GamepadService, LoggerService,
-  SoundService, SpeechService, SpeechRecognitionService,
+  ConfigService, //GamepadService,
+  LoggerService, SoundService, SpeechService, SpeechRecognitionService,
   SpeechSynthesisService, WebSocketService, WitAiService
 } from './services';
 
 // reducers
-import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
+import gyroscopeReducer, * as fromGyroscope from './reducers/gyroscope';
 import batteryReducer, * as fromBattery from './reducers/battery';
 import counterReducer, * as fromCounter from './reducers/counter';
 import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
@@ -24,7 +24,7 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent, BatteryComponent,
-  HorizonComponent, LogBrowserComponent, SceneComponent,
+  GyroscopeComponent, LogBrowserComponent, SceneComponent,
   SpeechComponent, StateComponent, StopwatchComponent,
   UserCameraComponent, VideoComponent
 } from './components';
@@ -34,7 +34,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, AudioAnalyzerComponent, BatteryComponent,
-        HorizonComponent, LogBrowserComponent, SceneComponent,
+        GyroscopeComponent, LogBrowserComponent, SceneComponent,
         SpeechComponent, StateComponent, StopwatchComponent,
         UserCameraComponent, VideoComponent
       ],
@@ -42,7 +42,7 @@ describe('AppComponent', () => {
         BrowserModule, FormsModule, HttpModule, JsonpModule,
         StoreModule.provideStore(
           {
-            accelerometer: accelerometerReducer,
+            gyroscope: gyroscopeReducer,
             battery: batteryReducer,
             counter: counterReducer,
             stopwatch: stopwatchReducer,
@@ -51,8 +51,8 @@ describe('AppComponent', () => {
         )
       ],
       providers: [
-        ConfigService, GamepadService, LoggerService,
-        SoundService, SpeechService, SpeechRecognitionService,
+        ConfigService, // GamepadService,
+        LoggerService, SoundService, SpeechService, SpeechRecognitionService,
         SpeechSynthesisService, WebSocketService, WitAiService
       ]
     });

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // providers
 import {
   ConfigService,
-  GamepadService,
+  // GamepadService,
   LoggerService,
   MidiService,
   SoundService,
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private configService: ConfigService,
-    private gamepadService: GamepadService,
+    //private gamepadService: GamepadService,
     private loggerService: LoggerService,
     private soundService: SoundService,
     private speechService: SpeechService,

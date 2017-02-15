@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
 // state management
-import accelerometerReducer, * as fromAccelerometer from 'app/reducers/accelerometer';
+import gyroscopeReducer, * as fromGyroscope from 'app/reducers/gyroscope';
 import batteryReducer, * as fromBattery from 'app/reducers/battery';
 import counterReducer, * as fromCounter from 'app/reducers/counter';
 
@@ -21,7 +21,7 @@ describe('LogbrowserComponent', () => {
       imports: [
         StoreModule.provideStore(
           {
-            accelerometer: accelerometerReducer,
+            gyroscope: gyroscopeReducer,
             battery: batteryReducer,
             counter: counterReducer,
           }

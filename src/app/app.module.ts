@@ -5,7 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 
 // state management
-import accelerometerReducer, * as fromAccelerometer from './reducers/accelerometer';
+import gyroscopeReducer, * as fromGyroscope from './reducers/gyroscope';
 import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
@@ -18,7 +18,7 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // providers
 import {
-  BatteryService, ConfigService, GamepadService,
+  BatteryService, ConfigService, // GamepadService,
   LoggerService, MidiService, SoundService, SpeechService,
   SpeechRecognitionService, SpeechSynthesisService,
   WebSocketService, WitAiService
@@ -28,23 +28,25 @@ import {
 import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent, BatteryComponent,
-  HorizonComponent, LogBrowserComponent, MidiComponent, MosquittoComponent,
-  SceneComponent, SpeechComponent, StateComponent,
-  StopwatchComponent, UserCameraComponent, VideoComponent
+  GamepadComponent, GyroscopeComponent, LogBrowserComponent,
+  MidiComponent, MosquittoComponent, SceneComponent,
+  SpeechComponent, StateComponent, StopwatchComponent,
+  UserCameraComponent, VideoComponent
 } from './components';
 
 @NgModule({
   declarations: [
     AppComponent, AudioAnalyzerComponent, BatteryComponent,
-    HorizonComponent, LogBrowserComponent, MidiComponent, MosquittoComponent,
-    SceneComponent, SpeechComponent, StateComponent,
-    StopwatchComponent, UserCameraComponent, VideoComponent
+    GamepadComponent, GyroscopeComponent, LogBrowserComponent,
+    MidiComponent, MosquittoComponent, SceneComponent,
+    SpeechComponent, StateComponent, StopwatchComponent,
+    UserCameraComponent, VideoComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, JsonpModule,
     StoreModule.provideStore(
       {
-        accelerometer: accelerometerReducer,
+        gyroscope: gyroscopeReducer,
         battery: batteryReducer,
         counter: counterReducer,
         command: commandReducer,
@@ -57,7 +59,7 @@ import {
     )
   ],
   providers: [
-    BatteryService, ConfigService, GamepadService,
+    BatteryService, ConfigService, // GamepadService,
     LoggerService, SoundService, SpeechService,
     SpeechRecognitionService, SpeechSynthesisService,
     WebSocketService, WitAiService

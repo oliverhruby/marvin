@@ -146,7 +146,7 @@ export class Marvin {
         me.toggleLights();
       }
       if (me.speed > 0) {
-        me.store.dispatch({ type: 'ACCELEROMETER_UPDATE' });
+        me.store.dispatch({ type: 'GYROSCOPE_UPDATE' });
       }
     };
 

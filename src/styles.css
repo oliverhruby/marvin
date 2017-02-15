@@ -16,6 +16,10 @@ div {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+::-webkit-scrollbar-thumb{
+   background-color: rgba(0,0,0,0);
+} 
+
 .widget {
   width: 320px;
   border: 1px solid lawngreen;

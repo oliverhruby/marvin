@@ -48,19 +48,21 @@ export class BatteryComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let me = this;
     try {
-      (<any>navigator).getBattery().then(function(battery) {
-        battery.onchargingchange = function() {
-          me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
-        };
-        battery.onchargingtimechange = function() {
-          me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
-        };
-        battery.ondischargingtimechange = function() {
-          me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
-        };
-        battery.levelchange = function() {
-          me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
-        };
+      me.zone.run(function () {
+        (<any>navigator).getBattery().then(function(battery) {
+          battery.onchargingchange = function() {
+            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+          };
+          battery.onchargingtimechange = function() {
+            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+          };
+          battery.ondischargingtimechange = function() {
+            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+          };
+          battery.levelchange = function() {
+            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+          };
+        });
       });
     } catch (ex) {
       console.log("Battery monitoring not available.");

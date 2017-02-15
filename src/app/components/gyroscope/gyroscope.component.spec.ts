@@ -4,23 +4,23 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-import accelerometerReducer, * as fromAccelerometer from 'app/reducers/accelerometer';
+import gyroscopeReducer, * as fromGyroscope from 'app/reducers/gyroscope';
 import batteryReducer, * as fromBattery from 'app/reducers/battery';
 import counterReducer, * as fromCounter from 'app/reducers/counter';
 
-import { HorizonComponent } from '../horizon';
+import { GyroscopeComponent } from '../gyroscope';
 
-describe('HorizonComponent', () => {
-  let component: HorizonComponent;
-  let fixture: ComponentFixture<HorizonComponent>;
+describe('GyroscopeComponent', () => {
+  let component: GyroscopeComponent;
+  let fixture: ComponentFixture<GyroscopeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HorizonComponent],
+      declarations: [GyroscopeComponent],
       imports: [
         StoreModule.provideStore(
           {
-            accelerometer: accelerometerReducer,
+            gyroscope: gyroscopeReducer,
             battery: batteryReducer,
             counter: counterReducer,
           }
@@ -31,7 +31,7 @@ describe('HorizonComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HorizonComponent);
+    fixture = TestBed.createComponent(GyroscopeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

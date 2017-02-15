@@ -1,18 +1,18 @@
-/* tslint:disable:no-unused-variable */
+// /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { HttpModule } from '@angular/http';
-import { GamepadService } from './gamepad.service';
+// import { TestBed, async, inject } from '@angular/core/testing';
+// import { HttpModule } from '@angular/http';
+// import { GamepadService } from './gamepad.service';
 
-describe('GamepadService', () => {
+// describe('GamepadService', () => {
 
-  let service: GamepadService;
+//   let service: GamepadService;
 
-  beforeEach(() => {
-    service = new GamepadService();
-  });
+//   beforeEach(() => {
+//     service = new GamepadService();
+//   });
 
-  it('should ...', () => {
-    expect(service).toBeTruthy();
-  });
-});
+//   it('should ...', () => {
+//     expect(service).toBeTruthy();
+//   });
+// });
