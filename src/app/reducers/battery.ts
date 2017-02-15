@@ -19,12 +19,12 @@ export const initialState: BatteryState = {
 export default function (state = initialState, action: Action): BatteryState {
   switch (action.type) {
     case BATTERY_UPDATE:
-      return {
+      return Object.assign({}, state, {
         charging: action.payload.charging,
         chargingTime: action.payload.chargingTime,
         dischargingTime: action.payload.dischargingTime,
         level: action.payload.level
-      };
+      });
     default:
       return state;
   }
