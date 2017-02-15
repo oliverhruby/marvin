@@ -11,6 +11,7 @@ import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
 import laserReducer, * as fromLaser from './reducers/laser';
 import midiReducer, * as fromMidi from './reducers/midi';
+import mqttReducer, * as fromMqtt from './reducers/mqtt';
 import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
 import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
@@ -47,6 +48,7 @@ import {
         counter: counterReducer,
         command: commandReducer,
         midi: midiReducer,
+        mqtt: mqttReducer,
         stopwatch: stopwatchReducer,
         vehicle: vehicleReducer
       }

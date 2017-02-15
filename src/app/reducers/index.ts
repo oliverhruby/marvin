@@ -6,6 +6,7 @@ import batteryReducer, * as fromBattery from './battery';
 import commandReducer, * as fromCommand from './command';
 import counterReducer, * as fromCounter from './counter';
 import laserReducer, * as fromLaser from './laser';
+import mqttReducer, * as fromMqtt from './mqtt';
 import stopwatchReducer, * as fromStopwatch from './stopwatch';
 import vehicleReducer, * as fromVehicle from './vehicle';
 
@@ -15,7 +16,8 @@ export interface State {
    battery: fromBattery.BatteryState,
    command: fromCommand.CommandState,
    counter: fromCounter.CounterState,
-   laser: fromLaser.LaserState
+   laser: fromLaser.LaserState,
+   mqtt: fromMqtt.MqttState,
    stopwatch: fromStopwatch.StopwatchState,
    vehicle: fromVehicle.VehicleState
 };
@@ -26,6 +28,7 @@ export default compose(combineReducers)({
     command: commandReducer,
     counter: counterReducer,
     laser: laserReducer,
+    mqtt: mqttReducer,
     stopwatch: stopwatchReducer,
     vehicle: vehicleReducer
 });

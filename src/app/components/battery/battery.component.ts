@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
@@ -37,6 +37,7 @@ export class BatteryComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(
+    private zone: NgZone,
     private batteryService: BatteryService,
     private store: Store<State>
   ) {
@@ -45,9 +46,12 @@ export class BatteryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.zone.run(() => {
+      let me = this;
       (<any>navigator).getBattery().then(function(data) {
-        console.log(data);
+        me.store.dispatch({ type: 'BATTERY_UPDATE', payload: data });
       });
+    });
   }
 
   ngOnDestroy() {
