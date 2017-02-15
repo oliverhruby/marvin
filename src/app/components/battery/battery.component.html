@@ -24,7 +24,8 @@
         <rect id="level" [attr.width]="battery.level * 100 + '%'" height="100%" fill="lawngreen" />
       </svg>
     </svg>
-    <i [style.visibility]="battery.charging?'visible':'hidden'" class="fa fa-plug"></i>
-    <div style="display: inline-block; font-size: 20px;">{{battery.level * 100 + '%'}}</div>
+    <div style="display: inline-block;">
+      {{battery.level * 100 + '%'}}
+      <i [style.visibility]="battery.charging?'visible':'hidden'" class="fa fa-plug"></i></div>
   </div>
 </div>
