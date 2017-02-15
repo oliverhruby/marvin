@@ -33,11 +33,15 @@ export class SpeechComponent implements OnInit {
       me.store.dispatch({ type: 'COMMAND_TAG', payload: 'orientation' });
     });
 
-    let engine = new HTML5SpeechEngine(this.zone);
-    engine.toggle();
-    engine.toRx().values.subscribe(message =>
-      this.store.dispatch({ type: message.type == 'hint' ? 'COMMAND_TAG' : 'COMMAND_SEND', payload: message.value })
-    );
+    try {
+      let engine = new HTML5SpeechEngine(this.zone);
+      engine.toggle();
+      engine.toRx().values.subscribe(message =>
+        this.store.dispatch({ type: message.type == 'hint' ? 'COMMAND_TAG' : 'COMMAND_SEND', payload: message.value })
+      );
+    } catch (ex) {
+      console.log("Speech engine not available.");
+    }
 
     // subscribe to commands, retrieve response from wit.ai and speak it
     this.store.select<CommandState>('command').subscribe(data => {

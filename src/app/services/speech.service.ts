@@ -9,36 +9,43 @@ export class SpeechService {
   constructor() {
     let final_transcript = '';
     let recognizing = false;
+    let recognition = null;
 
-    // TODO: fix this - fails to compile saying SpeechRecognition undefined
-    // this.speechRecognition = SpeechRecognition || webkitSpeechRecognition
-    let recognition = new webkitSpeechRecognition;
+    try {
 
-    recognition.continuous = true;
-    recognition.interimResults = true;
+      // TODO: fix this - fails to compile saying SpeechRecognition undefined
+      // this.speechRecognition = SpeechRecognition || webkitSpeechRecognition
+      recognition = new webkitSpeechRecognition;
 
-    recognition.onstart = function () {
-      recognizing = true;
-    };
+      recognition.continuous = true;
+      recognition.interimResults = true;
 
-    recognition.onerror = function (event) {
-      console.log(event.error);
-    };
+      recognition.onstart = function () {
+        recognizing = true;
+      };
 
-    recognition.onend = function () {
-      recognizing = false;
-    };
+      recognition.onerror = function (event) {
+        console.log(event.error);
+      };
 
-    recognition.onresult = function (event) {
-      let interim_transcript = '';
-      for (let i = event.resultIndex; i < event.results.length; ++i) {
-        if (event.results[i].isFinal) {
-          final_transcript += event.results[i][0].transcript;
-        } else {
-          interim_transcript += event.results[i][0].transcript;
+      recognition.onend = function () {
+        recognizing = false;
+      };
+
+      recognition.onresult = function (event) {
+        let interim_transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            final_transcript += event.results[i][0].transcript;
+          } else {
+            interim_transcript += event.results[i][0].transcript;
+          }
         }
-      }
-    };
+      };
+
+    } catch (ex) {
+      console.log("Speech recognition not available");
+    }
 
   }
 
