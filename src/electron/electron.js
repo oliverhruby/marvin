@@ -27,6 +27,8 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null
   })
+
+  win.setMenu(null);
 }
 
 // This method will be called when Electron has finished

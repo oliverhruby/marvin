@@ -10,6 +10,7 @@ import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
 import gamepadReducer, * as fromGamepad from './reducers/gamepad';
+import keyboardReducer, * as fromKayboard from './reducers/keyboard';
 import laserReducer, * as fromLaser from './reducers/laser';
 import midiReducer, * as fromMidi from './reducers/midi';
 import mqttReducer, * as fromMqtt from './reducers/mqtt';
@@ -18,29 +19,54 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // providers
 import {
-  BatteryService, ConfigService, // GamepadService,
-  LoggerService, MidiService, SoundService, SpeechService,
-  SpeechRecognitionService, SpeechSynthesisService,
-  WebSocketService, WitAiService
+  BatteryService,
+  ConfigService, // GamepadService,
+  LoggerService,
+  MidiService,
+  SoundService,
+  SpeechService,
+  SpeechRecognitionService,
+  SpeechSynthesisService,
+  WebSocketService,
+  WitAiService
 } from './services';
 
 // components
 import { AppComponent } from './app.component';
 import {
-  AudioAnalyzerComponent, BatteryComponent,
-  GamepadComponent, GyroscopeComponent, LogBrowserComponent,
-  MidiComponent, MosquittoComponent, SceneComponent,
-  SpeechComponent, StateComponent, StopwatchComponent,
-  UserCameraComponent, VideoComponent
+  AudioAnalyzerComponent,
+  BatteryComponent,
+  GamepadComponent,
+  GyroscopeComponent,
+  KeyboardComponent,
+  LogBrowserComponent,
+  MidiComponent,
+  MosquittoComponent,
+  SceneComponent,
+  SpeechComponent,
+  StateComponent,
+  StopwatchComponent,
+  UserCameraComponent,
+  VideoComponent
 } from './components';
 
 @NgModule({
   declarations: [
-    AppComponent, AudioAnalyzerComponent, BatteryComponent,
-    GamepadComponent, GyroscopeComponent, LogBrowserComponent,
-    MidiComponent, MosquittoComponent, SceneComponent,
-    SpeechComponent, StateComponent, StopwatchComponent,
-    UserCameraComponent, VideoComponent
+    AppComponent,
+    AudioAnalyzerComponent,
+    BatteryComponent,
+    GamepadComponent,
+    GyroscopeComponent,
+    KeyboardComponent,
+    LogBrowserComponent,
+    MidiComponent,
+    MosquittoComponent,
+    SceneComponent,
+    SpeechComponent,
+    StateComponent,
+    StopwatchComponent,
+    UserCameraComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, JsonpModule,
@@ -50,6 +76,7 @@ import {
         battery: batteryReducer,
         counter: counterReducer,
         command: commandReducer,
+        keyboard: keyboardReducer,
         gamepad: gamepadReducer,
         midi: midiReducer,
         mqtt: mqttReducer,
@@ -59,10 +86,16 @@ import {
     )
   ],
   providers: [
-    BatteryService, ConfigService, // GamepadService,
-    LoggerService, SoundService, SpeechService,
-    SpeechRecognitionService, SpeechSynthesisService,
-    WebSocketService, WitAiService
+    BatteryService,
+    ConfigService,
+    // GamepadService,
+    LoggerService,
+    SoundService,
+    SpeechService,
+    SpeechRecognitionService,
+    SpeechSynthesisService,
+    WebSocketService,
+    WitAiService
   ],
   bootstrap: [AppComponent]
 })
