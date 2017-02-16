@@ -10,7 +10,7 @@ import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
 import gamepadReducer, * as fromGamepad from './reducers/gamepad';
-import keyboardReducer, * as fromKayboard from './reducers/keyboard';
+import keyboardReducer, * as fromKeyboard from './reducers/keyboard';
 import laserReducer, * as fromLaser from './reducers/laser';
 import midiReducer, * as fromMidi from './reducers/midi';
 import mqttReducer, * as fromMqtt from './reducers/mqtt';

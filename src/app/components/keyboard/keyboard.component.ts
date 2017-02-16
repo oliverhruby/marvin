@@ -31,5 +31,10 @@ export class KeyboardComponent implements OnInit {
         me.store.dispatch({ type: KEYBOARD_UPDATE, payload: true });
       });
     });
+    window.addEventListener("keyup", function () {
+      me.zone.run(function () {
+        me.store.dispatch({ type: KEYBOARD_UPDATE, payload: false });
+      });
+    });
   }
 }

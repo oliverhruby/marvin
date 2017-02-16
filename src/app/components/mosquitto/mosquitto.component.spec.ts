@@ -5,9 +5,7 @@ import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
 // state management
-import gyroscopeReducer, * as fromGyroscope from 'app/reducers/gyroscope';
-import batteryReducer, * as fromBattery from 'app/reducers/battery';
-import counterReducer, * as fromCounter from 'app/reducers/counter';
+import mqttReducer, * as fromMqtt from 'app/reducers/mqtt';
 
 import { MosquittoComponent } from '../mosquitto';
 
@@ -21,9 +19,7 @@ describe('LogbrowserComponent', () => {
       imports: [
         StoreModule.provideStore(
           {
-            gyroscope: gyroscopeReducer,
-            battery: batteryReducer,
-            counter: counterReducer,
+            mqtt: mqttReducer
           }
         )
       ]
