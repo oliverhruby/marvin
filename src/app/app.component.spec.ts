@@ -23,20 +23,38 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 // components
 import { AppComponent } from './app.component';
 import {
-  AudioAnalyzerComponent, BatteryComponent,
-  GyroscopeComponent, LogBrowserComponent, SceneComponent,
-  SpeechComponent, StateComponent, StopwatchComponent,
-  UserCameraComponent, VideoComponent
+  AudioAnalyzerComponent,
+  BatteryComponent,
+  GyroscopeComponent,
+  LogBrowserComponent,
+  SceneComponent,
+  SpeechComponent,
+  StateComponent,
+  StopwatchComponent,
+  UserCameraComponent,
+  VideoComponent
 } from './components';
+
+import { HomeComponent } from './pages/home';
+import { UserComponent } from './pages/user';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, AudioAnalyzerComponent, BatteryComponent,
-        GyroscopeComponent, LogBrowserComponent, SceneComponent,
-        SpeechComponent, StateComponent, StopwatchComponent,
-        UserCameraComponent, VideoComponent
+        AppComponent,
+        AudioAnalyzerComponent,
+        BatteryComponent,
+        GyroscopeComponent,
+        HomeComponent,
+        LogBrowserComponent,
+        SceneComponent,
+        SpeechComponent,
+        StateComponent,
+        StopwatchComponent,
+        UserCameraComponent,
+        UserComponent,
+        VideoComponent
       ],
       imports: [
         BrowserModule, FormsModule, HttpModule, JsonpModule,

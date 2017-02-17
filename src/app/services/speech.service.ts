@@ -44,7 +44,7 @@ export class SpeechService {
       };
 
     } catch (ex) {
-      console.log("Speech recognition not available");
+      console.log('Speech recognition not available');
     }
 
   }

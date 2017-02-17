@@ -7,9 +7,9 @@ export interface VehicleState {
   direction: number;
   voltage: number;
   lights: {
-    left: boolean,
-    right: boolean
-  }
+    left: boolean;
+    right: boolean;
+  };
 };
 
 export const initialState: VehicleState = {

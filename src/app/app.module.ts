@@ -1,7 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { ChartsModule } from 'ng2-charts';
+import { DragulaModule } from 'ng2-dragula';
 import { StoreModule } from '@ngrx/store';
 
 // state management
@@ -36,6 +38,7 @@ import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent,
   BatteryComponent,
+  ChartComponent,
   GamepadComponent,
   GyroscopeComponent,
   KeyboardComponent,
@@ -51,13 +54,18 @@ import {
   VideoComponent
 } from './components';
 
+import { HomeComponent } from './pages/home';
+import { UserComponent } from './pages/user';
+
 @NgModule({
   declarations: [
     AppComponent,
     AudioAnalyzerComponent,
     BatteryComponent,
+    ChartComponent,
     GamepadComponent,
     GyroscopeComponent,
+    HomeComponent,
     KeyboardComponent,
     LogBrowserComponent,
     MidiComponent,
@@ -68,10 +76,16 @@ import {
     StopwatchComponent,
     SysinfoComponent,
     UserCameraComponent,
+    UserComponent,
     VideoComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule, JsonpModule,
+    BrowserModule,
+    ChartsModule,
+    DragulaModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
     StoreModule.provideStore(
       {
         gyroscope: gyroscopeReducer,

@@ -1,5 +1,6 @@
 export * from './audioanalyzer';
 export * from './battery';
+export * from './chart';
 export * from './gamepad';
 export * from './gyroscope';
 export * from './keyboard';

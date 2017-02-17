@@ -70,7 +70,7 @@ export abstract class AbstractSpeechEngine {
       return false;
     }
 
-    //this.start_timestamp = event.timeStamp;
+    // this.start_timestamp = event.timeStamp;
     this.engine.start();
     return true;
   }
@@ -157,32 +157,32 @@ export abstract class AbstractSpeechEngine {
   }
 
   private onerror(event) {
-    //this.zone.run( () => {
+    this.zone.run( () => {
 
-    this.recognizing = false;
+      this.recognizing = false;
 
-    if (event.error == 'no-speech') {
-      this.err$.emit(SpeechErrors.NoSpeech);
-    }
-    if (event.error == 'audio-capture') {
-      this.err$.emit(SpeechErrors.NoMic);
-    }
-    if (event.error == 'not-allowed') {
-      if (event.timeStamp - this.start_timestamp < 100) {
-        this.err$.emit(SpeechErrors.Blocked);
-      } else {
-        this.err$.emit(SpeechErrors.Denied);
+      if (event.error == 'no-speech') {
+        this.err$.emit(SpeechErrors.NoSpeech);
       }
-    }
+      if (event.error == 'audio-capture') {
+        this.err$.emit(SpeechErrors.NoMic);
+      }
+      if (event.error == 'not-allowed') {
+        if (event.timeStamp - this.start_timestamp < 100) {
+          this.err$.emit(SpeechErrors.Blocked);
+        } else {
+          this.err$.emit(SpeechErrors.Denied);
+        }
+      }
 
-    //});
+    });
 
   }
 
   private onend() {
     this.zone.run(() => {
       this.recognizing = false;
-      //this.obs$.complete();
+      // this.obs$.complete();
     });
   };
 
@@ -198,7 +198,7 @@ export abstract class AbstractSpeechEngine {
       return;
     }
 
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
       this.obs$.emit({
         type: 'tag',
         value: event.results[i][0].transcript

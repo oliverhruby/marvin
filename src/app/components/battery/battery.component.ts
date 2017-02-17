@@ -65,7 +65,7 @@ export class BatteryComponent implements OnInit, OnDestroy {
         });
       });
     } catch (ex) {
-      console.log("Battery monitoring not available.");
+      console.log('Battery monitoring not available.');
     }
   }
 

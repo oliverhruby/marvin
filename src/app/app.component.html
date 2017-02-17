@@ -1,17 +1,20 @@
 <app-scene></app-scene>
 <div class="controls">
-  <app-state></app-state>
-  <app-gyroscope></app-gyroscope>
-  <app-keyboard></app-keyboard>
-  <app-sysinfo></app-sysinfo>
-  <app-gamepad></app-gamepad>
-  <app-battery></app-battery>
-  <app-midi></app-midi>
-  <app-mosquitto></app-mosquitto>
-  <app-speech></app-speech>
-  <app-log-browser></app-log-browser>
-  <app-audio-analyzer></app-audio-analyzer>
-  <app-video></app-video>
-  <app-user-camera></app-user-camera>
-  <app-stopwatch></app-stopwatch>
+  <app-home [dragula]='"controls-panel"'></app-home>
+  <app-user [dragula]='"controls-panel"'></app-user>
+  <app-chart [dragula]='"controls-panel"'></app-chart>
+  <app-state [dragula]='"controls-panel"'></app-state>
+  <app-gyroscope [dragula]='"controls-panel"'></app-gyroscope>
+  <app-keyboard [dragula]='"controls-panel"'></app-keyboard>
+  <app-sysinfo [dragula]='"controls-panel"'></app-sysinfo>
+  <app-gamepad [dragula]='"controls-panel"'></app-gamepad>
+  <app-battery [dragula]='"controls-panel"'></app-battery>
+  <app-midi [dragula]='"controls-panel"'></app-midi>
+  <app-mosquitto [dragula]='"controls-panel"'></app-mosquitto>
+  <app-speech [dragula]='"controls-panel"'></app-speech>
+  <app-log-browser [dragula]='"controls-panel"'></app-log-browser>
+  <app-audio-analyzer [dragula]='"controls-panel"'></app-audio-analyzer>
+  <app-video [dragula]='"controls-panel"'></app-video>
+  <app-user-camera [dragula]='"controls-panel"'></app-user-camera>
+  <app-stopwatch [dragula]='"controls-panel"'></app-stopwatch>
 </div>

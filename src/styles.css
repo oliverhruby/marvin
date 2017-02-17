@@ -39,3 +39,31 @@ div {
 .header {
   text-transform: uppercase;
 }
+
+/**
+ * START - Hyperlinks
+ */
+
+/* unvisited link */
+a:link {
+    color: lightgreen;
+}
+
+/* visited link */
+a:visited {
+    color: lightgreen;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
+/**
+ * END - Hyperlinks
+ */

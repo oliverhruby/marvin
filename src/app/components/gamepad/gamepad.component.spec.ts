@@ -34,11 +34,11 @@ describe('GamepadComponent', () => {
 
   it('should update store on window events', () => {
     expect(component).toBeTruthy();
-    let e1 = new Event("gamepadconnected");
+    let e1 = new Event('gamepadconnected');
     window.dispatchEvent(e1);
-    let e2 = new Event("gamepaddisconnected");
+    let e2 = new Event('gamepaddisconnected');
     window.dispatchEvent(e2);
-    let e3 = new Event("gamepadchanged");
+    let e3 = new Event('"gamepadchanged');
     window.dispatchEvent(e3);
   });
 });
