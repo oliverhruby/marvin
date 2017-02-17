@@ -9,7 +9,7 @@ import midiReducer, * as fromMidi from 'app/reducers/midi';
 
 import { MidiComponent } from '../midi';
 
-describe('LogbrowserComponent', () => {
+describe('MidiComponent', () => {
   let component: MidiComponent;
   let fixture: ComponentFixture<MidiComponent>;
 

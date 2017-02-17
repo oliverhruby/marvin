@@ -10,5 +10,6 @@ export * from './scene';
 export * from './speech';
 export * from './state';
 export * from './stopwatch';
+export * from './sysinfo';
 export * from './user-camera';
 export * from './video';

@@ -38,7 +38,7 @@ describe('BatteryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should update store on battery events', () => {
     expect(component).toBeTruthy();
   });
 });

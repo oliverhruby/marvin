@@ -46,6 +46,7 @@ import {
   SpeechComponent,
   StateComponent,
   StopwatchComponent,
+  SysinfoComponent,
   UserCameraComponent,
   VideoComponent
 } from './components';
@@ -65,6 +66,7 @@ import {
     SpeechComponent,
     StateComponent,
     StopwatchComponent,
+    SysinfoComponent,
     UserCameraComponent,
     VideoComponent
   ],

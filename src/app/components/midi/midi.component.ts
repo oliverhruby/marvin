@@ -24,8 +24,12 @@ export class MidiComponent implements OnInit {
   }
 
   ngOnInit() {
-    let engine = new MidiService(this.zone);
-    //engine.onMidiInit();
+    try {
+      let engine = new MidiService(this.zone);
+      engine.onMidiInit();
+    } catch (ex) {
+      console.log("MIDI not available");
+    }
   }
 
 }
