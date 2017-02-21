@@ -9,6 +9,7 @@ export * from './midi';
 export * from './mosquitto';
 export * from './scene';
 export * from './speech';
+export * from './splash';
 export * from './state';
 export * from './stopwatch';
 export * from './sysinfo';
