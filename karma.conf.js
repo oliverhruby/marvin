@@ -17,7 +17,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-remap-istanbul'),
       require('karma-jasmine-html-reporter'),
-      require('angular-cli/plugins/karma')
+      require('@angular/cli/plugins/karma')
     ],
 
     // list of files / patterns to load in the browser
