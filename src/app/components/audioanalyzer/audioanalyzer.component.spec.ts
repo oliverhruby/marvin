@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AudioAnalyzerComponent } from '../audioanalyzer';
+import { AudioAnalyzerComponent, WidgetComponent } from 'app/components';
 
 describe('AudioAnalyzerComponent', () => {
   let component: AudioAnalyzerComponent;
@@ -11,7 +11,7 @@ describe('AudioAnalyzerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AudioAnalyzerComponent ]
+      declarations: [ AudioAnalyzerComponent, WidgetComponent ]
     })
     .compileComponents();
   }));

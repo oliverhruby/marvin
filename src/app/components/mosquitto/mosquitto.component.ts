@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Rx';
 import { MqttService, MqttMessage } from 'angular2-mqtt';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
+import { WidgetComponent } from '../widget/widget.component';
+
 
 /**
  * This component allows browsing MQTT messages
@@ -12,12 +14,13 @@ import { State } from 'app/reducers';
   templateUrl: './mosquitto.component.html',
   styleUrls: ['./mosquitto.component.css']
 })
-export class MosquittoComponent {
+export class MosquittoComponent extends WidgetComponent {
 
   public msgs: Observable<any> = null;
   private mqttService: MqttService;
 
   constructor(private store: Store < State > ) {
+    super();
     try {
 
       this.mqttService = new MqttService({

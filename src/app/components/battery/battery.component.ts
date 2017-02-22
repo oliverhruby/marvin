@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
+import { WidgetComponent } from '../widget/widget.component';
+
 import { State } from 'app/reducers';
 import { BatteryState, BATTERY_UPDATE } from 'app/reducers/battery';
 import { BatteryService } from 'app/services';
@@ -30,7 +32,7 @@ interface Navigator {
   templateUrl: './battery.component.html',
   styleUrls: ['./battery.component.css']
 })
-export class BatteryComponent implements OnInit, OnDestroy {
+export class BatteryComponent extends WidgetComponent implements OnInit, OnDestroy {
 
   battery: BatteryState;
 
@@ -41,6 +43,7 @@ export class BatteryComponent implements OnInit, OnDestroy {
     private batteryService: BatteryService,
     private store: Store<State>
   ) {
+    super();
     this.subscription = this.store.select<BatteryState>('battery')
       .subscribe((data) => this.battery = data);
   }

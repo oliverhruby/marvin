@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { WidgetComponent } from '../widget/widget.component';
 
 /**
  * System information
@@ -8,9 +9,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   templateUrl: './sysinfo.component.html',
   styleUrls: ['./sysinfo.component.css']
 })
-export class SysinfoComponent implements OnInit {
+export class SysinfoComponent extends WidgetComponent implements OnInit {
 
   constructor() {
+    super();
   }
 
   /**

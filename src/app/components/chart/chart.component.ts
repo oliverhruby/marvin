@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WidgetComponent } from '../widget/widget.component';
 
 /**
  * Chart example
@@ -8,7 +9,12 @@ import { Component } from '@angular/core';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css']
 })
-export class ChartComponent {
+export class ChartComponent extends WidgetComponent {
+
+  constructor() {
+    super();
+  }
+  
   // lineChart
   public lineChartData:Array<any> = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},

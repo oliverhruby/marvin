@@ -2,7 +2,8 @@ import { Component, OnInit, Attribute } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import {
+import { WidgetComponent } from '../widget/widget.component';
+import { 
   STOPWATCH_START, STOPWATCH_STOP, STOPWATCH_RESET, STOPWATCH_TIME,
   StopwatchState
 } from 'app/reducers/stopwatch';
@@ -15,7 +16,7 @@ import {
   templateUrl: './stopwatch.component.html',
   styleUrls: ['./stopwatch.component.css']
 })
-export class StopwatchComponent {
+export class StopwatchComponent extends WidgetComponent {
   public data;
   public format;
 
@@ -28,6 +29,7 @@ export class StopwatchComponent {
     @Attribute('timer') timer,
     private store: Store<State>
   ) {
+    super();
     this.format = format || 'HH:mm:ss';
     this.data = new Date();
   }

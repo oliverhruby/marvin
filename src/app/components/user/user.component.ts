@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WidgetComponent } from '../widget/widget.component';
 
 /**
  * User information
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
+export class UserComponent extends WidgetComponent {
 
   constructor() {
+    super();
   }
 
   ngOnInit() {

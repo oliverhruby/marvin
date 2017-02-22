@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
+import { WidgetComponent } from '../widget/widget.component';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
@@ -14,7 +15,7 @@ import { GAMEPAD_CONNECT, GAMEPAD_DISCONNECT, GAMEPAD_UPDATE } from 'app/reducer
   templateUrl: './gamepad.component.html',
   styleUrls: ['./gamepad.component.css']
 })
-export class GamepadComponent implements AfterViewInit, OnDestroy {
+export class GamepadComponent extends WidgetComponent implements AfterViewInit, OnDestroy {
 
   // gamepad: GamepadState;
 
@@ -22,7 +23,9 @@ export class GamepadComponent implements AfterViewInit, OnDestroy {
     private zone: NgZone,
     // private gamepadService: GamepadService,
     private store: Store < State >
-  ) {}
+  ) {
+    super();
+  }
 
   ngAfterViewInit() {
     let me = this;

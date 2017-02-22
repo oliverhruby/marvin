@@ -32,12 +32,13 @@ import {
   SplashComponent,
   StateComponent,
   StopwatchComponent,
+  UserComponent,
   UserCameraComponent,
-  VideoComponent
+  VideoComponent,
+  WidgetComponent
 } from './components';
 
 import { HomeComponent } from './pages/home';
-import { UserComponent } from './pages/user';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -56,7 +57,8 @@ describe('AppComponent', () => {
         StopwatchComponent,
         UserCameraComponent,
         UserComponent,
-        VideoComponent
+        VideoComponent,
+        WidgetComponent
       ],
       imports: [
         BrowserModule, FormsModule, HttpModule, JsonpModule,

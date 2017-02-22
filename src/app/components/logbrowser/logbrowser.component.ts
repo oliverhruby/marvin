@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { WidgetComponent } from '../widget/widget.component';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
@@ -12,13 +13,14 @@ import { State } from 'app/reducers';
   templateUrl: './logbrowser.component.html',
   styleUrls: ['./logbrowser.component.css']
 })
-export class LogBrowserComponent implements OnInit, OnDestroy {
+export class LogBrowserComponent extends WidgetComponent implements OnInit, OnDestroy {
 
   private ticks: number;
   private subscription: Subscription;
   private messages: Array<string>;
 
   constructor(private store: Store<State>) {
+    super();
     this.messages = ['test1', 'test2', 'test3'];
   }
 

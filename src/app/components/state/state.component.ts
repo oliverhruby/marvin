@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
-
+import { WidgetComponent } from '../widget/widget.component';
 import { State } from 'app/reducers';
 import { INCREMENT } from 'app/reducers/counter';
 
@@ -14,13 +14,14 @@ import { INCREMENT } from 'app/reducers/counter';
   templateUrl: './state.component.html',
   styleUrls: ['./state.component.css']
 })
-export class StateComponent implements OnInit, OnDestroy {
+export class StateComponent extends WidgetComponent implements OnInit, OnDestroy {
 
   public state: any;
 
   private subscription: Subscription;
 
   constructor(private store: Store<State>) {
+    super();
     store.subscribe((data) => this.state = JSON.stringify(data, undefined, 2));
     this.store.dispatch({ type: INCREMENT });
   }

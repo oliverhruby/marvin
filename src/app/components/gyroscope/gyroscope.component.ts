@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { WidgetComponent } from 'app/components/widget';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
@@ -17,16 +18,16 @@ import {
   templateUrl: './gyroscope.component.html',
   styleUrls: ['./gyroscope.component.css']
 })
-export class GyroscopeComponent implements OnInit, OnDestroy {
+export class GyroscopeComponent extends WidgetComponent implements OnInit, OnDestroy {
 
   rotation: number = 10;
-
-  private subscription: Subscription;
 
   constructor(
     private zone: NgZone,
     private store: Store<State>
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit() {
     let me = this;
@@ -40,12 +41,12 @@ export class GyroscopeComponent implements OnInit, OnDestroy {
     };
 
     // subscribe to the state to update the UI 
-    me.subscription = this.store
-      .select('gyroscope')
-      .subscribe((data) => console.log(data));
+    // me.subscription = this.store
+    //   .select('gyroscope')
+    //   .subscribe((data) => console.log(data));
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

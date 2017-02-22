@@ -3,12 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-
 import gyroscopeReducer, * as fromGyroscope from 'app/reducers/gyroscope';
-import batteryReducer, * as fromBattery from 'app/reducers/battery';
-import counterReducer, * as fromCounter from 'app/reducers/counter';
-
-import { GyroscopeComponent } from '../gyroscope';
+import { GyroscopeComponent } from 'app/components';
 
 describe('GyroscopeComponent', () => {
   let component: GyroscopeComponent;
@@ -20,9 +16,7 @@ describe('GyroscopeComponent', () => {
       imports: [
         StoreModule.provideStore(
           {
-            gyroscope: gyroscopeReducer,
-            battery: batteryReducer,
-            counter: counterReducer,
+            gyroscope: gyroscopeReducer
           }
         )
       ]

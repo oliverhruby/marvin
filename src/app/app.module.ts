@@ -51,12 +51,12 @@ import {
   StateComponent,
   StopwatchComponent,
   SysinfoComponent,
+  UserComponent,
   UserCameraComponent,
   VideoComponent
 } from './components';
 
 import { HomeComponent } from './pages/home';
-import { UserComponent } from './pages/user';
 
 @NgModule({
   declarations: [

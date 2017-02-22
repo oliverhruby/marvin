@@ -1,11 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import { WidgetComponent } from '../widget/widget.component';
 import { State } from 'app/reducers';
 import { CommandState } from 'app/reducers/command';
 import { SpeechSynthesisService } from 'app/services';
 import { WitAiService } from 'app/services';
-
 import { HTML5SpeechEngine } from 'app/services/nativespeechengine';
 
 @Component({
@@ -13,7 +12,7 @@ import { HTML5SpeechEngine } from 'app/services/nativespeechengine';
   templateUrl: './speech.component.html',
   styleUrls: ['./speech.component.css']
 })
-export class SpeechComponent implements OnInit {
+export class SpeechComponent extends WidgetComponent implements OnInit {
 
   text: string;
   voices: SpeechSynthesisVoice[];
@@ -24,7 +23,7 @@ export class SpeechComponent implements OnInit {
     private witAiService: WitAiService,
     private speechSynthesisService: SpeechSynthesisService
   ) {
-
+    super();
   }
 
   ngOnInit() {

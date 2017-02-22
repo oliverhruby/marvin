@@ -3,9 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-
 import gamepadReducer, * as fromGamepad from 'app/reducers/gamepad';
-
 import { GamepadComponent } from '../gamepad';
 
 describe('GamepadComponent', () => {

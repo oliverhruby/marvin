@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-
+import { WidgetComponent } from '../widget/widget.component';
 import { MidiService } from 'app/services';
 
 /**
@@ -14,13 +14,13 @@ import { MidiService } from 'app/services';
   templateUrl: './midi.component.html',
   styleUrls: ['./midi.component.css']
 })
-export class MidiComponent implements OnInit {
+export class MidiComponent extends WidgetComponent implements OnInit {
 
   constructor(
     private zone: NgZone,
     private store: Store<State>
   ) {
-
+    super();
   }
 
   ngOnInit() {

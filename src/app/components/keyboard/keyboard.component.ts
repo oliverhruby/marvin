@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { WidgetComponent } from 'app/components/widget';
 import { Store } from '@ngrx/store';
-
 import { State } from 'app/reducers';
 import { KeyboardState, KEYBOARD_UPDATE } from 'app/reducers/keyboard';
 
@@ -12,13 +12,13 @@ import { KeyboardState, KEYBOARD_UPDATE } from 'app/reducers/keyboard';
   templateUrl: './keyboard.component.html',
   styleUrls: ['./keyboard.component.css']
 })
-export class KeyboardComponent implements OnInit {
+export class KeyboardComponent extends WidgetComponent implements OnInit {
 
   constructor(
     private zone: NgZone,
     private store: Store<State>
   ) {
-
+    super();
   }
 
   /**

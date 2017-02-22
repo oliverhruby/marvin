@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { WidgetComponent } from '../widget/widget.component';
+
 
 /**
  * Spectrum analyzer to visualize audio signal
@@ -8,11 +10,12 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   templateUrl: './audioanalyzer.component.html',
   styleUrls: ['./audioanalyzer.component.css']
 })
-export class AudioAnalyzerComponent implements OnInit {
+export class AudioAnalyzerComponent extends WidgetComponent implements OnInit {
 
   @ViewChild('audioanalyzer') analyzer: ElementRef;
 
   constructor() {
+    super();
   }
 
   /**
