@@ -5,7 +5,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { DragulaModule } from 'ng2-dragula';
 import { StoreModule } from '@ngrx/store';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 // state management
 import batteryReducer, * as fromBattery from './reducers/battery';
@@ -108,7 +107,6 @@ import { HomeComponent } from './pages/home';
     )
   ],
   providers: [
-    AUTH_PROVIDERS,
     AuthService,
     BatteryService,
     ConfigService,
