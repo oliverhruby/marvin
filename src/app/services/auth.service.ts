@@ -13,7 +13,7 @@ export class AuthService {
 
   authOptions = {
     auth: {
-      redirect: true // TODO: configure Client IDs and try this without redirection
+      redirect: true // TODO: test behavior with redirect false
     }
   };
 

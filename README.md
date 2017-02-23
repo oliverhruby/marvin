@@ -9,7 +9,7 @@ Marvin is a browser-based application for 3D visualization of a robot vehicle an
 The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience. This application can serve as a base or reference for building your own project. The application is built with focus on simplicity, recommended patterns and continuous integration.
 
 Technologies used:
-* [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser base technology that supports hardware accelerated 3D graphics
+* [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser based technology that supports hardware accelerated 3D graphics
 * [Web Audio](http://webaudioapi.com) - browser based technology for generating sounds, playing samples, mixing and adding audio effects, etc.
 * [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - speech recognition and speech synthesis directly in the browser
 * [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) - browser based support for gamepads
@@ -36,8 +36,7 @@ Tools used:
 * [Karma](http://karma-runner.github.io/1.0/index.html) - test runner
 
 
-
-This project structure was originally generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -59,10 +58,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
 ## Further help
 
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md). 
