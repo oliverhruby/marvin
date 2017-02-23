@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
  * Base class for dockable UI widgets 
  */
 @Component({
-  selector: 'app-widget',
+  selector: '',
   template: ''
 })
 export abstract class WidgetComponent {

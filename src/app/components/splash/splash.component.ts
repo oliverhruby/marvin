@@ -12,19 +12,19 @@ export class SplashComponent implements OnInit {
 
   ngOnInit() {
     if (BABYLON.Engine.isSupported()) {
-      var canvas = document.getElementById("renderCanvas");
-      var engine = new BABYLON.Engine(canvas, false);
-      var scene = new BABYLON.Scene(engine);
-      var camera = new BABYLON.ArcRotateCamera("Camera", 0, Math.PI / 2, 10, BABYLON.Vector3.Zero(), scene);
+      let canvas = document.getElementById("renderCanvas");
+      let engine = new BABYLON.Engine(canvas, false);
+      let scene = new BABYLON.Scene(engine);
+      let camera = new BABYLON.ArcRotateCamera("Camera", 0, Math.PI / 2, 10, BABYLON.Vector3.Zero(), scene);
 
       camera.attachControl(canvas);
 
       // Creating sphere
-      var sphere = BABYLON.Mesh.CreateSphere("Sphere", 16, 5, scene);
+      let sphere = BABYLON.Mesh.CreateSphere("Sphere", 16, 5, scene);
 
-      var material = new BABYLON.ShaderMaterial("custom", scene, "/assets/shaders/custom", {
-        attributes: ["position", "uv"],
-        uniforms: ["worldViewProjection"]
+      let material = new BABYLON.ShaderMaterial("fire", scene, "/assets/shaders/fire", {
+        attributes: ['position', 'normal', 'uv'],
+        uniforms: ['time', 'worldViewProjection']
       });
 
       sphere.material = material;

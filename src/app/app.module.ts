@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { DragulaModule } from 'ng2-dragula';
+import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
 // state management
@@ -24,7 +24,8 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 import {
   AuthService,
   BatteryService,
-  ConfigService, // GamepadService,
+  ConfigService,
+  GamepadService,
   LoggerService,
   MidiService,
   SoundService,
@@ -110,7 +111,7 @@ import { HomeComponent } from './pages/home';
     AuthService,
     BatteryService,
     ConfigService,
-    // GamepadService,
+    GamepadService,
     LoggerService,
     SoundService,
     SpeechService,

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // providers
 import {
   ConfigService,
-  // GamepadService,
+  GamepadService,
   LoggerService,
   MidiService,
   SoundService,
@@ -13,6 +13,8 @@ import {
   WebSocketService,
   WitAiService
 } from './services';
+
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 /**
  * Main application component
@@ -26,7 +28,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private configService: ConfigService,
-    //private gamepadService: GamepadService,
+    private dragulaService: DragulaService,
+    private gamepadService: GamepadService,
     private loggerService: LoggerService,
     private soundService: SoundService,
     private speechService: SpeechService,

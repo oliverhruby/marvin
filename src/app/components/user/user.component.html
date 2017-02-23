@@ -1,7 +1,7 @@
 <div class="widget" [hidden]="!visible">
   <i class="fa fa-sign-in fa-2x" (click)="auth.login()" *ngIf="!auth.authenticated()"></i>
   <div *ngIf="auth.authenticated()">
-    <i class="fa fa-user fa-4x"></i>{{(state.profile | async).name}}
+    <i class="fa fa-user fa-4x"></i>
     <i class="fa fa-sign-out fa-2x" (click)="auth.logout()"></i>
   </div>
 </div>

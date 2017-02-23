@@ -1,8 +1,4 @@
-import {
-  NgZone,
-  Injectable,
-  EventEmitter
-} from '@angular/core';
+import { NgZone, Injectable, EventEmitter } from '@angular/core';
 
 // TODO: I'm trying to simulate the logic in the nativespeechengine
 // wrap the native MIDI fuctionality in observables and use state store
@@ -18,12 +14,12 @@ let navigator: any; // TODO: should use some typings for MIDI
 @Injectable()
 export class MidiService {
 
-  private obs$: EventEmitter < IEvent > ;
-  private err$: EventEmitter < any > ;
+  private obs$: EventEmitter<IEvent> ;
+  private err$: EventEmitter<any> ;
 
   constructor(private zone: NgZone) {
-    this.obs$ = new EventEmitter < IEvent > ();
-    this.err$ = new EventEmitter < any > ();
+    this.obs$ = new EventEmitter<IEvent> ();
+    this.err$ = new EventEmitter<any> ();
     // this.create();
   }
 
