@@ -2,8 +2,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
-import { UserComponent } from './user.component';
+import { StoreModule } from '@ngrx/store';
+import userReducer, * as fromUser from 'app/reducers/user';
+import { UserComponent } from 'app/components';
+import { AuthService } from 'app/services';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -12,7 +14,14 @@ describe('UserComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UserComponent],
-      imports: []
+      imports: [
+        StoreModule.provideStore(
+          {
+            user: userReducer
+          }
+        )
+      ],
+      providers: [AuthService]
     })
       .compileComponents();
   }));
@@ -26,4 +35,5 @@ describe('UserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

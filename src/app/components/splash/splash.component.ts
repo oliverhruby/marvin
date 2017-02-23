@@ -22,12 +22,12 @@ export class SplashComponent implements OnInit {
       // Creating sphere
       var sphere = BABYLON.Mesh.CreateSphere("Sphere", 16, 5, scene);
 
-      var amigaMaterial = new BABYLON.ShaderMaterial("amiga", scene, "/assets/shaders/custom", {
+      var material = new BABYLON.ShaderMaterial("custom", scene, "/assets/shaders/custom", {
         attributes: ["position", "uv"],
         uniforms: ["worldViewProjection"]
       });
 
-      sphere.material = amigaMaterial;
+      sphere.material = material;
 
       engine.runRenderLoop(function () {
         scene.render();

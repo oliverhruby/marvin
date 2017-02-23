@@ -5,22 +5,25 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { DragulaModule } from 'ng2-dragula';
 import { StoreModule } from '@ngrx/store';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 // state management
-import gyroscopeReducer, * as fromGyroscope from './reducers/gyroscope';
 import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
 import gamepadReducer, * as fromGamepad from './reducers/gamepad';
+import gyroscopeReducer, * as fromGyroscope from './reducers/gyroscope';
 import keyboardReducer, * as fromKeyboard from './reducers/keyboard';
 import laserReducer, * as fromLaser from './reducers/laser';
 import midiReducer, * as fromMidi from './reducers/midi';
 import mqttReducer, * as fromMqtt from './reducers/mqtt';
 import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
+import userReducer, * as fromUser from './reducers/user';
 import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // providers
 import {
+  AuthService,
   BatteryService,
   ConfigService, // GamepadService,
   LoggerService,
@@ -90,20 +93,23 @@ import { HomeComponent } from './pages/home';
     JsonpModule,
     StoreModule.provideStore(
       {
-        gyroscope: gyroscopeReducer,
         battery: batteryReducer,
         counter: counterReducer,
         command: commandReducer,
         keyboard: keyboardReducer,
         gamepad: gamepadReducer,
+        gyroscope: gyroscopeReducer,
         midi: midiReducer,
         mqtt: mqttReducer,
         stopwatch: stopwatchReducer,
+        user: userReducer,
         vehicle: vehicleReducer
       }
     )
   ],
   providers: [
+    AUTH_PROVIDERS,
+    AuthService,
     BatteryService,
     ConfigService,
     // GamepadService,

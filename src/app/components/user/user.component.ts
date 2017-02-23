@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { WidgetComponent } from '../widget/widget.component';
+import { AuthService } from 'app/services/auth.service';
+import { Store } from '@ngrx/store';
+import { State } from 'app/reducers';
+import { UserState } from 'app/reducers/user';
 
 /**
  * User information
@@ -11,11 +16,14 @@ import { WidgetComponent } from '../widget/widget.component';
 })
 export class UserComponent extends WidgetComponent {
 
-  constructor() {
+  public state: Observable<UserState>;
+
+  constructor(
+    private auth: AuthService,
+    private store: Store<State>
+  ) {
     super();
-  }
 
-  ngOnInit() {
+    this.state = this.store.select<UserState>('user');
   }
-
 }

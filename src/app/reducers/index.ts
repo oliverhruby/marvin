@@ -9,6 +9,7 @@ import gyroscopeReducer, * as fromGyroscope from './gyroscope';
 import laserReducer, * as fromLaser from './laser';
 import mqttReducer, * as fromMqtt from './mqtt';
 import stopwatchReducer, * as fromStopwatch from './stopwatch';
+import userReducer, * as fromUser from './user';
 import vehicleReducer, * as fromVehicle from './vehicle';
 
 /** State interface */
@@ -21,6 +22,7 @@ export interface State {
    laser: fromLaser.LaserState,
    mqtt: fromMqtt.MqttState,
    stopwatch: fromStopwatch.StopwatchState,
+   user: fromUser.UserState,
    vehicle: fromVehicle.VehicleState
 };
 
@@ -33,6 +35,7 @@ export default compose(combineReducers)({
     laser: laserReducer,
     mqtt: mqttReducer,
     stopwatch: stopwatchReducer,
+    user: userReducer,
     vehicle: vehicleReducer
 });
 

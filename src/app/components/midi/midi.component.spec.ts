@@ -3,10 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-
-// state management
 import midiReducer, * as fromMidi from 'app/reducers/midi';
-
 import { MidiComponent } from '../midi';
 
 describe('MidiComponent', () => {
