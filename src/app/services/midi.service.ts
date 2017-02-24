@@ -1,48 +1,38 @@
-import { NgZone, Injectable, EventEmitter } from '@angular/core';
-
-// TODO: I'm trying to simulate the logic in the nativespeechengine
-// wrap the native MIDI fuctionality in observables and use state store
-
-export interface IEvent {
-  type: string;
-  value: string;
-}
-
-let midi: any;
-let navigator: any; // TODO: should use some typings for MIDI
+import { NgZone, Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from 'app/reducers';
+import { MidiState, MIDI_UPDATE } from 'app/reducers/midi';
 
 @Injectable()
 export class MidiService {
 
-  private obs$: EventEmitter<IEvent> ;
-  private err$: EventEmitter<any> ;
-
-  constructor(private zone: NgZone) {
-    this.obs$ = new EventEmitter<IEvent> ();
-    this.err$ = new EventEmitter<any> ();
-    // this.create();
+  constructor(
+    private zone: NgZone,
+    private store: Store<State>
+  ) {
+    let me = this;
+    window.addEventListener("load", function () {
+      me.zone.run(function () {
+        me.store.dispatch({ type: MIDI_UPDATE, payload: true });
+        me.onMidiInit();
+      });
+    });
   }
 
   onMidiInit() {
-    if (navigator.requestMIDIAccess) {
-      navigator.requestMIDIAccess({
-        sysex: false
-      }).then(this.onMIDISuccess, this.onMIDIFailure);
-    } else {
-      alert('No MIDI support in your browser.');
+    try {
+      (<any>navigator).requestMIDIAccess().then(this.onMIDISuccess, this.onMIDIFailure);
+    } catch(ex) {
+      console.log('No MIDI support in your browser.');
     }
   }
 
   onMIDISuccess(midiAccess) {
     console.log('MIDI Access Object', midiAccess);
-    midi = midiAccess;
-    console.log(midi);
-
-    let inputs = midi.inputs.values();
-    for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
-      input.value.onmidimessage = this.onMIDIMessage;
-    }
-
+    // let inputs = midi.inputs.values();
+    // for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
+    //   input.value.onmidimessage = this.onMIDIMessage;
+    // }
   }
 
   onMIDIMessage(event) {

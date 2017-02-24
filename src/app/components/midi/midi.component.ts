@@ -1,10 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
+import { MidiState } from 'app/reducers/midi';
 import { WidgetComponent } from '../widget/widget.component';
-import { MidiService } from 'app/services';
 
 /**
  * This component shows info about MIDI controllers
@@ -14,22 +13,16 @@ import { MidiService } from 'app/services';
   templateUrl: './midi.component.html',
   styleUrls: ['./midi.component.css']
 })
-export class MidiComponent extends WidgetComponent implements OnInit {
+export class MidiComponent extends WidgetComponent {
+
+  state: Observable<MidiState>;
 
   constructor(
-    private zone: NgZone,
     private store: Store<State>
   ) {
     super();
-  }
 
-  ngOnInit() {
-    try {
-      let engine = new MidiService(this.zone);
-      engine.onMidiInit();
-    } catch (ex) {
-      console.log("MIDI not available");
-    }
+    this.state = store.select<MidiState>("midi");
   }
 
 }
