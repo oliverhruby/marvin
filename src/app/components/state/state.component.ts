@@ -14,7 +14,7 @@ import { INCREMENT } from 'app/reducers/counter';
   templateUrl: './state.component.html',
   styleUrls: ['./state.component.css']
 })
-export class StateComponent extends WidgetComponent implements OnInit, OnDestroy {
+export class StateComponent extends WidgetComponent {
 
   public state: any;
 
@@ -23,16 +23,6 @@ export class StateComponent extends WidgetComponent implements OnInit, OnDestroy
   constructor(private store: Store<State>) {
     super();
     store.subscribe((data) => this.state = JSON.stringify(data, undefined, 2));
-    this.store.dispatch({ type: INCREMENT });
-  }
-
-  ngOnInit() {
-    let timer = Observable.timer(0, 1000);
-    this.subscription = timer.subscribe(t => this.store.dispatch({ type: INCREMENT }));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
 }

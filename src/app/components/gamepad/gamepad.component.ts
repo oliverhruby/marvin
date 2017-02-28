@@ -16,12 +16,14 @@ import { GamepadState } from 'app/reducers/gamepad';
 })
 export class GamepadComponent extends WidgetComponent {
 
-  state: GamepadState;
+  state: Observable<GamepadState>;
 
   constructor(
-    private store: Store <State>
+    private store: Store<State>
   ) {
     super();
+
+    this.state = store.select("gamepad");
   }
 
 }
