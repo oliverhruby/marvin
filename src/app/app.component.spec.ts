@@ -10,7 +10,7 @@ import { TestBed, async } from '@angular/core/testing';
 import {
   ConfigService, //GamepadService,
   LoggerService, SoundService, SpeechService, SpeechRecognitionService,
-  SpeechSynthesisService, WebSocketService, WitAiService
+  SpeechSynthesisService, StopwatchService, WitAiService
 } from './services';
 
 // reducers
@@ -75,7 +75,7 @@ describe('AppComponent', () => {
       providers: [
         ConfigService, // GamepadService,
         LoggerService, SoundService, SpeechService, SpeechRecognitionService,
-        SpeechSynthesisService, WebSocketService, WitAiService
+        SpeechSynthesisService, StopwatchService, WitAiService
       ]
     });
     TestBed.compileComponents();

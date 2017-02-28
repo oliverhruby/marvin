@@ -4,4 +4,5 @@
     <i class="fa fa-user fa-4x"></i>
     <i class="fa fa-sign-out fa-2x" (click)="auth.logout()"></i>
   </div>
+  <div>{{(state.profile | async) | json}}
 </div>

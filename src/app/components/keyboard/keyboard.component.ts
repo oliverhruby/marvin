@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { WidgetComponent } from 'app/components/widget';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { KeyboardState, KEYBOARD_UPDATE } from 'app/reducers/keyboard';
+import { KeyboardState } from 'app/reducers/keyboard';
 
 /**
  * Keyboard input 
@@ -12,29 +12,11 @@ import { KeyboardState, KEYBOARD_UPDATE } from 'app/reducers/keyboard';
   templateUrl: './keyboard.component.html',
   styleUrls: ['./keyboard.component.css']
 })
-export class KeyboardComponent extends WidgetComponent implements OnInit {
+export class KeyboardComponent extends WidgetComponent {
 
   constructor(
-    private zone: NgZone,
     private store: Store<State>
   ) {
     super();
-  }
-
-  /**
-   * Wait for the view to init before using the element, then init everything
-   */
-  ngOnInit() {
-    let me = this;
-    window.addEventListener("keydown", function () {
-      me.zone.run(function () {
-        me.store.dispatch({ type: KEYBOARD_UPDATE, payload: true });
-      });
-    });
-    window.addEventListener("keyup", function () {
-      me.zone.run(function () {
-        me.store.dispatch({ type: KEYBOARD_UPDATE, payload: false });
-      });
-    });
   }
 }

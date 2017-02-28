@@ -23,7 +23,7 @@ export class GamepadComponent extends WidgetComponent {
   ) {
     super();
 
-    this.state = store.select("gamepad");
+    this.state = store.select<GamepadState>('gamepad');
   }
 
 }

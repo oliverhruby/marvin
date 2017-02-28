@@ -4,9 +4,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { UserState, USER_LOGIN, USER_LOGOUT } from 'app/reducers/user';
 
-// Avoid name not found warnings
 import Auth0Lock from 'auth0-lock';
-//declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
@@ -24,6 +22,7 @@ export class AuthService {
 
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
+      alert('a');
       localStorage.setItem('id_token', authResult.idToken);
 
       this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
