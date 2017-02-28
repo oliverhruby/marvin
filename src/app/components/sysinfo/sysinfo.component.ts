@@ -1,5 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { WidgetComponent } from '../widget/widget.component';
+
+// state management
+import { Store } from '@ngrx/store';
+import { State } from 'app/reducers';
 
 /**
  * System information
@@ -9,16 +13,13 @@ import { WidgetComponent } from '../widget/widget.component';
   templateUrl: './sysinfo.component.html',
   styleUrls: ['./sysinfo.component.css']
 })
-export class SysinfoComponent extends WidgetComponent implements OnInit {
+export class SysinfoComponent extends WidgetComponent {
 
-  constructor() {
+  constructor(
+    private store: Store<State>
+  ) {
     super();
+    //store.dispatch({ type: 'PLATFORM_UPDATE', payload: ??? })
   }
 
-  /**
-   * Wait for the view to init before using the element, then init everything
-   */
-  ngOnInit() {
-
-  }
 }

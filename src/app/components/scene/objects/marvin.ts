@@ -2,6 +2,7 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 import { Store } from '@ngrx/store';
 import { Laser } from './laser';
 import { State } from 'app/reducers';
+import { VehicleState, VEHICLE_UPDATE } from 'app/reducers/vehicle';
 
 /**
  * Main robot object
@@ -20,7 +21,10 @@ export class Marvin {
   public LightR: BABYLON.SpotLight;
   private sound: BABYLON.Sound;
 
-  constructor(private scene: BABYLON.Scene, private store: Store<State>) {
+  constructor(
+    private scene: BABYLON.Scene,
+    private store: Store<State>
+  ) {
     this.position = new BABYLON.Vector3(0, 0, 0);
     this.createVehicle();
     this.sound = new BABYLON.Sound('hover', 'assets/sounds/button.wav', this.scene);
@@ -145,9 +149,6 @@ export class Marvin {
       if (evt.keyCode === 76) { // l (lights front)
         me.toggleLights();
       }
-      if (me.speed > 0) {
-        me.store.dispatch({ type: 'GYROSCOPE_UPDATE' });
-      }
     };
 
     // On key up, reset the movement
@@ -182,7 +183,8 @@ export class Marvin {
       body.position.z += Math.cos(angRad) * me.speed;
       body.rotation.y = angRad - Math.PI / 2;
       me.position = body.position;
-      // document.getElementById("info").innerText = me.toJson();
+
+      me.store.dispatch({ type: VEHICLE_UPDATE, payload: [me.position.x, me.position.y, me.position.z] });
     });
   }
 

@@ -9,6 +9,7 @@ import batteryReducer, * as fromBattery from 'app/reducers/battery';
 import counterReducer, * as fromCounter from 'app/reducers/counter';
 
 import { StopwatchComponent } from '../stopwatch';
+import { StopwatchService } from 'app/services';
 
 describe('StopwatchComponent', () => {
   let component: StopwatchComponent;
@@ -25,7 +26,8 @@ describe('StopwatchComponent', () => {
             counter: counterReducer,
           }
         )
-      ]
+      ],
+      providers: [StopwatchService]
     })
       .compileComponents();
   }));

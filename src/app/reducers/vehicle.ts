@@ -3,37 +3,33 @@ import { Action, ActionReducer } from '@ngrx/store';
 export const VEHICLE_UPDATE: string = 'VEHICLE_UPDATE';
 
 export interface VehicleState {
-  speed: number;
   direction: number;
-  voltage: number;
   lights: {
     left: boolean;
     right: boolean;
   };
+  position: [number,number,number],
+  speed: number;
+  voltage: number;
 };
 
 export const initialState: VehicleState = {
-  speed: 0,
   direction: 0,
-  voltage: 0,
   lights: {
     left: true,
     right: false
-  }
+  },
+  position: [0,0,0],
+  speed: 0,
+  voltage: 0
 };
 
 export default function (state = initialState, action: Action): VehicleState {
   switch (action.type) {
     case VEHICLE_UPDATE:
-      return {
-        speed: Math.floor(Math.random() * 100),
-        direction: Math.floor(Math.random() * 360),
-        voltage: 5 + Math.random(),
-        lights: {
-          left: true,
-          right: true
-        }
-      };
+      return Object.assign({}, state, {
+        position: action.payload
+      });
     default:
       return state;
   }

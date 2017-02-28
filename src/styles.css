@@ -67,3 +67,10 @@ a:active {
 /**
  * END - Hyperlinks
  */
+
+input {
+    background: rgba(0, 0, 0, .5);
+    color: lawngreen;
+    border: 1px solid lawngreen;
+    padding: 3px;
+}

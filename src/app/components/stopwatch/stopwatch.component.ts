@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { WidgetComponent } from '../widget/widget.component';
+import { StopwatchService } from 'app/services';
 
 /**
  * For showing mission time, clock, etc.
@@ -23,7 +24,8 @@ export class StopwatchComponent extends WidgetComponent {
     @Attribute("format") format,
     @Attribute("data") data,
     @Attribute('timer') timer,
-    private store: Store<State>
+    private store: Store<State>,
+    private stopwatchService: StopwatchService
   ) {
     super();
     this.format = format || 'HH:mm:ss';
@@ -31,6 +33,18 @@ export class StopwatchComponent extends WidgetComponent {
   }
 
   ngOnInit() {
+  }
+
+  start() {
+    this.stopwatchService.start();
+  }
+
+  stop() {
+    this.stopwatchService.stop();
+  }
+
+  restart() {
+    this.stopwatchService.reset();
   }
 
 }
