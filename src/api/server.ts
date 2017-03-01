@@ -4,6 +4,7 @@ import * as express from 'express';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as os from 'os';
+import * as path from 'path';
 
 import { pluginsRouter } from './routes/plugins';
 import { usersRouter } from './routes/users';
@@ -21,9 +22,12 @@ namespace express_web_api {
     app.use('/api/plugins', pluginsRouter);
     app.use('/api/users', usersRouter);
 
+    // Point static path to dist
+    app.use(express.static(path.join(__dirname, '../../dist')));
+
     // Handle GET for the root URL
-    app.get('/', (req: Request, resp: Response) => {
-        resp.send('API works!');
+    app.get('/api', (req: Request, res: Response) => {
+        res.send('API works!');
     });
 
     // Return version info (TODO: move to separate router)
@@ -40,6 +44,11 @@ namespace express_web_api {
         + '    \'uptime\': \'' + os.uptime() + '\'\n'
         + '  }\n'
         + '}');
+    });
+
+    // Catch all other routes and return the index file
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
     });
 
     // Start the web app
