@@ -1,3 +1,0 @@
-interface Role {
-  name: string;
-}

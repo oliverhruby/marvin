@@ -1,3 +1,0 @@
-interface Permission {
-  name: string;
-}
