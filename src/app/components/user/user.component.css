@@ -1,0 +1,13 @@
+.user {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.user_name {
+  font-size: 20px;
+}

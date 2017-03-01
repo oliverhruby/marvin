@@ -22,7 +22,6 @@ export class AuthService {
 
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      alert('a');
       localStorage.setItem('id_token', authResult.idToken);
 
       this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {

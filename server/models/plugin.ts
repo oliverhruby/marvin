@@ -1,0 +1,3 @@
+interface Plugin {
+  name: string;
+}

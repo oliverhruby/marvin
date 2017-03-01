@@ -24,6 +24,7 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 import {
   AuthService,
   BatteryService,
+  ChatService,
   ConfigService,
   GamepadService,
   GyroscopeService,
@@ -113,6 +114,7 @@ import { HomeComponent } from './pages/home';
   providers: [
     AuthService,
     BatteryService,
+    ChatService,
     ConfigService,
     GamepadService,
     GyroscopeService,

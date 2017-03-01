@@ -1,8 +1,12 @@
 <div class="widget" [hidden]="!visible">
   <i class="fa fa-sign-in fa-2x" (click)="auth.login()" *ngIf="!auth.authenticated()"></i>
-  <div *ngIf="auth.authenticated()">
-    <i class="fa fa-user fa-4x"></i>
-    <i class="fa fa-sign-out fa-2x" (click)="auth.logout()"></i>
+  <i class="fa fa-sign-out fa-2x" (click)="auth.logout()" *ngIf="auth.authenticated()"></i>
+  <div *ngIf="(state | async).profile">
+    <div style="display: inline-block">
+      <img src="{{(state | async).profile.picture}}" class="user" />
+    </div>
+    <div style="display: inline-block;">
+      <span class="user_name">{{(state | async).profile.name}}</span><br>{{(state | async).profile.email}}<br>
+    </div>
   </div>
-  <div>{{(state.profile | async) | json}}
 </div>

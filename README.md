@@ -6,7 +6,9 @@
 
 Marvin is a browser-based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using any input method you can think of. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, Web Sockets, gamepad API, etc.
 
-The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience. This application can serve as a base or reference for building your own project. The application is built with focus on simplicity, recommended patterns and continuous integration.
+The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience.
+It is built with focus on patterns and continuous integration. The application or parts of it can serve as a base
+for building your own projects or modules. 
 
 Technologies used:
 * [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser based technology that supports hardware accelerated 3D graphics
@@ -19,13 +21,20 @@ Technologies used:
 * [WebSocket](https://en.wikipedia.org/wiki/WebSocket) - communication protocol (for MQTT over Websockets)
 * [Node-RED](https://nodered.org) - an instance on Node-RED could be optionally used with this application for "drag-and-drop plumbing" to control anything
 
-Application architecture:
+Application architecture - Client
 * [Angular2](https://angular.io) - core framework defining the architecture of the application
 * [RxJS](http://reactivex.io/rxjs) - reactive programming for JavaScript
 * [ngrx](https://github.com/ngrx/ngrx.github.io) - RxJS powered state management for Angular2 apps, inspired by Redux
 * [BabylonJS](http://babylonjs.com) - JavaScript library for working with WebGL which provides a full set of features for building visualizations and games
 * [Font Awesome](http://fontawesome.io) - free iconic font and css toolkit
 * [ng2-charts](https://github.com/valor-software/ng2-charts) - Beautiful charts for Angular2 based on Chart.js
+
+Application architecture - Server
+* [Node.js](https://nodejs.org/en) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [Express](http://expressjs.com) - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+* [Sequelize](http://docs.sequelizejs.com/en/v3) - Sequelize is a promise-based ORM for Node.js and io.js. It supports the dialects PostgreSQL, MySQL, MariaDB, SQLite and MSSQL and features solid transaction support, relations, read replication and more.
+* [SQLite](https://www.sqlite.org) - SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.
+
 
 Tools used:
 * [TypeScript](https://www.typescriptlang.org/index.html) - typed superset of JavaScript that compiles into plain JavaScript

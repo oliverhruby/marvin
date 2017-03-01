@@ -1,5 +1,6 @@
 export * from './auth.service';
 export * from './battery.service';
+export * from './chat.service';
 export * from './config.service';
 export * from './gamepad.service';
 export * from './gyroscope.service';
