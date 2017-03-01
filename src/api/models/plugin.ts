@@ -1,4 +1,4 @@
-class User {
+class Plugin {
 
   constructor(
     public id: number,
@@ -7,4 +7,4 @@ class User {
 
 }
 
-export { User };
+export { Plugin };

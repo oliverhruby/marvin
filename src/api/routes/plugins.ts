@@ -1,17 +1,17 @@
 import * as express from 'express';
 import { Request, Response } from 'express';
 
-import UsersRepository from '../services/user.repo';
+import PluginRepository from '../services/plugin.repo';
 
 let router = express.Router();
-let userRepo = new UserRepository();
+let pluginRepo = new PluginRepository();
 
 // GET route
 router.get('/', async (req: Request, resp: Response) => {
-    console.log('Retrieving users');
+    console.log('Retrieving plugins');
     try {
-        let users = await userRepo.retrieveAll();
-        resp.json(users);
+        let plugins = await pluginRepo.retrieveAll();
+        resp.json(plugins);
     } catch (error) {
         console.log(error);
         resp.sendStatus(500);
@@ -20,10 +20,10 @@ router.get('/', async (req: Request, resp: Response) => {
 
 // GET route with id
 router.get('/:id', async (req: Request, resp: Response) => {
-    console.log(`Retrieving user id ${req.params.id}`);
+    console.log(`Retrieving plugin id ${req.params.id}`);
     try {
-        let user = await userRepo.retrieve(+req.params.id);
-        resp.json(user);
+        let plugin = await pluginRepo.retrieve(+req.params.id);
+        resp.json(plugin);
     } catch (error) {
         console.log(error);
         if (error.indexOf('Invalid id') > -1) {
@@ -36,13 +36,13 @@ router.get('/:id', async (req: Request, resp: Response) => {
 
 // POST route
 router.post('/', async (req: Request, resp: Response) => {
-    console.log(`Creating user: ${JSON.stringify(req.body)}`);
+    console.log(`Creating plugin: ${JSON.stringify(req.body)}`);
     try {
-        let user = await userRepo.create(req.body);
-        resp.json(user);
+        let plugin = await pluginRepo.create(req.body);
+        resp.json(plugin);
     } catch (error) {
         console.log(error);
-        if (error.indexOf('User exists') > -1) {
+        if (error.indexOf('Plugin exists') > -1) {
             resp.sendStatus(400);
             return;
         }
@@ -52,10 +52,10 @@ router.post('/', async (req: Request, resp: Response) => {
 
 // PUT route
 router.put('/', async (req: Request, resp: Response) => {
-    console.log(`Updating user id ${req.body.userId} to: ${JSON.stringify(req.body)}`);
+    console.log(`Updating plugin id ${req.body.pluginId} to: ${JSON.stringify(req.body)}`);
     try {
-        let user = await userRepo.update(req.body);
-        resp.json(user);
+        let plugin = await pluginRepo.update(req.body);
+        resp.json(plugin);
     } catch (error) {
         console.log(error);
         if (error.indexOf('Invalid id') > -1) {
@@ -68,9 +68,9 @@ router.put('/', async (req: Request, resp: Response) => {
 
 // DELETE route with id
 router.delete('/:id', async (req: Request, resp: Response) => {
-    console.log(`Deleting user id ${req.params.id}`);
+    console.log(`Deleting plugin id ${req.params.id}`);
     try {
-        await userRepo.delete(+req.params.id);
+        await pluginRepo.delete(+req.params.id);
         resp.end();
     } catch (error) {
         console.log(error);
@@ -82,5 +82,5 @@ router.delete('/:id', async (req: Request, resp: Response) => {
     }
 });
 
-// Export user router module
-export { router as userRouter };
+// Export plugin router module
+export { router as pluginsRouter };
