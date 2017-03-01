@@ -32,7 +32,7 @@ gulp.task('build-api-no-clean', function (done) {
 });
 
 gulp.task('watch-api', ['build-api-no-clean'], function () {
-    return gulp.watch(['src/api/**/*.ts'], ['build-no-clean']);
+    return gulp.watch(['src/api/**/*.ts'], ['build-api-no-clean']);
 });
 
 gulp.task('serve-api', ['watch-api'], function () {

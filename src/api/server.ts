@@ -7,6 +7,7 @@ import * as os from 'os';
 import * as path from 'path';
 
 import { pluginsRouter } from './routes/plugins';
+import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
 
 namespace express_web_api {
@@ -20,6 +21,7 @@ namespace express_web_api {
 
     // Add routers
     app.use('/api/plugins', pluginsRouter);
+    app.use('/api/scenes', scenesRouter);
     app.use('/api/users', usersRouter);
 
     // Point static path to dist

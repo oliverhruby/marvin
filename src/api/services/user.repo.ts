@@ -1,6 +1,7 @@
 import { User } from '../models/user';
+import { Repository } from './repository';
 
-export default class UserRepository {
+export default class UserRepository extends Repository<User> {
 
   private _users = [
     new User(1, 'User 1'),

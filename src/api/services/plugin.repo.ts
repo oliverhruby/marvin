@@ -1,6 +1,10 @@
 import { Plugin } from '../models/plugin';
+import { Repository } from './repository';
 
-export default class PluginRepository {
+/**
+ * Manages the repository of the application extensions
+ */
+export default class PluginRepository extends Repository<Plugin> {
 
   private _plugins = [
     new Plugin(1, 'Plugin 1'),
