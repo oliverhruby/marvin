@@ -1,5 +1,7 @@
 <div class="widget">
   <div class="header">Stopwatch</div>
   <div class="clock">{{data | date: format }}</div>
-  <button (click)="start()">Start</button><button (click)="stop()">Stop</button><button (click)="reset()">Reset</button>
+  <button class="btn btn-default" (click)="start()">Start</button>
+  <button class="btn btn-default" (click)="stop()">Stop</button>
+  <button class="btn btn-default" (click)="reset()">Reset</button>
 </div>

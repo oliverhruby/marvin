@@ -70,7 +70,17 @@ a:active {
 
 input {
     background: rgba(0, 0, 0, .5);
-    color: lawngreen;
     border: 1px solid lawngreen;
+    color: lawngreen;
     padding: 3px;
+}
+
+/**
+ * Bootstrap customization
+ */
+.btn {
+	border-radius: 0px;
+  background-color: rgba(0, 0, 0, .5);
+  border: 1px solid lawngreen;
+  color: lawngreen;
 }

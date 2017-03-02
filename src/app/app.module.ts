@@ -1,3 +1,4 @@
+import { AlertModule } from 'ng2-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { ChartsModule } from 'ng2-charts';
 import { DragulaModule } from 'ng2-dragula';
@@ -22,6 +23,7 @@ import vehicleReducer, * as fromVehicle from './reducers/vehicle';
 
 // providers
 import {
+  ApiService,
   AuthService,
   BatteryService,
   ChatService,
@@ -89,6 +91,7 @@ import { HomeComponent } from './pages/home';
     VideoComponent
   ],
   imports: [
+    AlertModule.forRoot(),
     BrowserModule,
     ChartsModule,
     DragulaModule,
@@ -112,6 +115,7 @@ import { HomeComponent } from './pages/home';
     )
   ],
   providers: [
+    ApiService,
     AuthService,
     BatteryService,
     ChatService,
@@ -120,7 +124,7 @@ import { HomeComponent } from './pages/home';
     GyroscopeService,
     LoggerService,
     KeyboardService,
-    MidiService,    
+    MidiService,
     SoundService,
     SpeechService,
     SpeechRecognitionService,

@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { WidgetComponent } from '../widget/widget.component';
-
-// state management
-import { Store } from '@ngrx/store';
-import { State } from 'app/reducers';
+import { WidgetComponent } from 'app/components';
+import { ApiService } from 'app/services';
+import { Observable } from 'rxjs/Rx';
 
 /**
  * System information
@@ -13,13 +11,14 @@ import { State } from 'app/reducers';
   templateUrl: './sysinfo.component.html',
   styleUrls: ['./sysinfo.component.css']
 })
-export class SysinfoComponent extends WidgetComponent {
+export class SysinfoComponent {
+
+  state: Observable<any>;
 
   constructor(
-    private store: Store<State>
+    private apiService: ApiService
   ) {
-    super();
-    //store.dispatch({ type: 'PLATFORM_UPDATE', payload: ??? })
+    this.state = apiService.getVersion();
   }
 
 }
