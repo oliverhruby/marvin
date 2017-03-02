@@ -10,7 +10,7 @@ import { State } from 'app/reducers';
 @Injectable()
 export class ApiService {
 
-  private url = 'http://localhost:3000/api'; 
+  private url = 'http://localhost:3000/api/version';
 
   constructor(
     private http: Http,

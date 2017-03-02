@@ -21,11 +21,17 @@ export class Laser {
         box.position.y = 2;
         box.position.x = 4;
 
-        let laserMaterial = new BABYLON.ShaderMaterial('shader', this.scene, "/assets/shaders/custom", {
+        let laserMaterial = new BABYLON.ShaderMaterial('shader', this.scene, '/assets/shaders/custom', {
           needAlphaBlending: true,
           attributes: ['position', 'normal', 'uv'],
-          uniforms: ['time', 'worldViewProjection']
+          uniforms: ['worldViewProjection']
         });
+
+        // let laserMaterial = new BABYLON.ShaderMaterial('shader', this.scene, '/assets/shaders/random', {
+        //   needAlphaBlending: true,
+        //   attributes: ['position', 'normal', 'uv'],
+        //   uniforms: ['time', 'worldViewProjection']
+        // });
 
         let laserlen = 200;
         let plane = BABYLON.MeshBuilder.CreatePlane('pl', { width: 2, height: laserlen }, this.scene);
@@ -37,10 +43,10 @@ export class Laser {
         plane.parent = box;
         plane2.parent = box;
         box.rotation.x = Math.PI / 2;
-
+        let t = 0.0;
         laserMaterial.setColor3('color', new BABYLON.Color3(1, 0, 0));
         laserMaterial.setVector3('cameraPosition', BABYLON.Vector3.Zero());
-        laserMaterial.setFloat('time', 0.0);
+        laserMaterial.setFloat('time', t);
         laserMaterial.alphaMode = BABYLON.Engine.ALPHA_ADD;
         laserMaterial.alpha = 0.44444;
         laserMaterial.backFaceCulling = false;
@@ -49,6 +55,7 @@ export class Laser {
         plane2.material = laserMaterial;
         let k = 0;
         this.scene.registerBeforeRender(function () {
+            laserMaterial.setFloat('time', t += 1);
             box.rotation.z = Math.sin(k) - Math.PI / 2;
             k += .05;
             this.rotation = k;

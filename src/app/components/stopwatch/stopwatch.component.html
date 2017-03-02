@@ -1,7 +1,9 @@
 <div class="widget">
   <div class="header">Stopwatch</div>
   <div class="clock">{{data | date: format }}</div>
-  <button class="btn btn-default" (click)="start()">Start</button>
-  <button class="btn btn-default" (click)="stop()">Stop</button>
-  <button class="btn btn-default" (click)="reset()">Reset</button>
+  <div class="btn-group" role="group">
+    <button class="btn btn-default" (click)="start()"><i class="fa fa-play"></i> Start</button>
+    <button class="btn btn-default" (click)="stop()"><i class="fa fa-stop"></i> Stop</button>
+    <button class="btn btn-default" (click)="reset()"><i class="fa fa-stop-circle-o"></i> Reset</button>
+  </div>
 </div>

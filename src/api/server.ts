@@ -33,17 +33,17 @@ namespace express_web_api {
     });
 
     // Return version info (TODO: move to separate router)
-    app.get('/version', (req: Request, resp: Response) => {
+    app.get('/api/version', (req: Request, resp: Response) => {
       resp.send('{\n'
-        + '  \'nodejs\': \'' + process.version + '\',\n'
-        + '  \'os\': {\n'
-        + '    \'freemem\': \'' + os.freemem() + '\'\n'
-        + '    \'hostname\': \'' + os.hostname() + '\'\n'
-        + '    \'platform\': \'' + os.platform() + '\'\n'
-        + '    \'release\': \'' + os.release() + '\'\n'
-        + '    \'totalmem\': \'' + os.totalmem() + '\'\n'
-        + '    \'type\': \'' + os.type() + '\'\n'
-        + '    \'uptime\': \'' + os.uptime() + '\'\n'
+        + '  "nodejs": "' + process.version + '",\n'
+        + '  "os": {\n'
+        + '    "freemem": "' + os.freemem() + '",\n'
+        + '    "hostname": "' + os.hostname() + '",\n'
+        + '    "platform": "' + os.platform() + '",\n'
+        + '    "release": "' + os.release() + '",\n'
+        + '    "totalmem": "' + os.totalmem() + '",\n'
+        + '    "type": "' + os.type() + '",\n'
+        + '    "uptime": "' + os.uptime() + '"\n'
         + '  }\n'
         + '}');
     });

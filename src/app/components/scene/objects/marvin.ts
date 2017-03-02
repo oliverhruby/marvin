@@ -27,7 +27,7 @@ export class Marvin {
   ) {
     this.position = new BABYLON.Vector3(0, 0, 0);
     this.createVehicle();
-    this.sound = new BABYLON.Sound('hover', 'assets/sounds/button.wav', this.scene);
+    this.sound = new BABYLON.Sound('click', 'assets/sounds/click.wav', this.scene);
   }
 
   /**

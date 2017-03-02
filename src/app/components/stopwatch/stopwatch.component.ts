@@ -21,8 +21,8 @@ export class StopwatchComponent extends WidgetComponent {
   private intervalSet = false;
 
   constructor(
-    @Attribute("format") format,
-    @Attribute("data") data,
+    @Attribute('format') format,
+    @Attribute('data') data,
     @Attribute('timer') timer,
     private store: Store<State>,
     private stopwatchService: StopwatchService
@@ -30,9 +30,6 @@ export class StopwatchComponent extends WidgetComponent {
     super();
     this.format = format || 'HH:mm:ss';
     this.data = new Date();
-  }
-
-  ngOnInit() {
   }
 
   start() {
