@@ -58,13 +58,16 @@ namespace express_web_api {
 }
 
 // Application database setup
+import sqlite3 = require('sqlite3');
 let fs = require('fs');
 let file = 'src/api/marvin.db';
 let exists = fs.existsSync(file);
-
-import sqlite3 = require('sqlite3');
 sqlite3.verbose();
 let db = new sqlite3.Database(file);
-db.run('CREATE TABLE if not exists scenes (name TEXT)');
-db.run('CREATE TABLE if not exists users (name TEXT)');
+db.serialize(function() {
+  db.run('DROP TABLE scenes');
+  db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT)');
+  db.run('INSERT INTO scenes (id, name, description) VALUES (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\')');
+  db.run('INSERT INTO scenes (id, name, description) VALUES (2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\')');
+});
 db.close();
