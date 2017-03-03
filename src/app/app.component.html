@@ -1,12 +1,15 @@
 <app-scene></app-scene>
 <div class="controls">
   <app-state [dragula]='"controls-panel"'></app-state>
+  <app-stopwatch [dragula]='"controls-panel"'></app-stopwatch>
   <app-splash [dragula]='"controls-panel"'></app-splash>
   <app-user [dragula]='"controls-panel"'></app-user>
   <app-chart [dragula]='"controls-panel"'></app-chart>
   <app-gamepad [dragula]='"controls-panel"'></app-gamepad>
   <app-gyroscope [dragula]='"controls-panel"'></app-gyroscope>
   <app-keyboard [dragula]='"controls-panel"'></app-keyboard>
+</div>
+<div class="controls" style="left:400px;">
   <app-sysinfo [dragula]='"controls-panel"'></app-sysinfo>
   <app-battery [dragula]='"controls-panel"'></app-battery>
   <app-midi [dragula]='"controls-panel"'></app-midi>
@@ -16,5 +19,4 @@
   <app-audio-analyzer [dragula]='"controls-panel"'></app-audio-analyzer>
   <app-video [dragula]='"controls-panel"'></app-video>
   <app-user-camera [dragula]='"controls-panel"'></app-user-camera>
-  <app-stopwatch [dragula]='"controls-panel"'></app-stopwatch>
 </div>

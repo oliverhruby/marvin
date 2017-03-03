@@ -7,12 +7,13 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: black;
+  color: lawngreen;
 }
 
 div {
   font-size: 11px;
   font-family: 'Lucida Sans';
-  color: lawngreen;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -80,7 +81,16 @@ input {
  */
 .btn {
 	border-radius: 0px;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 80, 0, .5);
   border: 1px solid lawngreen;
   color: lawngreen;
+  text-transform: uppercase;
+}
+
+pre {
+	border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid lawngreen;
+  color: lawngreen;
+  font-size: 11px;
 }

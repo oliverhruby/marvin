@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { 
+import {
   STOPWATCH_START, STOPWATCH_STOP, STOPWATCH_RESET, STOPWATCH_TIME,
   StopwatchState
 } from 'app/reducers/stopwatch';
@@ -13,18 +14,22 @@ import {
 @Injectable()
 export class StopwatchService {
 
+  timer: Observable<any>;
+  sub: Subscription;
+
   constructor(private store: Store<State>) {
-    let timer = Observable.timer(0, 1000);
-    timer.subscribe(t => this.store.dispatch({ type: STOPWATCH_TIME }));
+    this.timer = Observable.timer(0, 1000);
   }
 
   /** starts the timer */
   start() {
+    this.sub = this.timer.subscribe(t => this.store.dispatch({ type: STOPWATCH_TIME }));
     this.store.dispatch({ type: STOPWATCH_START });
   }
 
   /** stops the timer */
   stop() {
+    this.sub.unsubscribe();
     this.store.dispatch({ type: STOPWATCH_STOP });
   }
 

@@ -4,9 +4,8 @@ import { Repository } from './repository';
 export default class SceneRepository extends Repository<Scene> {
 
   private _scenes = [
-    new Scene(1, 'Scene 1', ''),
-    new Scene(2, 'Scene 2', ''),
-    new Scene(3, 'Scene 3', '')
+    new Scene(1, 'Marvin', 'Example scene that visualizes a robotic rover vehicle'),
+    new Scene(2, 'Robot Arm', 'Visualisation of an example industrial manipulator'),
   ];
 
   retrieveAll(): Promise<Scene[]> {

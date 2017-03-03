@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as BABYLON from 'app/vendor/babylonjs/babylon';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-splash',
@@ -9,7 +8,7 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 export class SplashComponent {
 
   constructor() {
-    
+
   }
 
 }

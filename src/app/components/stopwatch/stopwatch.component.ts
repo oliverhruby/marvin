@@ -2,6 +2,7 @@ import { Component, OnInit, Attribute } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
+import { StopwatchState } from 'app/reducers/stopwatch';
 import { WidgetComponent } from '../widget/widget.component';
 import { StopwatchService } from 'app/services';
 
@@ -14,22 +15,17 @@ import { StopwatchService } from 'app/services';
   styleUrls: ['./stopwatch.component.css']
 })
 export class StopwatchComponent extends WidgetComponent {
-  public data;
-  public format;
 
-  private timer;
-  private intervalSet = false;
+  data: Date;
 
   constructor(
-    @Attribute('format') format,
-    @Attribute('data') data,
-    @Attribute('timer') timer,
     private store: Store<State>,
     private stopwatchService: StopwatchService
   ) {
     super();
-    this.format = format || 'HH:mm:ss';
-    this.data = new Date();
+    store.select<StopwatchState>('stopwatch').subscribe(
+      (data) => this.data = new Date(data.time)
+    );
   }
 
   start() {
@@ -40,7 +36,7 @@ export class StopwatchComponent extends WidgetComponent {
     this.stopwatchService.stop();
   }
 
-  restart() {
+  reset() {
     this.stopwatchService.reset();
   }
 

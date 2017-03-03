@@ -1,6 +1,6 @@
 <div class="widget">
   <div class="header">Stopwatch</div>
-  <div class="clock">{{data | date: format }}</div>
+  <div class="clock">{{data | date: 'HH:mm:ss' }}</div>
   <div class="btn-group" role="group">
     <button class="btn btn-default" (click)="start()"><i class="fa fa-play"></i> Start</button>
     <button class="btn btn-default" (click)="stop()"><i class="fa fa-stop"></i> Stop</button>

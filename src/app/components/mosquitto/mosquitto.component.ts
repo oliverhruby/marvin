@@ -19,7 +19,7 @@ export class MosquittoComponent extends WidgetComponent {
   public msgs: Observable<any> = null;
   private mqttService: MqttService;
 
-  constructor(private store: Store < State > ) {
+  constructor(private store: Store<State> ) {
     super();
     try {
 
@@ -31,9 +31,9 @@ export class MosquittoComponent extends WidgetComponent {
 
       this.store.dispatch({ type: 'MQTT_STATUS', payload: true })
 
-      this.msgs = this.mqttService.observe("test").map(
+      this.msgs = this.mqttService.observe('"test').map(
         function (message) {
-          var msg = {
+          let msg = {
             topic: message.topic,
             msg: message.payload.toString()
           };
@@ -41,13 +41,13 @@ export class MosquittoComponent extends WidgetComponent {
         }
       );
 
-      this.mqttService.publish("test", "test message", {
+      this.mqttService.publish('test', 'test message', {
         qos: 0
       }).subscribe((err) => {
         console.log(err);
       });
     } catch (ex) {
-        this.store.dispatch({ type: 'MQTT_STATUS', payload: false })
+        this.store.dispatch({ type: 'MQTT_STATUS', payload: false });
     }
   }
 
