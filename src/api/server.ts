@@ -56,3 +56,15 @@ namespace express_web_api {
     // Start the web app
     app.listen(port, () => console.log(`Express app listening on port ${port}`));
 }
+
+// Application database setup
+let fs = require('fs');
+let file = 'src/api/marvin.db';
+let exists = fs.existsSync(file);
+
+import sqlite3 = require('sqlite3');
+sqlite3.verbose();
+let db = new sqlite3.Database(file);
+db.run('CREATE TABLE if not exists scenes (name TEXT)');
+db.run('CREATE TABLE if not exists users (name TEXT)');
+db.close();

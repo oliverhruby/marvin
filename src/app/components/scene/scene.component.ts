@@ -97,11 +97,7 @@ export class SceneComponent implements AfterViewInit {
     // let camera = new Camera(scene, canvas);
 
     // import objects from a file
-    BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'snowman.babylon', scene, function (meshes) {
-      }, null, function (sc, message, exception) { });
-
-    BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'test.babylon', scene, function (meshes) {
-        meshes[0].position.x = 30;
+    BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon', scene, function (meshes) {
       }, null, function (sc, message, exception) { });
 
     // scene.debugLayer.show();
