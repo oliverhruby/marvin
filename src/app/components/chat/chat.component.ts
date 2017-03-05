@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WidgetComponent } from '../widget/widget.component';
+import { SocketService } from 'app/services';
 
 /**
  * User chat room
@@ -12,6 +13,7 @@ import { WidgetComponent } from '../widget/widget.component';
 export class ChatComponent extends WidgetComponent {
 
   constructor(
+    private socketService: SocketService
   ) {
     super();
   }

@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { WidgetComponent } from '../widget/widget.component';
 
-
 /**
  * This component allows browsing MQTT messages
  */
@@ -25,13 +24,16 @@ export class MosquittoComponent extends WidgetComponent {
 
       this.mqttService = new MqttService({
         protocol: 'ws',
-        hostname: 'test.mosquitto.org',
-        port: 8080
+        hostname: '192.168.0.108',
+        port: 9001
       });
 
-      this.store.dispatch({ type: 'MQTT_STATUS', payload: true })
+      this.store.dispatch({ type: 'MQTT_STATUS', payload: true });
 
-      this.msgs = this.mqttService.observe('"test').map(
+      // TODO: let the service automatically replicate topics to app State
+      // so that the application logic can simply subscribe
+
+      this.msgs = this.mqttService.observe('devices/lenovo-pc').map(
         function (message) {
           let msg = {
             topic: message.topic,

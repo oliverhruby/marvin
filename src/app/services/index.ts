@@ -10,6 +10,7 @@ export * from './logger.service';
 export * from './midi.service';
 export * from './motorsound.service';
 export * from './simulation.service';
+export * from './socket.service';
 export * from './sound.service';
 export * from './speech.service';
 export * from './speech-synthesis.service';
