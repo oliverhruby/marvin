@@ -1,4 +1,4 @@
-import sqlite3 = require('sqlite3');
+import * as sqlite3 from 'sqlite3';
 
 /**
  * Base class for common repository functionality

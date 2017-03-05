@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as os from 'os';
 import * as path from 'path';
-import sqlite3 = require('sqlite3');
+import * as sqlite3 from 'sqlite3';
 import * as socketIo from 'socket.io';
 import * as logger from 'winston';
 
@@ -45,7 +45,7 @@ class Server {
     // Start listening
     this.listen();
 
-    winston.info('Server started!');
+    logger.info('Server started!');
   }
 
   /**
@@ -141,12 +141,12 @@ class Server {
 
     // add error handler
     this.server.on('error', (error: any) => {
-      winston.error(error);
+      logger.error(error);
     });
 
     // start listening on port
     this.server.on('listening', () => {
-      winston.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+      logger.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
     });
   }
 }
