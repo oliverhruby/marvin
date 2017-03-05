@@ -1,5 +1,6 @@
 import { IRoom, Room, IMessage, Message } from '../models';
 import { MessageSocket } from './message.socket';
+import * as logger from 'winston';
 
 export class RoomSocket {
   nsp: any;
@@ -11,7 +12,7 @@ export class RoomSocket {
   constructor(private io: any) {
     this.nsp = this.io.of('/room');
     this.nsp.on('connection', (socket: any) => {
-      console.log('Client connected');
+      logger.info('Client connected');
       this.socket = socket;
       this.listen();
     });
@@ -29,7 +30,7 @@ export class RoomSocket {
    * Handle disconnect
    */
   private disconnect(): void {
-    console.log('Client disconnected');
+    logger.info('Client disconnected');
   }
 
   /**
@@ -38,7 +39,7 @@ export class RoomSocket {
    */
   private createRoom(room: IRoom): void {
     if (!this.rooms[room.name]) {
-      console.log('Creating namespace for room:', room.name);
+      logger.info('Creating namespace for room:', room.name);
       this.rooms[room.name] = new MessageSocket(this.io, room.name);
     }
     this.nsp.emit('create', room);

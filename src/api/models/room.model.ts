@@ -1,18 +1,30 @@
-import * as mongoose from 'mongoose';
-
+/**
+ * Room information
+ */
 export interface IRoom {
     name: string;
     created: Date;
 }
 
-export interface IRoomModel extends IRoom, mongoose.Document {}
+/**
+ * Room model interface
+ */
+export interface IRoomModel extends IRoom { }
 
-export let RoomSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        unique: true
-    },
-    created: Date
-});
+/**
+ * Room model implementation
+ */
+export class RoomModel implements IRoomModel {
+  id: number;
+  name: string;
+  created: Date;
 
-export let Room = mongoose.model<IRoomModel>('Room', RoomSchema);
+  create() { }
+  delete() { }
+  find() { }
+  retrieve() { }
+  retrieveAll() { }
+  update() { }
+}
+
+export let Room = new RoomModel();

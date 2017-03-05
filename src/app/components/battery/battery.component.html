@@ -25,7 +25,7 @@
       </svg>
     </svg>
     <div style="display: inline-block;">
-      {{battery.level * 100 + '%'}}
+      {{battery.level * 100 | number: 0}}%
       <i [style.visibility]="battery.charging?'visible':'hidden'" class="fa fa-plug"></i></div>
   </div>
 </div>

@@ -6,11 +6,12 @@ import * as os from 'os';
 import * as path from 'path';
 import sqlite3 = require('sqlite3');
 import * as socketIo from 'socket.io';
+import * as logger from 'winston';
 
 import { pluginsRouter } from './routes/plugins';
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
-// import { RoomSocket } from './sockets';
+import { RoomSocket } from './sockets';
 
 /**
  * Backend server functionality wrapped as a class
@@ -43,6 +44,8 @@ class Server {
 
     // Start listening
     this.listen();
+
+    winston.info('Server started!');
   }
 
   /**
@@ -126,7 +129,7 @@ class Server {
   private sockets(): void {
     // Get socket.io handle
     this.io = socketIo(this.server);
-    // let roomSocket = new RoomSocket(this.io);
+    let roomSocket = new RoomSocket(this.io);
   }
 
   /**
@@ -138,16 +141,16 @@ class Server {
 
     // add error handler
     this.server.on('error', (error: any) => {
-      console.log('ERROR', error);
+      winston.error(error);
     });
 
     // start listening on port
     this.server.on('listening', () => {
-      console.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+      winston.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
     });
   }
 }
 
 // Bootstrap the server
 let server = Server.bootstrap();
-export = server.app;
+export = server;

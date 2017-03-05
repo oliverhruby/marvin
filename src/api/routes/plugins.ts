@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { Request, Response } from 'express';
+import * as logger from 'winston';
 
 import PluginRepository from '../services/plugin.repo';
 
@@ -8,24 +9,25 @@ let pluginRepo = new PluginRepository();
 
 // GET route
 router.get('/', async (req: Request, resp: Response) => {
-    console.log('Retrieving plugins');
+
+    logger.info('Retrieving plugins');
     try {
         let plugins = await pluginRepo.retrieveAll();
         resp.json(plugins);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         resp.sendStatus(500);
     }
 });
 
 // GET route with id
 router.get('/:id', async (req: Request, resp: Response) => {
-    console.log(`Retrieving plugin id ${req.params.id}`);
+    logger.info(`Retrieving plugin id ${req.params.id}`);
     try {
         let plugin = await pluginRepo.retrieve(+req.params.id);
         resp.json(plugin);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Invalid id') > -1) {
             resp.sendStatus(404);
             return;
@@ -36,12 +38,12 @@ router.get('/:id', async (req: Request, resp: Response) => {
 
 // POST route
 router.post('/', async (req: Request, resp: Response) => {
-    console.log(`Creating plugin: ${JSON.stringify(req.body)}`);
+    logger.info(`Creating plugin: ${JSON.stringify(req.body)}`);
     try {
         let plugin = await pluginRepo.create(req.body);
         resp.json(plugin);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Plugin exists') > -1) {
             resp.sendStatus(400);
             return;
@@ -52,12 +54,12 @@ router.post('/', async (req: Request, resp: Response) => {
 
 // PUT route
 router.put('/', async (req: Request, resp: Response) => {
-    console.log(`Updating plugin id ${req.body.pluginId} to: ${JSON.stringify(req.body)}`);
+    logger.info(`Updating plugin id ${req.body.pluginId} to: ${JSON.stringify(req.body)}`);
     try {
         let plugin = await pluginRepo.update(req.body);
         resp.json(plugin);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Invalid id') > -1) {
             resp.sendStatus(404);
             return;
@@ -68,12 +70,12 @@ router.put('/', async (req: Request, resp: Response) => {
 
 // DELETE route with id
 router.delete('/:id', async (req: Request, resp: Response) => {
-    console.log(`Deleting plugin id ${req.params.id}`);
+    logger.info(`Deleting plugin id ${req.params.id}`);
     try {
         await pluginRepo.delete(+req.params.id);
         resp.end();
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Invalid id') > -1) {
             resp.sendStatus(404);
             return;

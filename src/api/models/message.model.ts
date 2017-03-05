@@ -1,5 +1,6 @@
-import * as mongoose from 'mongoose';
-
+/**
+ * Message information
+ */
 export interface IMessage {
   room: string;
   created: Date;
@@ -8,17 +9,18 @@ export interface IMessage {
   message: string;
 }
 
-export interface IMessageModel extends IMessage, mongoose.Document {}
+/**
+ * Message model interface
+ */
+export interface IMessageModel extends IMessage {
 
-export let MessageSchema = new mongoose.Schema({
-  room: {
-    type: String,
-    index: true
-  },
-  created: Date,
-  from: String,
-  to: String,
-  message: String
-});
+}
 
-export let Message = mongoose.model<IMessageModel>('Message', MessageSchema);
+/**
+ * Message model implementation
+ */
+export class MessageModel {
+
+};
+
+export let Message = new MessageModel();
