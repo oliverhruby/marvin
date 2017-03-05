@@ -1,73 +1,153 @@
-// https://github.com/tonysneed/Demo.Express.Angular-CLI
-
 import * as express from 'express';
+import * as http from 'http';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as os from 'os';
 import * as path from 'path';
+import sqlite3 = require('sqlite3');
+import * as socketIo from 'socket.io';
 
 import { pluginsRouter } from './routes/plugins';
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
+// import { RoomSocket } from './sockets';
 
-namespace express_web_api {
+/**
+ * Backend server functionality wrapped as a class
+ */
+class Server {
+  public app: any;
+  private server: any;
+  private io: any;
+  private port: number;
+  private root: string;
 
-    // Initialize express and set port number
-    let app = express();
-    let port: number = process.env.PORT || 3000;
+  // Bootstrap the application.
+  public static bootstrap(): Server {
+    return new Server();
+  }
+
+  constructor() {
+    // Create expressjs application
+    this.app = express();
+    this.server = http.createServer(this.app);
+
+    this.config();
+    this.routes();
+
+    // Create database connections
+    this.databases();
+
+    // Handle websockets
+    this.sockets();
+
+    // Start listening
+    this.listen();
+  }
+
+  /**
+   * Configuration
+   */
+  private config(): void {
+    // By default the port should be 3000
+    this.port = process.env.PORT || 3000;
+
+    // root path is under ../../target
+    this.root = path.join(path.resolve(__dirname, '../../target'));
 
     // Plug in body parser middleware for posting JSON
-    app.use(bodyParser.json());
+    this.app.use(bodyParser.json());
+  }
+
+  /**
+   * Configure routes
+   */
+  private routes(): void {
+    let router: express.Router;
+    router = express.Router();
 
     // Add routers
-    app.use('/api/plugins', pluginsRouter);
-    app.use('/api/scenes', scenesRouter);
-    app.use('/api/users', usersRouter);
-
-    // Point static path to dist
-    app.use(express.static(path.join(__dirname, '../../dist')));
+    this.app.use('/api/plugins', pluginsRouter);
+    this.app.use('/api/scenes', scenesRouter);
+    this.app.use('/api/users', usersRouter);
 
     // Handle GET for the root URL
-    app.get('/api', (req: Request, res: Response) => {
-        res.send('API works!');
+    this.app.get('/api', (req: Request, res: Response) => {
+      res.send('API works!');
     });
 
+    // Point static path to dist
+    this.app.use(express.static(path.join(__dirname, '../../dist')));
+
     // Return version info (TODO: move to separate router)
-    app.get('/api/version', (req: Request, resp: Response) => {
-      resp.send('{\n'
-        + '  "nodejs": "' + process.version + '",\n'
-        + '  "os": {\n'
-        + '    "freemem": "' + os.freemem() + '",\n'
-        + '    "hostname": "' + os.hostname() + '",\n'
-        + '    "platform": "' + os.platform() + '",\n'
-        + '    "release": "' + os.release() + '",\n'
-        + '    "totalmem": "' + os.totalmem() + '",\n'
-        + '    "type": "' + os.type() + '",\n'
-        + '    "uptime": "' + os.uptime() + '"\n'
-        + '  }\n'
-        + '}');
+    this.app.get('/api/version', (req: Request, resp: Response) => {
+      resp.send('{\n' +
+        '  "nodejs": "' + process.version + '",\n' +
+        '  "os": {\n' +
+        '    "freemem": "' + os.freemem() + '",\n' +
+        '    "hostname": "' + os.hostname() + '",\n' +
+        '    "platform": "' + os.platform() + '",\n' +
+        '    "release": "' + os.release() + '",\n' +
+        '    "totalmem": "' + os.totalmem() + '",\n' +
+        '    "type": "' + os.type() + '",\n' +
+        '    "uptime": "' + os.uptime() + '"\n' +
+        '  }\n' +
+        '}');
     });
 
     // Catch all other routes and return the index file
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
+    this.app.get('*', (req: Request, res: Response) => {
+      res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
+    });
+  }
+
+  /**
+   * Configure databases
+   */
+  private databases(): void {
+    let fs = require('fs');
+    let file = 'src/api/database/marvin.db';
+    let exists = fs.existsSync(file);
+    sqlite3.verbose();
+    let db = new sqlite3.Database(file);
+    db.serialize(function () {
+      db.run('DROP TABLE scenes');
+      db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT)');
+      // tslint:disable-next-line:max-line-length
+      db.run('INSERT INTO scenes (id, name, description) VALUES (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\')');
+      db.run('INSERT INTO scenes (id, name, description) VALUES (2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\')');
+    });
+    db.close();
+  }
+
+  /**
+   * Configure sockets
+   */
+  private sockets(): void {
+    // Get socket.io handle
+    this.io = socketIo(this.server);
+    // let roomSocket = new RoomSocket(this.io);
+  }
+
+  /**
+   * Start HTTP server listening
+   */
+  private listen(): void {
+    // listen on provided ports
+    this.server.listen(this.port);
+
+    // add error handler
+    this.server.on('error', (error: any) => {
+      console.log('ERROR', error);
     });
 
-    // Start the web app
-    app.listen(port, () => console.log(`Express app listening on port ${port}`));
+    // start listening on port
+    this.server.on('listening', () => {
+      console.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+    });
+  }
 }
 
-// Application database setup
-import sqlite3 = require('sqlite3');
-let fs = require('fs');
-let file = 'src/api/marvin.db';
-let exists = fs.existsSync(file);
-sqlite3.verbose();
-let db = new sqlite3.Database(file);
-db.serialize(function() {
-  db.run('DROP TABLE scenes');
-  db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT)');
-  db.run('INSERT INTO scenes (id, name, description) VALUES (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\')');
-  db.run('INSERT INTO scenes (id, name, description) VALUES (2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\')');
-});
-db.close();
+// Bootstrap the server
+let server = Server.bootstrap();
+export = server.app;

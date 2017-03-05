@@ -11,7 +11,9 @@ export default class UserRepository extends Repository<User> {
 
   retrieveAll(): Promise<User[]> {
     return new Promise((resolve, reject) => {
-      resolve(this._users);
+      this.db.all('SELECT * FROM users', function(err, rows) {
+        resolve(rows);
+      });
     });
   }
 

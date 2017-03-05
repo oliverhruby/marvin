@@ -8,7 +8,7 @@ export class Repository<T> {
   db: any;
 
   constructor() {
-    this.db = new sqlite3.Database('src/api/marvin.db');
+    this.db = new sqlite3.Database('src/api/database/marvin.db');
   }
 
 }
