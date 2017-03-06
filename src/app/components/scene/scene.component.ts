@@ -14,6 +14,7 @@ import { Marvin } from './objects/marvin';
 import { Laser } from './objects/laser';
 import { Camera } from './objects/camera';
 import { Axis } from './objects/axis';
+import { Fire } from './objects/fire';
 
 /**
  * This component represents the overall 3D visualization scene rendered on a canvas
@@ -93,6 +94,7 @@ export class SceneComponent implements AfterViewInit {
     let obstacle = new Obstacle(scene);
     let path = new Path(scene);
     let axis = new Axis(scene);
+    let fire = new Fire(scene);
     let marvin = new Marvin(scene, this.store);
     // let camera = new Camera(scene, canvas);
 
