@@ -1,12 +1,12 @@
-import { User } from '../models/user';
+import { User } from '../models';
 import { Repository } from './repository';
 
-export default class UserRepository extends Repository<User> {
+export default class UserService extends Repository<User> {
 
-  private _users = [
-    new User(1, 'User 1'),
-    new User(2, 'User 2'),
-    new User(3, 'User 3')
+  private _users: User[] = [
+    { id: 1, name: 'User 1' },
+    { id: 2, name: 'User 2' },
+    { id: 3, name: 'User 3' }
   ];
 
   retrieveAll(): Promise<User[]> {

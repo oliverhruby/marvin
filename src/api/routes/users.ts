@@ -1,31 +1,32 @@
 import * as express from 'express';
 import { Request, Response } from 'express';
+import * as logger from 'winston';
 
-import UserRepository from '../services/user.repo';
+import UserService from '../services/user.service';
 
 let router = express.Router();
-let userRepo = new UserRepository();
+let userService = new UserService();
 
 // GET route
 router.get('/', async (req: Request, resp: Response) => {
-    console.log('Retrieving users');
+    logger.info('Retrieving users');
     try {
-        let users = await userRepo.retrieveAll();
+        let users = await userService.retrieveAll();
         resp.json(users);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         resp.sendStatus(500);
     }
 });
 
 // GET route with id
 router.get('/:id', async (req: Request, resp: Response) => {
-    console.log(`Retrieving user id ${req.params.id}`);
+    logger.info(`Retrieving user id ${req.params.id}`);
     try {
-        let user = await userRepo.retrieve(+req.params.id);
+        let user = await userService.retrieve(+req.params.id);
         resp.json(user);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Invalid id') > -1) {
             resp.sendStatus(404);
             return;
@@ -36,12 +37,12 @@ router.get('/:id', async (req: Request, resp: Response) => {
 
 // POST route
 router.post('/', async (req: Request, resp: Response) => {
-    console.log(`Creating user: ${JSON.stringify(req.body)}`);
+    logger.info(`Creating user: ${JSON.stringify(req.body)}`);
     try {
-        let user = await userRepo.create(req.body);
+        let user = await userService.create(req.body);
         resp.json(user);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('User exists') > -1) {
             resp.sendStatus(400);
             return;
@@ -52,12 +53,12 @@ router.post('/', async (req: Request, resp: Response) => {
 
 // PUT route
 router.put('/', async (req: Request, resp: Response) => {
-    console.log(`Updating user id ${req.body.userId} to: ${JSON.stringify(req.body)}`);
+    logger.info(`Updating user id ${req.body.userId} to: ${JSON.stringify(req.body)}`);
     try {
-        let user = await userRepo.update(req.body);
+        let user = await userService.update(req.body);
         resp.json(user);
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Invalid id') > -1) {
             resp.sendStatus(404);
             return;
@@ -68,12 +69,12 @@ router.put('/', async (req: Request, resp: Response) => {
 
 // DELETE route with id
 router.delete('/:id', async (req: Request, resp: Response) => {
-    console.log(`Deleting user id ${req.params.id}`);
+    logger.info(`Deleting user id ${req.params.id}`);
     try {
-        await userRepo.delete(+req.params.id);
+        await userService.delete(+req.params.id);
         resp.end();
     } catch (error) {
-        console.log(error);
+        logger.error(error);
         if (error.indexOf('Invalid id') > -1) {
             resp.sendStatus(404);
             return;

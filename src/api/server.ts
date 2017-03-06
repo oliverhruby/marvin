@@ -8,7 +8,6 @@ import * as sqlite3 from 'sqlite3';
 import * as socketIo from 'socket.io';
 import * as logger from 'winston';
 
-import { pluginsRouter } from './routes/plugins';
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
 import { RoomSocket } from './sockets';
@@ -70,7 +69,6 @@ class Server {
     router = express.Router();
 
     // Add routers
-    this.app.use('/api/plugins', pluginsRouter);
     this.app.use('/api/scenes', scenesRouter);
     this.app.use('/api/users', usersRouter);
 

@@ -1,11 +1,11 @@
-import { Scene } from '../models/scene';
+import { Scene } from '../models';
 import { Repository } from './repository';
 
-export default class SceneRepository extends Repository<Scene> {
+export default class SceneService extends Repository<Scene> {
 
-  private _scenes = [
-    new Scene(1, 'Marvin', 'Example scene that visualizes a robotic rover vehicle'),
-    new Scene(2, 'Robot Arm', 'Visualisation of an example industrial manipulator'),
+  private _scenes: Scene[] = [
+    {id: 1, name: 'Marvin', definition: 'Example scene that visualizes a robotic rover vehicle' },
+    {id: 2, name: 'Robot Arm', definition: 'Visualisation of an example industrial manipulator' }
   ];
 
   retrieveAll(): Promise<Scene[]> {

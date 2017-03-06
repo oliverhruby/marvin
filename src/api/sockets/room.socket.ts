@@ -1,4 +1,4 @@
-import { IRoom, Room, IMessage, Message } from '../models';
+import { Room, Message } from '../models';
 import { MessageSocket } from './message.socket';
 import * as logger from 'winston';
 
@@ -37,12 +37,12 @@ export class RoomSocket {
    * Create room and emit it
    * @param room New room details
    */
-  private createRoom(room: IRoom): void {
-    if (!this.rooms[room.name]) {
-      logger.info('Creating namespace for room:', room.name);
-      this.rooms[room.name] = new MessageSocket(this.io, room.name);
-    }
-    this.nsp.emit('create', room);
+  private createRoom(room: Room): void {
+    // if (!this.rooms[room.name]) {
+    //   logger.info('Creating namespace for room:', room.name);
+    //   this.rooms[room.name] = new MessageSocket(this.io, room.name);
+    // }
+    // this.nsp.emit('create', room);
   }
 
   /**
@@ -50,15 +50,15 @@ export class RoomSocket {
    * @param name Nme of the new room
    */
   private create(name: string): void {
-    Room.create({
-      name: name,
-      created: new Date(),
-      messages: []
-    }, (error: any, room: IRoom) => {
-      if (!error && room) {
-        this.createRoom(room);
-      }
-    });
+    // Room.create({
+    //   name: name,
+    //   created: new Date(),
+    //   messages: []
+    // }, (error: any, room: IRoom) => {
+    //   if (!error && room) {
+    //     this.createRoom(room);
+    //   }
+    // });
   }
 
   /**
@@ -66,31 +66,31 @@ export class RoomSocket {
    * @param name Name of the room to remove
    */
   private remove(name: string): void {
-    // First remove room messages
-    Message.remove({
-      room: name
-    }).exec();
+    // // First remove room messages
+    // Message.remove({
+    //   room: name
+    // }).exec();
 
-    // Remove room
-    Room.remove({
-      name: name
-    }).exec((error: any, room: IRoom) => {
-      if (!error && room) {
-        this.nsp.emit('remove', room);
-      }
-    });
+    // // Remove room
+    // Room.remove({
+    //   name: name
+    // }).exec((error: any, room: IRoom) => {
+    //   if (!error && room) {
+    //     this.nsp.emit('remove', room);
+    //   }
+    // });
   }
 
   /**
    * List all rooms
    */
   private list(): void {
-    if (this.socket && this.socket.connected) {
-      Room.find({}).exec((error: any, rooms: IRoom[]) => {
-        for (let room of rooms) {
-          this.createRoom(room);
-        }
-      });
-    }
+    // if (this.socket && this.socket.connected) {
+    //   Room.find({}).exec((error: any, rooms: IRoom[]) => {
+    //     for (let room of rooms) {
+    //       this.createRoom(room);
+    //     }
+    //   });
+    // }
   }
 }
