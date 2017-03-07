@@ -6,6 +6,7 @@ import { CommandState } from 'app/reducers/command';
 import { SpeechSynthesisService } from 'app/services';
 import { WitAiService } from 'app/services';
 import { HTML5SpeechEngine } from 'app/services/nativespeechengine';
+import * as logger from 'winston';
 
 @Component({
   selector: 'app-speech',
@@ -36,7 +37,7 @@ export class SpeechComponent extends WidgetComponent implements OnInit {
         this.store.dispatch({ type: message.type == 'hint' ? 'COMMAND_TAG' : 'COMMAND_SEND', payload: message.value })
       );
     } catch (ex) {
-      console.log("Speech engine not available.");
+      logger.info('Speech engine not available.');
     }
 
     // subscribe to commands, retrieve response from wit.ai and speak it

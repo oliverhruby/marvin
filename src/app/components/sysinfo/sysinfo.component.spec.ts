@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
+import { ApiService } from '../../services';
 import { SysinfoComponent } from '../sysinfo';
 
 describe('SysinfoComponent', () => {
@@ -12,13 +14,13 @@ describe('SysinfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [ ApiService ],
       declarations: [ SysinfoComponent ],
       imports: [
+        HttpModule,
         StoreModule.provideStore({
-          
         })
-      ],
-      providers: []      
+      ]
     })
     .compileComponents();
   }));

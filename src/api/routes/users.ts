@@ -9,7 +9,7 @@ let userService = new UserService();
 
 // GET route
 router.get('/', async (req: Request, resp: Response) => {
-    logger.info('Retrieving users');
+    logger.info('API: Retrieving users');
     try {
         let users = await userService.retrieveAll();
         resp.json(users);
@@ -21,7 +21,7 @@ router.get('/', async (req: Request, resp: Response) => {
 
 // GET route with id
 router.get('/:id', async (req: Request, resp: Response) => {
-    logger.info(`Retrieving user id ${req.params.id}`);
+    logger.info(`API: Retrieving user id ${req.params.id}`);
     try {
         let user = await userService.retrieve(+req.params.id);
         resp.json(user);
@@ -37,7 +37,7 @@ router.get('/:id', async (req: Request, resp: Response) => {
 
 // POST route
 router.post('/', async (req: Request, resp: Response) => {
-    logger.info(`Creating user: ${JSON.stringify(req.body)}`);
+    logger.info(`API: Creating user ${JSON.stringify(req.body)}`);
     try {
         let user = await userService.create(req.body);
         resp.json(user);
@@ -53,7 +53,7 @@ router.post('/', async (req: Request, resp: Response) => {
 
 // PUT route
 router.put('/', async (req: Request, resp: Response) => {
-    logger.info(`Updating user id ${req.body.userId} to: ${JSON.stringify(req.body)}`);
+    logger.info(`API: Updating user id ${req.body.userId} to: ${JSON.stringify(req.body)}`);
     try {
         let user = await userService.update(req.body);
         resp.json(user);
@@ -69,7 +69,7 @@ router.put('/', async (req: Request, resp: Response) => {
 
 // DELETE route with id
 router.delete('/:id', async (req: Request, resp: Response) => {
-    logger.info(`Deleting user id ${req.params.id}`);
+    logger.info(`API: Deleting user id ${req.params.id}`);
     try {
         await userService.delete(+req.params.id);
         resp.end();

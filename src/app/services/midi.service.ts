@@ -2,6 +2,7 @@ import { NgZone, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { MidiState, MIDI_UPDATE } from 'app/reducers/midi';
+import * as logger from 'winston';
 
 @Injectable()
 export class MidiService {
@@ -23,12 +24,12 @@ export class MidiService {
     try {
       (<any>navigator).requestMIDIAccess().then(this.onMIDISuccess, this.onMIDIFailure);
     } catch(ex) {
-      console.log('No MIDI support in your browser.');
+      logger.error('No MIDI support in your browser.');
     }
   }
 
   onMIDISuccess(midiAccess) {
-    console.log('MIDI Access Object', midiAccess);
+    logger.info('MIDI Access Object', midiAccess);
     // let inputs = midi.inputs.values();
     // for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
     //   input.value.onmidimessage = this.onMIDIMessage;
@@ -36,10 +37,10 @@ export class MidiService {
   }
 
   onMIDIMessage(event) {
-    console.log('msg received', event);
+    logger.info('msg received', event);
   }
 
   onMIDIFailure(e) {
-    console.log(e);
+    logger.info(e);
   }
 }

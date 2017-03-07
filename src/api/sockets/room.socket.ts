@@ -12,7 +12,7 @@ export class RoomSocket {
   constructor(private io: any) {
     this.nsp = this.io.of('/room');
     this.nsp.on('connection', (socket: any) => {
-      logger.info('Client connected');
+      logger.info('Socket: client connected');
       this.socket = socket;
       this.listen();
     });
@@ -30,7 +30,7 @@ export class RoomSocket {
    * Handle disconnect
    */
   private disconnect(): void {
-    logger.info('Client disconnected');
+    logger.info('Socket: client disconnected');
   }
 
   /**

@@ -8,7 +8,7 @@ let sceneService = new SceneService();
 
 // GET route
 router.get('/', async (req: Request, resp: Response) => {
-    logger.info('Retrieving scenes');
+    logger.info('API: Retrieving scenes');
     try {
         let scenes = await sceneService.retrieveAll();
         resp.json(scenes);
@@ -20,7 +20,7 @@ router.get('/', async (req: Request, resp: Response) => {
 
 // GET route with id
 router.get('/:id', async (req: Request, resp: Response) => {
-    logger.info(`Retrieving scene id ${req.params.id}`);
+    logger.info(`API: Retrieving scene id ${req.params.id}`);
     try {
         let scene = await sceneService.retrieve(+req.params.id);
         resp.json(scene);
@@ -36,7 +36,7 @@ router.get('/:id', async (req: Request, resp: Response) => {
 
 // POST route
 router.post('/', async (req: Request, resp: Response) => {
-    logger.info(`Creating scene: ${JSON.stringify(req.body)}`);
+    logger.info(`API: Creating scene ${JSON.stringify(req.body)}`);
     try {
         let scene = await sceneService.create(req.body);
         resp.json(scene);
@@ -52,7 +52,7 @@ router.post('/', async (req: Request, resp: Response) => {
 
 // PUT route
 router.put('/', async (req: Request, resp: Response) => {
-    logger.info(`Updating scene id ${req.body.sceneId} to: ${JSON.stringify(req.body)}`);
+    logger.info(`API: Updating scene id ${req.body.sceneId} to: ${JSON.stringify(req.body)}`);
     try {
         let scene = await sceneService.update(req.body);
         resp.json(scene);
@@ -68,7 +68,7 @@ router.put('/', async (req: Request, resp: Response) => {
 
 // DELETE route with id
 router.delete('/:id', async (req: Request, resp: Response) => {
-    logger.info(`Deleting scene id ${req.params.id}`);
+    logger.info(`API: Deleting scene id ${req.params.id}`);
     try {
         await sceneService.delete(+req.params.id);
         resp.end();

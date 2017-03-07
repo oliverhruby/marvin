@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { WidgetComponent } from '../widget/widget.component';
-
+import * as logger from 'winston';
 
 /**
  * Spectrum analyzer to visualize audio signal
@@ -54,11 +54,11 @@ export class AudioAnalyzerComponent extends WidgetComponent implements OnInit {
 
         // Error callback
         function (err) {
-          console.log('The following error occured: ' + err);
+          logger.error('The following error occured: ' + err);
         }
       );
     } else {
-      console.log('getUserMedia not supported on your browser!');
+      logger.info('getUserMedia not supported on your browser!');
     }
 
     function draw() {

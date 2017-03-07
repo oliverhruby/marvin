@@ -2,6 +2,7 @@
 // https://github.com/jussikinnula/angular2-socketio-chat-example/tree/master/src
 
 import { Message } from '../models';
+import * as logger from 'winston';
 
 export class MessageSocket {
   nsp: any;
@@ -12,7 +13,7 @@ export class MessageSocket {
   constructor(io: any, private room: string) {
     this.nsp = io.of('/messages/' + encodeURIComponent(this.room));
     this.nsp.on('connection', (socket: any) => {
-      console.log('Client connected to room:', this.room);
+      logger.info('Socket: client connected to room ', this.room);
       this.socket = socket;
       this.listen();
     });
@@ -27,7 +28,7 @@ export class MessageSocket {
 
   // Handle disconnect
   private disconnect(): void {
-    console.log('Client disconnected from room:', this.room);
+    logger.info('Socket: client disconnected from room ', this.room);
   }
 
   // Create a message in a room

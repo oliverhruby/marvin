@@ -24,7 +24,7 @@ export class StopwatchComponent extends WidgetComponent {
   ) {
     super();
     store.select<StopwatchState>('stopwatch').subscribe(
-      (data) => this.data = new Date(data.time)
+      (data) => this.data = data  ? new Date(data.time) : null
     );
   }
 
