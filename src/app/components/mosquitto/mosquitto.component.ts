@@ -4,7 +4,6 @@ import { MqttService, MqttMessage } from 'angular2-mqtt';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { WidgetComponent } from '../widget/widget.component';
-import * as logger from 'winston';
 
 /**
  * This component allows browsing MQTT messages
@@ -47,7 +46,7 @@ export class MosquittoComponent extends WidgetComponent {
       this.mqttService.publish('test', 'test message', {
         qos: 0
       }).subscribe((err) => {
-        logger.error('MQTT error - ' + JSON.stringify(err));
+        console.error('MQTT error - ' + JSON.stringify(err));
       });
     } catch (ex) {
         this.store.dispatch({ type: 'MQTT_STATUS', payload: false });

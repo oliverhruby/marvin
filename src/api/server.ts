@@ -6,7 +6,6 @@ import * as os from 'os';
 import * as path from 'path';
 import * as sqlite3 from 'sqlite3';
 import * as socketIo from 'socket.io';
-import * as logger from 'winston';
 
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
@@ -44,7 +43,7 @@ class Server {
     // Start listening
     this.listen();
 
-    logger.info('Server started!');
+    console.log('Server started!');
   }
 
   /**
@@ -139,7 +138,7 @@ class Server {
 
     // add error handler
     this.server.on('error', (error: any) => {
-      logger.error(error);
+      console.error(error);
     });
 
     // start listening on port

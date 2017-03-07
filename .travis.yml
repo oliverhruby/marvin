@@ -5,6 +5,10 @@ dist: trusty
 node_js:
  - "stable"
 
+cache:
+  directories:
+    - $HOME/.npm
+    
 services:
 - docker
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as logger from 'winston';
 
 /**
  * Service for speech synthesis
@@ -26,7 +25,7 @@ export class SpeechService {
       };
 
       recognition.onerror = function (event) {
-        logger.error(event.error);
+        console.error(event.error);
       };
 
       recognition.onend = function () {
@@ -45,7 +44,7 @@ export class SpeechService {
       };
 
     } catch (ex) {
-      logger.error('Speech recognition not available');
+      console.error('Speech recognition not available');
     }
 
   }

@@ -2,7 +2,6 @@ import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { BatteryState, BATTERY_UPDATE } from 'app/reducers/battery';
-import * as logger from 'winston';
 
 interface BatteryManager {
   charging: boolean;
@@ -55,7 +54,7 @@ export class BatteryService {
         });
       });
     } catch (ex) {
-      logger.info('Battery monitoring not available.');
+      console.log('Battery monitoring not available.');
     }
 
   }
