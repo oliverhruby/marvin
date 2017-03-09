@@ -1,4 +1,16 @@
 <div class="widget">
   <div class="header">System Information</div>
-  {{(state | async) | json}}
+  <div>
+    Node.js:
+    {{(state | async)?.nodejs}}<br/>
+    Memory:
+    {{((state | async)?.os.freemem / 1024 / 1024 / 1024).toFixed(1)}}GB ({{(( 100 / (state | async)?.os.totalmem * (state | async)?.os.freemem)).toFixed(0)}}%) / {{((state | async)?.os.totalmem / 1024 / 1024 / 1024).toFixed(1)}}GB
+    <br/>
+    Uptime:
+    {{(state | async)?.os.uptime}}<br/>
+    Host:
+    {{(state | async)?.os.hostname}}<br/>
+    Platform:
+    {{(state | async)?.os.platform}} ({{(state | async)?.os.release}})
+  </div>
 </div>

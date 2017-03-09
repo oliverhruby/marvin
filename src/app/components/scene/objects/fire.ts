@@ -55,7 +55,7 @@ export class Fire {
     let fireSystem = new BABYLON.ParticleSystem('particles', 2000, this.scene);
 
     // Texture of each particle
-    fireSystem.particleTexture = new BABYLON.Texture('textures/flare.png', this.scene);
+    fireSystem.particleTexture = new BABYLON.Texture('assets/textures/flare.png', this.scene);
 
     // Where the particles come from
     fireSystem.emitter = fountain; // the starting object, the emitter

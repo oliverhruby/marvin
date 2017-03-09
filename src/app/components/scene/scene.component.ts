@@ -98,6 +98,13 @@ export class SceneComponent implements AfterViewInit {
     let marvin = new Marvin(scene, this.store);
     // let camera = new Camera(scene, canvas);
 
+    // Create the "God Rays" effect (volumetric light scattering)
+    let godrays = new BABYLON.VolumetricLightScatteringPostProcess(
+      'godrays', 1.0, camera, null, 100, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine, false);
+    godrays.mesh.position = new BABYLON.Vector3(-150, 150, 150);
+    godrays.mesh.scaling = new BABYLON.Vector3(350, 350, 350);
+    marvin.position = godrays.mesh.position;
+
     // import objects from a file
     BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon', scene, function (meshes) {
       }, null, function (sc, message, exception) { });
