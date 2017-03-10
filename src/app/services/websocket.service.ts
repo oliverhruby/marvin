@@ -12,12 +12,15 @@ export class WebSocketService {
     private websocket: any;
     private receivedMsg: any;
 
-    public GetInstanceStatus(): Observable<any> {
-        // dummy echo websocket service
-        this.websocket = new WebSocket('wss://echo.websocket.org/');
+    constructor () {
+        this.websocket = new WebSocket('ws://localhost:3000');
         this.websocket.onopen = (evt) => {
             this.websocket.send('Hello World');
         };
+    }
+
+    public GetInstanceStatus(): Observable<any> {
+        // dummy echo websocket service
 
         return Observable.create(observer => {
             this.websocket.onmessage = (evt) => {

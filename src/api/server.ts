@@ -5,11 +5,11 @@ import * as bodyParser from 'body-parser';
 import * as os from 'os';
 import * as path from 'path';
 import * as sqlite3 from 'sqlite3';
-import * as socketIo from 'socket.io';
+import * as ws from 'ws';
 
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
-import { RoomSocket } from './sockets';
+import { MessageSocket } from './sockets';
 
 /**
  * Backend server functionality wrapped as a class
@@ -17,7 +17,7 @@ import { RoomSocket } from './sockets';
 class Server {
   public app: any;
   private server: any;
-  private io: any;
+  private ws: any;
   private port: number;
   private root: string;
 
@@ -124,9 +124,13 @@ class Server {
    * Configure sockets
    */
   private sockets(): void {
-    // Get socket.io handle
-    this.io = socketIo(this.server);
-    let roomSocket = new RoomSocket(this.io);
+    let server = new ws.Server({server: this.server});
+    server.on('connection', ws => {
+      console.log('Socket: connection');
+      ws.on('message', message => {
+        console.log('Socket: message');
+      });
+    });
   }
 
   /**
@@ -143,7 +147,7 @@ class Server {
 
     // start listening on port
     this.server.on('listening', () => {
-      logger.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+      console.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
     });
   }
 }
