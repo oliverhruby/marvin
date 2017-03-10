@@ -1,0 +1,11 @@
+<div class="widget">
+  <div class="header">Scenes</div>
+  <div *ngFor="let scene of scenes | async">
+    <div>
+      <img src="" style="width:30px;height:20px;margin:3px;border: 1px solid lawngreen" />
+      <span style="text-transform: uppercase">{{scene.name}}</span><br>
+      <small>{{scene.description}}</small>
+    </div>
+    <button class="btn btn-default" (click)="load()">Load</button>
+  </div>
+</div>

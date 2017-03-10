@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { WidgetComponent } from '../widget/widget.component';
 import { WebSocketService } from 'app/services';
 
@@ -12,9 +13,12 @@ import { WebSocketService } from 'app/services';
 })
 export class ChatComponent extends WidgetComponent {
 
+  message: Observable<any>;
+
   constructor(
     private webSocketService: WebSocketService
   ) {
     super();
+    webSocketService.GetInstanceStatus().subscribe(data => alert(data));
   }
 }

@@ -1,0 +1,8 @@
+<div class="widget">
+  <div class="header">Users</div>
+  <div *ngFor="let user of users | async">
+    <img src="" style="width:30px;height:20px;margin:3px;border: 1px solid lawngreen" />
+    <span style="text-transform: uppercase">{{user.name}}</span><br>
+    <small>{{user.email}}</small>
+  </div>
+</div>

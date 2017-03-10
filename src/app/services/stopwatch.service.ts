@@ -21,19 +21,19 @@ export class StopwatchService {
     this.timer = Observable.timer(0, 1000);
   }
 
-  /** starts the timer */
+  // starts the timer
   start() {
     this.sub = this.timer.subscribe(t => this.store.dispatch({ type: STOPWATCH_TIME }));
     this.store.dispatch({ type: STOPWATCH_START });
   }
 
-  /** stops the timer */
+  // stops the timer
   stop() {
     this.sub.unsubscribe();
     this.store.dispatch({ type: STOPWATCH_STOP });
   }
 
-  /** resets the timer to 0 */
+  // resets the timer to 0
   reset() {
     this.store.dispatch({ type: STOPWATCH_RESET });
   }

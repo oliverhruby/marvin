@@ -17,6 +17,7 @@ import keyboardReducer, * as fromKeyboard from './reducers/keyboard';
 import laserReducer, * as fromLaser from './reducers/laser';
 import midiReducer, * as fromMidi from './reducers/midi';
 import mqttReducer, * as fromMqtt from './reducers/mqtt';
+import sceneReducer, * as fromScene from './reducers/scene';
 import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
 import userReducer, * as fromUser from './reducers/user';
 import vehicleReducer, * as fromVehicle from './reducers/vehicle';
@@ -56,12 +57,14 @@ import {
   MidiComponent,
   MosquittoComponent,
   SceneComponent,
+  ScenesComponent,
   SpeechComponent,
   SplashComponent,
   StateComponent,
   StopwatchComponent,
   SysinfoComponent,
   UserComponent,
+  UsersComponent,
   UserCameraComponent,
   VideoComponent
 } from './components';
@@ -83,6 +86,7 @@ import { HomeComponent } from './pages/home';
     MidiComponent,
     MosquittoComponent,
     SceneComponent,
+    ScenesComponent,
     SpeechComponent,
     SplashComponent,
     StateComponent,
@@ -90,6 +94,7 @@ import { HomeComponent } from './pages/home';
     SysinfoComponent,
     UserCameraComponent,
     UserComponent,
+    UsersComponent,
     VideoComponent
   ],
   imports: [
@@ -110,6 +115,7 @@ import { HomeComponent } from './pages/home';
         gyroscope: gyroscopeReducer,
         midi: midiReducer,
         mqtt: mqttReducer,
+        scene: sceneReducer,
         stopwatch: stopwatchReducer,
         user: userReducer,
         vehicle: vehicleReducer

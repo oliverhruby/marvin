@@ -4,6 +4,7 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 // state management
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
+import { SceneState } from 'app/reducers/scene';
 
 // scene objects
 import { Sector } from './objects/sector';
@@ -25,8 +26,9 @@ import { Fire } from './objects/fire';
   styleUrls: ['./scene.component.css']
 })
 export class SceneComponent implements AfterViewInit {
-  private _engine: BABYLON.Engine;
   private _canvas: HTMLCanvasElement;
+  private _engine: BABYLON.Engine;
+  private _scene: BABYLON.Scene;
 
   // get the element with the #mainCanvas on it
   @ViewChild('mainCanvas') mainCanvas: ElementRef;
@@ -45,6 +47,7 @@ export class SceneComponent implements AfterViewInit {
     // Now create a basic Babylon Scene object
     let scene = new BABYLON.Scene(engine);
     this._engine = engine;
+    this._scene = scene;
     // Change the scene background color to green.
     scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     // This creates and positions a free camera
@@ -105,9 +108,13 @@ export class SceneComponent implements AfterViewInit {
     godrays.mesh.scaling = new BABYLON.Vector3(350, 350, 350);
     marvin.position = godrays.mesh.position;
 
-    // import objects from a file
-    BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon', scene, function (meshes) {
-      }, null, function (sc, message, exception) { });
+    // example loading of scene based on the state
+    this.store.select<SceneState>('scene').subscribe(
+      () =>
+        // import objects from a file
+        BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon', this._scene, function (meshes) {
+        }, null, function (sc, message, exception) { })
+    );
 
     // scene.debugLayer.show();
 

@@ -111,11 +111,14 @@ class Server {
     sqlite3.verbose();
     let db = new sqlite3.Database(file);
     db.serialize(function () {
-      db.run('DROP TABLE scenes');
-      db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT)');
-      // tslint:disable-next-line:max-line-length
-      db.run('INSERT INTO scenes (id, name, description) VALUES (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\')');
-      db.run('INSERT INTO scenes (id, name, description) VALUES (2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\')');
+      db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT, file TEXT)');
+      db.run('INSERT INTO scenes (id, name, description, file) VALUES' +
+        ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\', \'marvin.babylon\')');
+      db.run('INSERT INTO scenes (id, name, description, file) VALUES ' +
+        '(2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\', \'robot.babylon\')');
+      db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT)');
+      db.run('INSERT INTO users (id, name, email) VALUES (1, \'Oliver Hruby\', \'oliverhruby@gmail.com\')');
+      db.run('INSERT INTO users (id, name, email) VALUES (2, \'Joe Example\', \'joe.example@gmail.com\')');
     });
     db.close();
   }
