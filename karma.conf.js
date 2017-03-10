@@ -15,9 +15,9 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-remap-istanbul'),
       require('karma-jasmine-html-reporter'),
-      require('@angular/cli/plugins/karma')
+      require('karma-coverage-istanbul-reporter'),
+      require('@angular/cli/plugins/karma') 
     ],
 
     // list of files / patterns to load in the browser
@@ -39,12 +39,10 @@ module.exports = function (config) {
       'text/x-typescript': ['ts', 'tsx']
     },
 
-    remapIstanbulReporter: {
-      reports: {
-        html: 'coverage',
-        lcovonly: './coverage/coverage.lcov'
-      }
-    },
+    coverageIstanbulReporter: {
+      reports: [ 'html', 'lcovonly' ],
+      fixWebpackSourcePaths: true
+    }, 
 
     angularCli: {
       config: './.angular-cli.json',
@@ -55,8 +53,8 @@ module.exports = function (config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: config.angularCli && config.angularCli.codeCoverage
-      ? ['progress', 'karma-remap-istanbul']
-      : ['progress', 'kjhtml'],
+              ? ['progress', 'coverage-istanbul']
+              : ['progress', 'kjhtml'], 
 
     // web server port
     port: 9876,

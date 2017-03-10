@@ -1,16 +1,10 @@
-FROM node:latest
+FROM mhart/alpine-node
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /src
+ADD . .
 
-# Install app dependencies
-COPY package.json /usr/src/app/
 RUN npm install
-
-# Bundle app source
-COPY . /usr/src/app
 
 EXPOSE 3000
 
-CMD [ "npm", "start" ]
+CMD [ "node", "src/api/server.ts" ]
