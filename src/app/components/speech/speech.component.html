@@ -4,6 +4,6 @@
   <select>
     <option *ngFor="let voice of voices"></option>
   </select>
-  <input type="text" [(ngModel)]="text"><button class="btn btn-default" (click)="submit()">Submit</button>
+  <input type="text" class="form-control" [(ngModel)]="text"><button class="btn btn-default" (click)="submit()">Submit</button>
   <div>{{answer}}</div>
 </div>

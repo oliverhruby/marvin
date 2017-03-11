@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -17,9 +18,9 @@ div {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-::-webkit-scrollbar-thumb{
-   background-color: rgba(0,0,0,0);
-} 
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0);
+}
 
 .widget {
   width: 320px;
@@ -41,56 +42,67 @@ div {
   text-transform: uppercase;
 }
 
+
 /**
  * START - Hyperlinks
  */
 
+
 /* unvisited link */
+
 a:link {
-    color: lightgreen;
+  color: lightgreen;
 }
+
 
 /* visited link */
+
 a:visited {
-    color: lightgreen;
+  color: lightgreen;
 }
+
 
 /* mouse over link */
+
 a:hover {
-    color: white;
+  color: white;
 }
 
+
 /* selected link */
+
 a:active {
-    color: white;
+  color: white;
 }
+
 
 /**
  * END - Hyperlinks
  */
 
 input {
-    background: rgba(0, 0, 0, .5);
-    border: 1px solid lawngreen;
-    color: lawngreen;
-    padding: 3px;
+  background: rgba(0, 0, 0, .5);
+  border: 1px solid lawngreen;
+  color: lawngreen;
+  padding: 3px;
 }
+
 
 /**
  * Bootstrap customization
  */
-.btn {
-	border-radius: 0px;
-  background-color: rgba(0, 80, 0, .5);
-  border: 1px solid lawngreen;
-  color: lawngreen;
-  text-transform: uppercase;
-}
 
-pre {
-	border-radius: 0px;
-  background-color: rgba(0, 0, 0, 0);
+.btn,
+pre,
+.form-control {
+  border-radius: 0px;
   border: 1px solid lawngreen;
   color: lawngreen;
   font-size: 11px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.btn {
+  text-transform: uppercase;
+  background-color: rgba(0, 80, 0, .5);
 }
