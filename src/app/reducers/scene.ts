@@ -1,6 +1,6 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const SCENE_LOAD: string = 'SCENE_LOAD';
+export const SCENE_UPDATE: string = 'SCENE_UPDATE';
 
 export interface SceneState {
   loaded: boolean;
@@ -14,10 +14,11 @@ export const initialState: SceneState = {
 
 export default function (state = initialState, action: Action): SceneState {
   switch (action.type) {
-    case SCENE_LOAD:
+    case SCENE_UPDATE:
       return Object.assign({}, state, {
         loaded: true,
-        name: 'test'
+        name: 'test',
+        scene: action.payload
       });
     default:
       return state;

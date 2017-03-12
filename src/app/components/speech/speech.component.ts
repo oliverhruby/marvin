@@ -33,7 +33,7 @@ export class SpeechComponent extends WidgetComponent implements OnInit {
       let engine = new HTML5SpeechEngine(this.zone);
       engine.toggle();
       engine.toRx().values.subscribe(message =>
-        this.store.dispatch({ type: message.type == 'hint' ? 'COMMAND_TAG' : 'COMMAND_SEND', payload: message.value })
+        this.store.dispatch({ type: message.type === 'hint' ? 'COMMAND_TAG' : 'COMMAND_SEND', payload: message.value })
       );
     } catch (ex) {
       console.log('Speech engine not available.');

@@ -4,7 +4,7 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 // state management
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { SceneState } from 'app/reducers/scene';
+import { SceneState, SCENE_UPDATE } from 'app/reducers/scene';
 
 // scene objects
 import { Sector } from './objects/sector';
@@ -115,6 +115,12 @@ export class SceneComponent implements AfterViewInit {
         BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon', this._scene, function (meshes) {
         }, null, function (sc, message, exception) { })
     );
+
+    let postProcess = new BABYLON.BlackAndWhitePostProcess('bandw', 1.0, camera, null, engine, true);
+
+    // Persisting the scene
+    // let serializedScene = BABYLON.SceneSerializer.Serialize(scene);
+    // this.store.dispatch({ type: SCENE_UPDATE, payload: serializedScene });
 
     // scene.debugLayer.show();
 

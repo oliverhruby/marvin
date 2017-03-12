@@ -5,7 +5,7 @@ export default class MessageService extends Repository<Message> {
 
   retrieveAll(): Promise<Message[]> {
     return new Promise((resolve, reject) => {
-      this.db.all('SELECT * FROM messages', function(err, rows) {
+      this.db.all('SELECT * FROM messages', function(err: any, rows: any) {
         resolve(rows);
       });
     });

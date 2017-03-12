@@ -13,6 +13,7 @@ import { WebSocketService } from 'app/services';
 })
 export class ChatComponent extends WidgetComponent {
 
+  text: string;
   message: Observable<any>;
 
   constructor(
@@ -20,5 +21,10 @@ export class ChatComponent extends WidgetComponent {
   ) {
     super();
     webSocketService.GetInstanceStatus().subscribe(data => alert(data));
+  }
+
+  submit() {
+    this.webSocketService.send(this.text);
+    this.text = '';
   }
 }

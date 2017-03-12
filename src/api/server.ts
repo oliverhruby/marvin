@@ -2,11 +2,12 @@ import * as express from 'express';
 import * as http from 'http';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
+import * as chalk from 'chalk';
 import * as os from 'os';
 import * as path from 'path';
 import * as sqlite3 from 'sqlite3';
 import * as ws from 'ws';
-
+import { Log } from './services/log';
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
 import { MessageSocket } from './sockets';
@@ -42,8 +43,6 @@ class Server {
 
     // Start listening
     this.listen();
-
-    console.log('Server started!');
   }
 
   /**
@@ -111,14 +110,19 @@ class Server {
     sqlite3.verbose();
     let db = new sqlite3.Database(file);
     db.serialize(function () {
+
+      db.run('DROP TABLE IF EXISTS scenes');
       db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT, file TEXT)');
       db.run('INSERT INTO scenes (id, name, description, file) VALUES' +
         ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\', \'marvin.babylon\')');
       db.run('INSERT INTO scenes (id, name, description, file) VALUES ' +
         '(2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\', \'robot.babylon\')');
+
+      db.run('DROP TABLE IF EXISTS users');
       db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT)');
       db.run('INSERT INTO users (id, name, email) VALUES (1, \'Oliver Hruby\', \'oliverhruby@gmail.com\')');
       db.run('INSERT INTO users (id, name, email) VALUES (2, \'Joe Example\', \'joe.example@gmail.com\')');
+
     });
     db.close();
   }
@@ -129,9 +133,9 @@ class Server {
   private sockets(): void {
     let server = new ws.Server({server: this.server});
     server.on('connection', ws => {
-      console.log('Socket: connection');
+      Log.info('SOCKET', 'Socket connection');
       ws.on('message', message => {
-        console.log('Socket: message');
+        Log.info('SOCKET', 'Socket message: ' + chalk.gray(message));
       });
     });
   }
@@ -145,12 +149,12 @@ class Server {
 
     // add error handler
     this.server.on('error', (error: any) => {
-      console.error(error);
+      Log.error('SERVER', error);
     });
 
     // start listening on port
     this.server.on('listening', () => {
-      console.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+      Log.info('SERVER', 'Listening on ' + chalk.gray(`http://localhost:${this.port}`));
     });
   }
 }
