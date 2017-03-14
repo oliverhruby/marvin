@@ -19,6 +19,7 @@ Technologies used:
 * [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) - vector graphics using tag markup can be easily used to bind to real time data and animate
 * [MQTT](http://mqtt.org) - MQTT is a machine-to-machine ("Internet of Things") connectivity protocol, used for remote control and receiving sensor data
 * [WebSocket](https://en.wikipedia.org/wiki/WebSocket) - communication protocol (for MQTT over Websockets)
+* [JSON Web Token](https://jwt.io/) - JSON Web Tokens are an open, industry standard method for representing claims securely between two parties.
 * [Node-RED](https://nodered.org) - an instance on Node-RED could be optionally used with this application for "drag-and-drop plumbing" to control anything
 
 Application architecture - Client
@@ -32,8 +33,10 @@ Application architecture - Client
 Application architecture - Server
 * [Node.js](https://nodejs.org/en) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 * [Express](http://expressjs.com) - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
-* [Sequelize](http://docs.sequelizejs.com/en/v3) - Sequelize is a promise-based ORM for Node.js and io.js. It supports the dialects PostgreSQL, MySQL, MariaDB, SQLite and MSSQL and features solid transaction support, relations, read replication and more.
 * [SQLite](https://www.sqlite.org) - SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.
+* [Bookshelf.js](https://bookshelfjs.org) - Bookshelf is a JavaScript ORM for Node.js, built on the Knex SQL query builder.
+* [Knex.js](https://knexjs.org) - A SQL Query Builder for Javascript
+* [Auth0](https://auth0.com) - Single sign on & token based authentication provider
 
 
 Tools used:
