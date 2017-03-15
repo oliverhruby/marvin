@@ -7,6 +7,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as sqlite3 from 'sqlite3';
 import * as ws from 'ws';
+import * as jwt from 'jsonwebtoken';
 import { Log } from './services/log';
 import { scenesRouter } from './routes/scenes';
 import { usersRouter } from './routes/users';
@@ -134,6 +135,18 @@ class Server {
     let server = new ws.Server({server: this.server});
     server.on('connection', ws => {
       Log.info('SOCKET', 'Socket connection');
+
+      // START: Testing tokens -----------
+      let token = jwt.sign({name: 'iostreamer'}, 'secret-key', {
+        expiresIn : 15 * 24 * 60 * 60 * 1000 // 15 days
+      });
+      Log.info('TOKEN', 'Signed: ' + chalk.gray(token));
+
+      jwt.verify(token, 'secret-key', function(err, decoded) {
+        Log.info('TOKEN', 'Verified: ' + chalk.gray(decoded.name));
+      });
+      // END: Testing tokens -------------
+
       ws.on('message', message => {
         Log.info('SOCKET', 'Socket message: ' + chalk.gray(message));
       });
