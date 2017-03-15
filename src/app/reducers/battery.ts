@@ -1,6 +1,6 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const BATTERY_UPDATE: string = 'BATTERY_UPDATE';
+export const BATTERY_UPDATE = 'BATTERY_UPDATE';
 
 export interface BatteryState {
   charging: boolean;

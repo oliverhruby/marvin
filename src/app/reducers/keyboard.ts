@@ -1,11 +1,11 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const KEYBOARD_DOWN: string = 'KEYBOARD_DOWN';
-export const KEYBOARD_UP: string = 'KEYBOARD_UP';
+export const KEYBOARD_DOWN = 'KEYBOARD_DOWN';
+export const KEYBOARD_UP = 'KEYBOARD_UP';
 
 export interface KeyboardState {
   pressed: boolean;
-  keys: any
+  keys: any;
 };
 
 export const initialState: KeyboardState = {

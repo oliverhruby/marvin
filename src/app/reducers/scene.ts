@@ -1,6 +1,6 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const SCENE_UPDATE: string = 'SCENE_UPDATE';
+export const SCENE_UPDATE = 'SCENE_UPDATE';
 
 export interface SceneState {
   loaded: boolean;

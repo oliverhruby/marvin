@@ -34,7 +34,7 @@ Application architecture - Server
 * [Node.js](https://nodejs.org/en) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 * [Express](http://expressjs.com) - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 * [SQLite](https://www.sqlite.org) - SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.
-* [Bookshelf.js](https://bookshelfjs.org) - Bookshelf is a JavaScript ORM for Node.js, built on the Knex SQL query builder.
+* [Bookshelf.js](http://bookshelfjs.org) - Bookshelf is a JavaScript ORM for Node.js, built on the Knex SQL query builder.
 * [Knex.js](https://knexjs.org) - A SQL Query Builder for Javascript
 * [Auth0](https://auth0.com) - Single sign on & token based authentication provider
 

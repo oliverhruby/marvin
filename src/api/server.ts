@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as http from 'http';
+import * as url from 'url';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as chalk from 'chalk';
@@ -21,6 +22,7 @@ class Server {
   private ws: any;
   private port: number;
   private root: string;
+  private clients: number;
 
   // Bootstrap the application.
   public static bootstrap(): Server {
@@ -43,6 +45,9 @@ class Server {
 
     // Start listening
     this.listen();
+
+    // loged in users
+    this.clients = 0;
   }
 
   /**
@@ -113,10 +118,12 @@ class Server {
 
       db.run('DROP TABLE IF EXISTS scenes');
       db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT, file TEXT)');
+      // tslint:disable-next-line:max-line-length
       db.run('INSERT INTO scenes (id, name, description, file) VALUES' +
-        ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle\', \'marvin.babylon\')');
+        ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle. Each person connected to this scene will be given a vehicle.\', \'marvin.babylon\')');
+      // tslint:disable-next-line:max-line-length
       db.run('INSERT INTO scenes (id, name, description, file) VALUES ' +
-        '(2, \'Robot Arm\', \'Visualisation of an example industrial manipulator\', \'robot.babylon\')');
+        '(2, \'Robot Arm\', \'Ech person connected to this scene will be given a robotic manipulator and a task co complete. \', \'robot.babylon\')');
 
       db.run('DROP TABLE IF EXISTS users');
       db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT)');
@@ -133,7 +140,8 @@ class Server {
   private sockets(): void {
     let server = new ws.Server({server: this.server});
     server.on('connection', ws => {
-      Log.info('SOCKET', 'Socket connection');
+      const location = url.parse(ws.upgradeReq.url, true);
+      Log.info('SOCKET', 'Socket connection with token ' + chalk.gray(location.query.access_token));
       ws.on('message', message => {
         Log.info('SOCKET', 'Socket message: ' + chalk.gray(message));
       });

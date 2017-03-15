@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Cookie } from 'ng2-cookies/src';
 
 /**
  * Home page
@@ -12,10 +11,6 @@ import { Cookie } from 'ng2-cookies/src';
 export class HomeComponent {
 
   constructor() {
-  }
-
-  ngOnInit() {
-    Cookie.set('marvin_test', 'Test cookie');
   }
 
 }

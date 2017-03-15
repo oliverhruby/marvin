@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { State } from 'app/reducers';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-splash',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class SplashComponent {
 
-  constructor() {
+  constructor(private store: Store<State>) {
 
   }
 

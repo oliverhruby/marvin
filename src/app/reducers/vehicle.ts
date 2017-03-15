@@ -1,6 +1,6 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const VEHICLE_UPDATE: string = 'VEHICLE_UPDATE';
+export const VEHICLE_UPDATE = 'VEHICLE_UPDATE';
 
 export interface VehicleState {
   direction: number;
@@ -8,7 +8,7 @@ export interface VehicleState {
     left: boolean;
     right: boolean;
   };
-  position: [number,number,number],
+  position: [number, number, number],
   speed: number;
   voltage: number;
 };
@@ -19,7 +19,7 @@ export const initialState: VehicleState = {
     left: true,
     right: false
   },
-  position: [0,0,0],
+  position: [0, 0, 0],
   speed: 0,
   voltage: 0
 };

@@ -5,6 +5,7 @@ export * from './chart';
 export * from './gamepad';
 export * from './gyroscope';
 export * from './keyboard';
+export * from './home';
 export * from './logbrowser';
 export * from './midi';
 export * from './mosquitto';

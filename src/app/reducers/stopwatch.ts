@@ -1,9 +1,9 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const STOPWATCH_START: string = 'STOPWATCH_START';
-export const STOPWATCH_STOP: string = 'STOPWATCH_STOP';
-export const STOPWATCH_RESET: string = 'STOPWATCH_RESET';
-export const STOPWATCH_TIME: string = 'STOPWATCH_TIME';
+export const STOPWATCH_START = 'STOPWATCH_START';
+export const STOPWATCH_STOP = 'STOPWATCH_STOP';
+export const STOPWATCH_RESET = 'STOPWATCH_RESET';
+export const STOPWATCH_TIME = 'STOPWATCH_TIME';
 
 export interface StopwatchState {
   time: number;

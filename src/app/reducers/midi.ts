@@ -1,6 +1,6 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const MIDI_UPDATE: string = 'MIDI_UPDATE';
+export const MIDI_UPDATE = 'MIDI_UPDATE';
 
 export interface MidiState {
   isConnected: boolean;

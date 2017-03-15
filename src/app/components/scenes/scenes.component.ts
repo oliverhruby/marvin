@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { WidgetComponent } from '../widget/widget.component';
 import { State } from 'app/reducers';
 import { ApiService } from 'app/services/api.service';
+import { go } from '@ngrx/router-store';
 
 @Component({
   selector: 'app-scenes',
@@ -15,12 +16,16 @@ export class ScenesComponent extends WidgetComponent {
 
   scenes: Observable<Scene[]>;
 
-  constructor (apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private store: Store<State>
+  ) {
     super();
     this.scenes = apiService.getAllScenes();
   }
 
   load() {
-    alert('loading');
+    this.store.dispatch(go('/scene/1'));
   }
+
 }
