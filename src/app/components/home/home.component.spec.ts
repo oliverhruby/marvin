@@ -1,10 +1,23 @@
 /* tslint:disable:no-unused-variable */
+import { HttpModule, JsonpModule } from '@angular/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { HomeComponent } from './home.component';
-import { SplashComponent } from 'app/components';
+import userReducer, * as fromUser from 'app/reducers/user';
+
+import {
+  ApiService,
+  AuthService
+} from 'app/services';
+
+import {
+  HomeComponent,
+  ScenesComponent,
+  SplashComponent,
+  UserComponent
+} from 'app/components';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,8 +25,19 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, SplashComponent],
-      imports: []
+      declarations: [ HomeComponent, ScenesComponent, SplashComponent, UserComponent ],
+      imports: [
+        HttpModule, JsonpModule,
+        StoreModule.provideStore(
+          {
+            user: userReducer
+          }
+        )
+      ],
+      providers: [
+        AuthService,
+        ApiService
+      ]
     })
       .compileComponents();
   }));

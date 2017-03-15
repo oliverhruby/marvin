@@ -5,9 +5,14 @@ import { DragulaModule } from 'ng2-dragula';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
+import { routes } from './app.routes';
+
 // state management
+import { routerReducer, RouterStoreModule } from '@ngrx/router-store';
+// TODO: do we need this "* as xxxx" ?
 import batteryReducer, * as fromBattery from './reducers/battery';
 import commandReducer, * as fromCommand from './reducers/command';
 import counterReducer, * as fromCounter from './reducers/counter';
@@ -54,6 +59,7 @@ import {
   GyroscopeComponent,
   KeyboardComponent,
   LogBrowserComponent,
+  HomeComponent,
   MidiComponent,
   MosquittoComponent,
   SceneComponent,
@@ -68,8 +74,6 @@ import {
   UserCameraComponent,
   VideoComponent
 } from './components';
-
-import { HomeComponent } from './pages/home';
 
 @NgModule({
   declarations: [
@@ -105,6 +109,21 @@ import { HomeComponent } from './pages/home';
     FormsModule,
     HttpModule,
     JsonpModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+
+    /*
+     * @ngrx/router-store keeps router state up-to-date in the store and uses
+     * the store as the single source of truth for the router's state.
+     */
+    RouterStoreModule.connectRouter(),
+
+    /**
+     * StoreModule.provideStore is imported once in the root module, accepting a reducer
+     * function or object map of reducer functions. If passed an object of
+     * reducers, combineReducers will be run creating your application
+     * meta-reducer. This returns all providers for an @ngrx/store
+     * based application.
+     */
     StoreModule.provideStore(
       {
         battery: batteryReducer,
@@ -115,10 +134,15 @@ import { HomeComponent } from './pages/home';
         gyroscope: gyroscopeReducer,
         midi: midiReducer,
         mqtt: mqttReducer,
+        router: routerReducer,
         scene: sceneReducer,
         stopwatch: stopwatchReducer,
         user: userReducer,
         vehicle: vehicleReducer
+      }, {
+        router: {
+         path: window.location.pathname + window.location.search
+        }
       }
     )
   ],

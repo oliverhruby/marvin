@@ -1,7 +1,7 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const MQTT_TOPIC: string = 'MQTT_TOPIC';
-export const MQTT_STATUS: string = 'MQTT_STATUS';
+export const MQTT_TOPIC = 'MQTT_TOPIC';
+export const MQTT_STATUS = 'MQTT_STATUS';
 
 export interface MqttState {
   connected: boolean;

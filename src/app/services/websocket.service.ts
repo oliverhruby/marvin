@@ -13,7 +13,7 @@ export class WebSocketService {
   private receivedMsg: any;
 
   constructor() {
-    this.websocket = new WebSocket('ws://localhost:3000');
+    this.websocket = new WebSocket('ws://localhost:3000/?access_token=secret_access_token');
     this.websocket.onopen = (evt) => {
       this.websocket.send('Hello World');
     };

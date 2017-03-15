@@ -1,7 +1,7 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const USER_LOGIN: string = 'USER_LOGIN';
-export const USER_LOGOUT: string = 'USER_LOGOUT';
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';
 
 export interface UserState {
   authenticated: boolean;

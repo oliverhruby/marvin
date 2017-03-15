@@ -1,6 +1,6 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const LASER_UPDATE: string = 'LASER_UPDATE';
+export const LASER_UPDATE = 'LASER_UPDATE';
 
 export interface LaserState {
   angle: number;

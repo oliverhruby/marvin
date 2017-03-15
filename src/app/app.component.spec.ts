@@ -8,9 +8,20 @@ import { TestBed, async } from '@angular/core/testing';
 
 // services
 import {
-  ConfigService, //GamepadService,
-  LoggerService, SoundService, SpeechService, SpeechRecognitionService,
-  SpeechSynthesisService, StopwatchService, WitAiService
+  BatteryService,
+  ConfigService,
+  GamepadService,
+  GyroscopeService,
+  LoggerService,
+  KeyboardService,
+  MidiService,
+  SoundService,
+  SpeechService,
+  SpeechRecognitionService,
+  SpeechSynthesisService,
+  StopwatchService,
+  WebSocketService,
+  WitAiService
 } from './services';
 
 // reducers
@@ -25,20 +36,27 @@ import { AppComponent } from './app.component';
 import {
   AudioAnalyzerComponent,
   BatteryComponent,
+  ChatComponent,
+  ChartComponent,
+  GamepadComponent,
   GyroscopeComponent,
+  KeyboardComponent,
   LogBrowserComponent,
+  HomeComponent,
+  MidiComponent,
+  MosquittoComponent,
   SceneComponent,
+  ScenesComponent,
   SpeechComponent,
   SplashComponent,
   StateComponent,
   StopwatchComponent,
+  SysinfoComponent,
   UserComponent,
+  UsersComponent,
   UserCameraComponent,
-  VideoComponent,
-  WidgetComponent
+  VideoComponent
 } from './components';
-
-import { HomeComponent } from './pages/home';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -47,18 +65,26 @@ describe('AppComponent', () => {
         AppComponent,
         AudioAnalyzerComponent,
         BatteryComponent,
+        ChatComponent,
+        ChartComponent,
+        GamepadComponent,
         GyroscopeComponent,
-        HomeComponent,
+        KeyboardComponent,
         LogBrowserComponent,
+        HomeComponent,
+        MidiComponent,
+        MosquittoComponent,
         SceneComponent,
+        ScenesComponent,
         SpeechComponent,
         SplashComponent,
         StateComponent,
         StopwatchComponent,
-        UserCameraComponent,
+        SysinfoComponent,
         UserComponent,
-        VideoComponent,
-        WidgetComponent
+        UsersComponent,
+        UserCameraComponent,
+        VideoComponent
       ],
       imports: [
         BrowserModule, FormsModule, HttpModule, JsonpModule,

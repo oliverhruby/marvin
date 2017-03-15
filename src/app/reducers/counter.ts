@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 
-export const INCREMENT: string = 'INCREMENT';
-export const DECREMENT: string = 'DECREMENT';
-export const RESET: string = 'RESET';
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
+export const RESET = 'RESET';
 
 export interface CounterState {
   value: number;

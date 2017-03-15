@@ -7,7 +7,7 @@ import {
   GamepadService,
   GyroscopeService,
   LoggerService,
-  KeyboardService,  
+  KeyboardService,
   MidiService,
   SoundService,
   SpeechService,

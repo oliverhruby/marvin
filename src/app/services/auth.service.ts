@@ -21,7 +21,7 @@ export class AuthService {
   constructor(private store: Store<State>) {
 
     // Add callback for lock `authenticated` event
-    this.lock.on("authenticated", (authResult) => {
+    this.lock.on('authenticated', (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
 
       this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {

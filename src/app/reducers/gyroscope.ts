@@ -1,7 +1,7 @@
 import { Action, ActionReducer } from '@ngrx/store';
 
-export const GYROSCOPE_UPDATE_ORIENTATION: string = 'GYROSCOPE_UPDATE_ORIENTATION';
-export const GYROSCOPE_UPDATE_MOTION: string = 'GYROSCOPE_UPDATE_MOTION';
+export const GYROSCOPE_UPDATE_ORIENTATION = 'GYROSCOPE_UPDATE_ORIENTATION';
+export const GYROSCOPE_UPDATE_MOTION = 'GYROSCOPE_UPDATE_MOTION';
 
 export interface GyroscopeState {
   deviceOrientation: {
