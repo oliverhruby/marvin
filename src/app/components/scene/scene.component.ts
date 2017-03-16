@@ -34,7 +34,7 @@ export class SceneComponent implements AfterViewInit {
   @ViewChild('mainCanvas') mainCanvas: ElementRef;
 
   constructor(
-    private store: Store<State>
+    private store: Store < State >
   ) {
 
   }
@@ -43,7 +43,10 @@ export class SceneComponent implements AfterViewInit {
     // get the reference to the rendering canvas
     let canvas: HTMLCanvasElement = this.mainCanvas.nativeElement;
     // Load the BABYLON 3D engine
-    let engine = new BABYLON.Engine(canvas, true);
+    // TODO: preserveDrawingBuffer should kill the performance, is there any other way to make a screenshot?
+    let engine = new BABYLON.Engine(canvas, true, {
+      preserveDrawingBuffer: true
+    });
     // Now create a basic Babylon Scene object
     let scene = new BABYLON.Scene(engine);
     this._engine = engine;
@@ -109,18 +112,23 @@ export class SceneComponent implements AfterViewInit {
     marvin.position = godrays.mesh.position;
 
     // example loading of scene based on the state
-    this.store.select<SceneState>('scene').subscribe(
+    this.store.select < SceneState > ('scene').subscribe(
       () =>
-        // import objects from a file
-        BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon', this._scene, function (meshes) {
-        }, null, function (sc, message, exception) { })
+      // import objects from a file
+      BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon',
+        this._scene, function (meshes) {}, null, function (sc, message, exception) {})
     );
 
-    let postProcess = new BABYLON.BlackAndWhitePostProcess('bandw', 1.0, camera, null, engine, true);
+    // post processing
+    // let postProcess1 = new BABYLON.BlackAndWhitePostProcess('bandw', 1.0, camera, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine);
+    // let postProcess2 = new BABYLON.FxaaPostProcess('fxaa', 1.0, camera, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine);
 
     // Persisting the scene
-    // let serializedScene = BABYLON.SceneSerializer.Serialize(scene);
-    // this.store.dispatch({ type: SCENE_UPDATE, payload: serializedScene });
+    let serializedScene = BABYLON.SceneSerializer.Serialize(scene);
+    this.store.dispatch({
+      type: SCENE_UPDATE,
+      payload: serializedScene
+    });
 
     // scene.debugLayer.show();
 

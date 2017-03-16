@@ -149,6 +149,14 @@ export class Marvin {
       if (evt.keyCode === 76) { // l (lights front)
         me.toggleLights();
       }
+      if (evt.keyCode === 88) { // x (screenshot)
+        BABYLON.Tools.CreateScreenshot(me.scene.getEngine(), me.scene.cameras[0], { width: 640, height: 480 },
+          function (data) {
+            window.open(data, '_blank');
+          }
+        );
+      }
+
     };
 
     // On key up, reset the movement

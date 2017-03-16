@@ -24,6 +24,7 @@ class Server {
   private port: number;
   private root: string;
   private clients: number;
+  private usersConnected: number;
 
   // Bootstrap the application.
   public static bootstrap(): Server {
@@ -31,6 +32,8 @@ class Server {
   }
 
   constructor() {
+    this.usersConnected = 0;
+
     // Create expressjs application
     this.app = express();
     this.server = http.createServer(this.app);
@@ -100,6 +103,10 @@ class Server {
         '}');
     });
 
+    this.app.get('/api/usersConnected', (req: Request, resp: Response) => {
+      resp.send(this.usersConnected.toString());
+    });
+
     // Catch all other routes and return the index file
     this.app.get('*', (req: Request, res: Response) => {
       res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
@@ -124,7 +131,7 @@ class Server {
         ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle. Each person connected to this scene will be given a vehicle.\', \'marvin.babylon\')');
       // tslint:disable-next-line:max-line-length
       db.run('INSERT INTO scenes (id, name, description, file) VALUES ' +
-        '(2, \'Robot Arm\', \'Ech person connected to this scene will be given a robotic manipulator and a task co complete. \', \'robot.babylon\')');
+        '(2, \'Robot Arm\', \'Ech person connected to this scene will be given a robotic manipulator and a task to complete. \', \'robot.babylon\')');
 
       db.run('DROP TABLE IF EXISTS users');
       db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT)');
@@ -141,6 +148,7 @@ class Server {
   private sockets(): void {
     let server = new ws.Server({server: this.server});
     server.on('connection', ws => {
+      this.usersConnected++;
       const location = url.parse(ws.upgradeReq.url, true);
       Log.info('SOCKET', 'Socket connection with token ' + chalk.gray(location.query.access_token));
 
@@ -158,7 +166,14 @@ class Server {
       ws.on('message', message => {
         Log.info('SOCKET', 'Socket message: ' + chalk.gray(message));
       });
+
+      let me = this;
+      ws.on('close', function(reasonCode, description) {
+        me.usersConnected--;
+        Log.info('SOCKET', 'Peer disconnected.');
+      });
     });
+
   }
 
   /**

@@ -11,7 +11,7 @@ export class AuthService {
 
   authOptions = {
     auth: {
-      redirect: true // TODO: test behavior with redirect false
+      redirect: false // TODO: test behavior with redirect false
     }
   };
 

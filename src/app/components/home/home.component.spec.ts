@@ -1,3 +1,4 @@
+import { SysinfoComponent } from './../sysinfo/sysinfo.component';
 /* tslint:disable:no-unused-variable */
 import { HttpModule, JsonpModule } from '@angular/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -16,6 +17,7 @@ import {
   HomeComponent,
   ScenesComponent,
   SplashComponent,
+  SysinfoComponent,
   UserComponent
 } from 'app/components';
 
@@ -25,7 +27,13 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent, ScenesComponent, SplashComponent, UserComponent ],
+      declarations: [
+        HomeComponent,
+        ScenesComponent,
+        SplashComponent,
+        SysinfoComponent,
+        UserComponent
+      ],
       imports: [
         HttpModule, JsonpModule,
         StoreModule.provideStore(
