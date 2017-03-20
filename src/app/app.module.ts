@@ -7,7 +7,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-
+import { MomentModule } from 'angular2-moment';
 import { routes } from './app.routes';
 
 // state management
@@ -109,6 +109,7 @@ import {
     FormsModule,
     HttpModule,
     JsonpModule,
+    MomentModule,
     RouterModule.forRoot(routes, { useHash: true }),
 
     /*

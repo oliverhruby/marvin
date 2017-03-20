@@ -174,15 +174,15 @@ export class Marvin {
     }]);
 
     // create a camera, limit to not go under ground, view at 0 ()
-    // let vehicleCam = new BABYLON.ArcRotateCamera("VehicleCam", Math.PI, 0.8, 100, new BABYLON.Vector3(0, 0, 0), this.scene);
-    // vehicleCam.upperBetaLimit = Math.PI / 2;
-    // vehicleCam.setTarget(BABYLON.Vector3.Zero());
-    // // view as a small overlay window
-    // vehicleCam.viewport = new BABYLON.Viewport(0.05, 0.05, 0.15, 0.15);
-    // // fix it to the body
-    // vehicleCam.parent = body;
-    // // add to the scene
-    // this.scene.activeCameras.push(vehicleCam);
+    let vehicleCam = new BABYLON.ArcRotateCamera('VehicleCam', Math.PI, Math.PI / 2, 10, new BABYLON.Vector3(20, 0.5, 0), this.scene);
+    vehicleCam.upperBetaLimit = Math.PI / 2;
+    vehicleCam.setTarget(new BABYLON.Vector3(21, 0.5, 0));
+    // view as a small overlay window
+    vehicleCam.viewport = new BABYLON.Viewport(0.03, 0.04, 0.17, 0.17);
+    // fix it to the body
+    vehicleCam.parent = body;
+    // add to the scene
+    this.scene.activeCameras.push(vehicleCam);
 
     // render loop
     this.scene.registerBeforeRender(function () {

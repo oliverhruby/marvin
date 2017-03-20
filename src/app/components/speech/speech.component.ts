@@ -24,6 +24,7 @@ export class SpeechComponent extends WidgetComponent implements OnInit {
     private speechSynthesisService: SpeechSynthesisService
   ) {
     super();
+    this.store.select<CommandState>('command').subscribe((data) => this.text = data.command);
   }
 
   ngOnInit() {

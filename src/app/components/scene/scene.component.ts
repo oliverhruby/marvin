@@ -53,11 +53,13 @@ export class SceneComponent implements AfterViewInit {
     this._scene = scene;
     // Change the scene background color to green.
     scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+
     // This creates and positions a free camera
     let camera = new BABYLON.ArcRotateCamera('ArcRotateCamera', 3, 1.2, 100, new BABYLON.Vector3(0, 0, 0), scene);
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
     // This attaches the camera to the canvas
+    scene.activeCameras.push(camera);
     camera.attachControl(canvas, false);
 
     /*
@@ -102,14 +104,15 @@ export class SceneComponent implements AfterViewInit {
     let axis = new Axis(scene);
     let fire = new Fire(scene);
     let marvin = new Marvin(scene, this.store);
+
     // let camera = new Camera(scene, canvas);
 
     // Create the "God Rays" effect (volumetric light scattering)
-    let godrays = new BABYLON.VolumetricLightScatteringPostProcess(
-      'godrays', 1.0, camera, null, 100, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine, false);
-    godrays.mesh.position = new BABYLON.Vector3(-150, 150, 150);
-    godrays.mesh.scaling = new BABYLON.Vector3(350, 350, 350);
-    marvin.position = godrays.mesh.position;
+    // let godrays = new BABYLON.VolumetricLightScatteringPostProcess(
+    //   'godrays', 1.0, camera, null, 100, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine, false);
+    // godrays.mesh.position = new BABYLON.Vector3(-150, 150, 150);
+    // godrays.mesh.scaling = new BABYLON.Vector3(350, 350, 350);
+    // marvin.position = godrays.mesh.position;
 
     // example loading of scene based on the state
     this.store.select < SceneState > ('scene').subscribe(

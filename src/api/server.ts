@@ -131,7 +131,7 @@ class Server {
         ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle. Each person connected to this scene will be given a vehicle.\', \'marvin.babylon\')');
       // tslint:disable-next-line:max-line-length
       db.run('INSERT INTO scenes (id, name, description, file) VALUES ' +
-        '(2, \'Robot Arm\', \'Ech person connected to this scene will be given a robotic manipulator and a task to complete. \', \'robot.babylon\')');
+        '(2, \'Robot Arm\', \'Each person connected to this scene will be given a robotic manipulator and a task to complete. \', \'robot.babylon\')');
 
       db.run('DROP TABLE IF EXISTS users');
       db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT)');
@@ -181,7 +181,7 @@ class Server {
    */
   private listen(): void {
     // listen on provided ports
-    this.server.listen(this.port);
+    this.server.listen(this.port, '0.0.0.0');
 
     // add error handler
     this.server.on('error', (error: any) => {

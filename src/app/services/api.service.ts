@@ -11,7 +11,7 @@ import { Scene, User } from './../../api/models';
 @Injectable()
 export class ApiService {
 
-  private url = 'http://localhost:3000/api/version';
+  private url = '/api/version';
 
   constructor(
     private http: Http,
@@ -33,11 +33,11 @@ export class ApiService {
   }
 
   getAllScenes(): Observable<Scene[]> {
-    return this.http.get('http://localhost:3000/api/scenes').map(res => res.json());
+    return this.http.get('/api/scenes').map(res => res.json());
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get('http://localhost:3000/api/users').map(res => res.json());
+    return this.http.get('/api/users').map(res => res.json());
   }
 
 }
