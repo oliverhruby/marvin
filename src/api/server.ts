@@ -24,7 +24,6 @@ class Server {
   private port: number;
   private root: string;
   private clients: number;
-  private usersConnected: number;
 
   // Bootstrap the application.
   public static bootstrap(): Server {
@@ -32,7 +31,6 @@ class Server {
   }
 
   constructor() {
-    this.usersConnected = 0;
 
     // Create expressjs application
     this.app = express();
@@ -146,34 +144,7 @@ class Server {
    * Configure sockets
    */
   private sockets(): void {
-    let server = new ws.Server({server: this.server});
-    server.on('connection', ws => {
-      this.usersConnected++;
-      const location = url.parse(ws.upgradeReq.url, true);
-      Log.info('SOCKET', 'Socket connection with token ' + chalk.gray(location.query.access_token));
-
-      // START: Testing tokens -----------
-      let token = jwt.sign({name: 'iostreamer'}, 'secret-key', {
-        expiresIn : 15 * 24 * 60 * 60 * 1000 // 15 days
-      });
-      Log.info('TOKEN', 'Signed: ' + chalk.gray(token));
-
-      jwt.verify(token, 'secret-key', function(err, decoded) {
-        Log.info('TOKEN', 'Verified: ' + chalk.gray(decoded.name));
-      });
-      // END: Testing tokens -------------
-
-      ws.on('message', message => {
-        Log.info('SOCKET', 'Socket message: ' + chalk.gray(message));
-      });
-
-      let me = this;
-      ws.on('close', function(reasonCode, description) {
-        me.usersConnected--;
-        Log.info('SOCKET', 'Peer disconnected.');
-      });
-    });
-
+    let messageSocket = new MessageSocket({server: this.server});
   }
 
   /**

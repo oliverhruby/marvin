@@ -1,9 +1,15 @@
 import { Log } from './../services/log';
+import * as ws from 'ws';
 
+/**
+ * Common logic for socket controllers
+ */
 export abstract class BaseSocket {
 
-    constructor(ws: WebSocket) {
+    socket: any;
 
+    constructor(config: any) {
+        this.socket = new ws.Server(config);
     }
 
     onMessage(message: string) {

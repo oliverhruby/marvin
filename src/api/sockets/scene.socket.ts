@@ -1,9 +1,12 @@
 import { BaseSocket } from './base.socket';
 
+/**
+ * Socket controller for scene specific communication
+ */
 export class SceneSocket extends BaseSocket {
 
-    constructor(ws: WebSocket) {
-        super(ws);
+    constructor(config: any) {
+        super(config);
     }
 
 }
