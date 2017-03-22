@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
 })
 export abstract class WidgetComponent {
 
-  visible: boolean = true;
-  maximized: boolean = false;
-   
+  visible = true;
+  maximized = false;
+
   constructor() {
   }
 

@@ -8,12 +8,12 @@ export interface GyroscopeState {
     alpha: number;
     beta: number;
     gamma: number;
-  },
+  };
   accelerationIncludingGravity: {
     x: number;
     y: number;
     z: number;
-  }
+  };
 };
 
 export const initialState: GyroscopeState = {

@@ -1,4 +1,3 @@
-import { SysinfoComponent } from './../sysinfo/sysinfo.component';
 /* tslint:disable:no-unused-variable */
 import { HttpModule, JsonpModule } from '@angular/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -6,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { SysinfoComponent } from 'app/components/sysinfo.component';
 import userReducer, * as fromUser from 'app/reducers/user';
 
 import {

@@ -20,7 +20,7 @@ export class SpeechSynthesisService {
 
   speak(text: string) {
 
-      var msg = new SpeechSynthesisUtterance();
+      let msg = new SpeechSynthesisUtterance();
       msg.voice = this.voices[0];
       msg.rate = 1;
       msg.pitch = 1;

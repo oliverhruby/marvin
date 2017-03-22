@@ -11,12 +11,12 @@ export class KeyboardService {
     private store: Store<State>
   ) {
     let me = this;
-    window.addEventListener("keydown", function (event) {
+    window.addEventListener('keydown', function (event) {
 //      me.zone.run(function () {
         me.store.dispatch({ type: KEYBOARD_DOWN, payload: event });
 //      });
     });
-    window.addEventListener("keyup", function () {
+    window.addEventListener('keyup', function () {
 //      me.zone.run(function () {
         me.store.dispatch({ type: KEYBOARD_UP, payload: event });
 //      });

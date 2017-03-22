@@ -47,8 +47,8 @@ export class ChartComponent extends WidgetComponent {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend: boolean = true;
-  public lineChartType: string = 'line';
+  public lineChartLegend = true;
+  public lineChartType = 'line';
 
   constructor() {
     super();

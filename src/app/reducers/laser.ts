@@ -15,7 +15,7 @@ export const initialState: LaserState = {
 export default function (state = initialState, action: Action): LaserState {
   switch (action.type) {
     case LASER_UPDATE:
-      return { angle: (state.angle + 1) % 100, distance: Math.floor(Math.random()*1000) };
+      return { angle: (state.angle + 1) % 100, distance: Math.floor(Math.random() * 1000) };
     default:
       return state;
   }

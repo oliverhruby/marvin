@@ -1,19 +1,20 @@
 import * as BABYLON from 'app/vendor/babylonjs/babylon';
 
 /**
- * Visualization of the obstacles found by sensors
+ * Exampe fire objects
  */
 export class Fire {
 
   constructor(private scene: BABYLON.Scene) {
-    this.init();
+    this.init(15, 15);
+    this.init(15, -15);
   }
 
-  private init() {
+  private init(x, z) {
     // Fountain object
     let fountain = BABYLON.Mesh.CreateBox('foutain', 2.0, this.scene);
-    fountain.position.x = 15;
-    fountain.position.z = 15;
+    fountain.position.x = x;
+    fountain.position.z = z;
 
     // Smoke
     let smokeSystem = new BABYLON.ParticleSystem('particles', 2000, this.scene);

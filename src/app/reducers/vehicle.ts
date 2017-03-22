@@ -8,7 +8,7 @@ export interface VehicleState {
     left: boolean;
     right: boolean;
   };
-  position: [number, number, number],
+  position: [number, number, number];
   speed: number;
   voltage: number;
 };

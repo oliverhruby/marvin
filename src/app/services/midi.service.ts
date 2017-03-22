@@ -11,7 +11,7 @@ export class MidiService {
     private store: Store<State>
   ) {
     let me = this;
-    window.addEventListener("load", function () {
+    window.addEventListener('load', function () {
       me.zone.run(function () {
         me.store.dispatch({ type: MIDI_UPDATE, payload: true });
         me.onMidiInit();
@@ -22,7 +22,7 @@ export class MidiService {
   onMidiInit() {
     try {
       (<any>navigator).requestMIDIAccess().then(this.onMIDISuccess, this.onMIDIFailure);
-    } catch(ex) {
+    } catch (ex) {
       console.error('No MIDI support in your browser.');
     }
   }
