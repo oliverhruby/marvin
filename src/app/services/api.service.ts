@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { Scene, User } from './../../api/models';
+import { Scene, User } from 'app/models';
 
 /**
  * Provide access to the server side API

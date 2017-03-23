@@ -1,4 +1,4 @@
-import { User } from './../../../api/models/user.model';
+import { User } from 'app/models/user.model';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';

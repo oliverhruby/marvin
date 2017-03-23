@@ -1,4 +1,4 @@
-import { Scene } from './../../../api/models/scene.model';
+import { Scene } from 'app/models/scene.model';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
