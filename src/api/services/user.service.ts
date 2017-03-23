@@ -5,7 +5,7 @@ export default class UserService extends Repository<User> {
 
   retrieveAll(): Promise<User[]> {
     return new Promise((resolve, reject) => {
-      this.db.all('SELECT * FROM users', function(err, rows) {
+      this.db.all('SELECT * FROM users', function(err: any, rows: any) {
         resolve(rows);
       });
     });

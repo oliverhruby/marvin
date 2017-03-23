@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+interface IWindow extends Window {
+    webkitSpeechRecognition: any;
+    SpeechRecognition: any;
+}
+
 /**
  * Service for speech synthesis
  */
@@ -15,7 +20,9 @@ export class SpeechService {
 
       // TODO: fix this - fails to compile saying SpeechRecognition undefined
       // this.speechRecognition = SpeechRecognition || webkitSpeechRecognition
-      recognition = new webkitSpeechRecognition;
+      const { webkitSpeechRecognition }: IWindow = <IWindow>window;
+      recognition = new webkitSpeechRecognition();
+      // recognition = new webkitSpeechRecognition;
 
       recognition.continuous = true;
       recognition.interimResults = true;

@@ -14,7 +14,7 @@ export class Log {
 
   static warn(category: string, message: string) {
     console.warn('[' + chalk.green('MARVIN') + '] [' + chalk.gray(new Date().toTimeString().split(' ')[0]) + '] ['
-      + chalk.blue(category.toUpperCase()) + '] ' + chalk.orange(message));
+      + chalk.blue(category.toUpperCase()) + '] ' + chalk.red(message));
   }
 
 }

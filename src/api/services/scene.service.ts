@@ -10,7 +10,7 @@ export default class SceneService extends Repository<Scene> {
 
   retrieveAll(): Promise<Scene[]> {
     return new Promise((resolve, reject) => {
-      this.db.all('SELECT * FROM scenes', function(err, rows) {
+      this.db.all('SELECT * FROM scenes', function(err: any, rows: any) {
         resolve(rows);
       });
     });

@@ -101,10 +101,6 @@ class Server {
         '}');
     });
 
-    this.app.get('/api/usersConnected', (req: Request, resp: Response) => {
-      resp.send(this.usersConnected.toString());
-    });
-
     // Catch all other routes and return the index file
     this.app.get('*', (req: Request, res: Response) => {
       res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
@@ -116,7 +112,7 @@ class Server {
    */
   private databases(): void {
     let fs = require('fs');
-    let file = 'src/api/database/marvin.db';
+    let file = 'api/database/marvin.db';
     let exists = fs.existsSync(file);
     sqlite3.verbose();
     let db = new sqlite3.Database(file);
