@@ -128,9 +128,10 @@ export class Server {
         '(2, \'Robot Arm\', \'Each person connected to this scene will be given a robotic manipulator and a task to complete. \', \'robot.babylon\', 1, 1)');
 
       db.run('DROP TABLE IF EXISTS users');
-      db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT, lastActivity DATETIME)');
-      db.run('INSERT INTO users (id, name, email, lastActivity) VALUES (1, \'Oliver Hruby\', \'oliverhruby@gmail.com\', NULL)');
-      db.run('INSERT INTO users (id, name, email, lastActivity) VALUES (2, \'Joe Example\', \'joe.example@gmail.com\', NULL)');
+      db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT, lastActivity DATETIME, image TEXT)');
+      // tslint:disable-next-line:max-line-length
+      db.run('INSERT INTO users (id, name, email, lastActivity, image) VALUES (1, \'Oliver Hruby\', \'oliverhruby@gmail.com\', NULL, \'https://lh3.googleusercontent.com/-_5kjt9UDfEc/AAAAAAAAAAI/AAAAAAAAAAA/rQhBCg9jyDc/photo.jpg\')');
+      db.run('INSERT INTO users (id, name, email, lastActivity, image) VALUES (2, \'Joe Example\', \'joe.example@gmail.com\', NULL, NULL)');
 
     });
     db.close();
