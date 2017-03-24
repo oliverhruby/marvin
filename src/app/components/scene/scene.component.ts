@@ -118,7 +118,7 @@ export class SceneComponent implements AfterViewInit {
     this.store.select < SceneState > ('scene').subscribe(
       () =>
       // import objects from a file
-      BABYLON.SceneLoader.ImportMesh('', 'assets/scenes/', 'robot.babylon',
+      BABYLON.SceneLoader.ImportMesh('', 'assets/models/robot/', 'robot.babylon',
         this._scene, function (meshes) {}, null, function (sc, message, exception) {})
     );
 

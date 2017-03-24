@@ -106,3 +106,10 @@ pre,
   text-transform: uppercase;
   background-color: rgba(0, 80, 0, .5);
 }
+
+kbd {
+  background-color: lawngreen;
+  color: black;
+  font-weight: bold;
+  text-shadow: none;
+}

@@ -6,5 +6,6 @@
       <small>{{scene.description}}</small>
     </div>
     <button class="btn btn-default" (click)="load()">Load</button>
+    <div *ngIf="scene.public==1">public</div>{{scene.owner}}
   </div>
 </div>
