@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as sqlite3 from 'sqlite3';
 
 /**
@@ -8,7 +9,8 @@ export class Repository<T> {
   db: any;
 
   constructor() {
-    this.db = new sqlite3.Database('api/database/marvin.db');
+    let file = path.join(path.resolve(__dirname, '../database/marvin.db'));
+    this.db = new sqlite3.Database(file);
   }
 
 }
