@@ -10,6 +10,7 @@ export class Repository<T> {
 
   constructor() {
     let file = path.join(path.resolve(__dirname, '../database/marvin.db'));
+    console.log(file);
     this.db = new sqlite3.Database(file);
   }
 

@@ -17,7 +17,7 @@ import { MessageSocket } from './sockets';
 /**
  * Backend server functionality wrapped as a class
  */
-class Server {
+export class Server {
   public app: any;
   private server: any;
   private ws: any;
@@ -114,6 +114,7 @@ class Server {
     let fs = require('fs');
     let file = path.join(path.resolve(__dirname, 'database/marvin.db'));
     let exists = fs.existsSync(file);
+    console.log(file);
     sqlite3.verbose();
     let db = new sqlite3.Database(file);
     db.serialize(function () {
@@ -164,4 +165,3 @@ class Server {
 
 // Bootstrap the server
 let server = Server.bootstrap();
-export = server;
