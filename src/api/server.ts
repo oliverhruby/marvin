@@ -114,7 +114,6 @@ export class Server {
     let fs = require('fs');
     let file = path.join(path.resolve(__dirname, 'database/marvin.db'));
     let exists = fs.existsSync(file);
-    console.log(file);
     sqlite3.verbose();
     let db = new sqlite3.Database(file);
     db.serialize(function () {
