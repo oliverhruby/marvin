@@ -18,21 +18,21 @@ router.get('/', async (req: Request, resp: Response) => {
     }
 });
 
-// // GET route with id
-// router.get('/:id', async (req: Request, resp: Response) => {
-//     Log.info('API', `Retrieving user id ${req.params.id}`);
-//     try {
-//         let user = await userService.retrieve(+req.params.id);
-//         resp.json(user);
-//     } catch (error) {
-//         Log.error('API', error);
-//         if (error.indexOf('Invalid id') > -1) {
-//             resp.sendStatus(404);
-//             return;
-//         }
-//         resp.sendStatus(500);
-//     }
-// });
+// GET route with id
+router.get('/:id', async (req: Request, resp: Response) => {
+    Log.info('API', `Retrieving user id ${req.params.id}`);
+    try {
+        let user = await userService.retrieve(+req.params.id);
+        resp.json(user);
+    } catch (error) {
+        Log.error('API', error);
+        if (error.indexOf('Invalid id') > -1) {
+            resp.sendStatus(404);
+            return;
+        }
+        resp.sendStatus(500);
+    }
+});
 
 // // POST route
 // router.post('/', async (req: Request, resp: Response) => {

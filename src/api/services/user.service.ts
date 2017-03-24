@@ -11,15 +11,13 @@ export default class UserService extends Repository<User> {
     });
   }
 
-  // retrieve(id: number): Promise<User> {
-  //   return new Promise((resolve, reject) => {
-  //     let user = this.getUser(id);
-  //     if (user === null) {
-  //       reject(`Invalid id: ${id}`);
-  //     }
-  //     resolve(user);
-  //   });
-  // }
+  retrieve(id: number): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.db.each('SELECT * FROM users WHERE id = ?', [id], function(err: any, rows: any) {
+        resolve(rows);
+      });
+    });
+  }
 
   // create(user: User): Promise<User> {
   //   return new Promise((resolve, reject) => {

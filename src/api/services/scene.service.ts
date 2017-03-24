@@ -4,8 +4,9 @@ import { Repository } from './repository';
 export default class SceneService extends Repository<Scene> {
 
   private _scenes: Scene[] = [
-    {id: 1, name: 'Marvin', definition: 'Example scene that visualizes a robotic rover vehicle' },
-    {id: 2, name: 'Robot Arm', definition: 'Visualisation of an example industrial manipulator' }
+    // tslint:disable-next-line:max-line-length
+    { id: 1, name: 'Marvin', definition: 'Example scene that visualizes a robotic rover vehicle', owner: 'oliverhruby@gmail.com', public: true },
+    { id: 2, name: 'Robot Arm', definition: 'Visualisation of an example industrial manipulator', owner: 'oliverhruby@gmail.com', public: true }
   ];
 
   retrieveAll(): Promise<Scene[]> {
@@ -18,11 +19,9 @@ export default class SceneService extends Repository<Scene> {
 
   retrieve(id: number): Promise<Scene> {
     return new Promise((resolve, reject) => {
-      let scene = this.getScene(id);
-      if (scene === null) {
-        reject(`Invalid id: ${id}`);
-      }
-      resolve(scene);
+      this.db.each('SELECT * FROM scenes WHERE id = ?', [id], function(err: any, rows: any) {
+        resolve(rows);
+      });
     });
   }
 

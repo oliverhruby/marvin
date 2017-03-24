@@ -119,18 +119,18 @@ export class Server {
     db.serialize(function () {
 
       db.run('DROP TABLE IF EXISTS scenes');
-      db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT, file TEXT)');
+      db.run('CREATE TABLE scenes (id INTEGER, name TEXT, description TEXT, file TEXT, owner TEXT, public BOOLEAN)');
       // tslint:disable-next-line:max-line-length
-      db.run('INSERT INTO scenes (id, name, description, file) VALUES' +
-        ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle. Each person connected to this scene will be given a vehicle.\', \'marvin.babylon\')');
+      db.run('INSERT INTO scenes (id, name, description, file, owner, public) VALUES' +
+        ' (1, \'Marvin\', \'Example scene that visualizes a robotic rover vehicle. Each person connected to this scene will be given a vehicle.\', \'marvin.babylon\', 1, 1)');
       // tslint:disable-next-line:max-line-length
-      db.run('INSERT INTO scenes (id, name, description, file) VALUES ' +
-        '(2, \'Robot Arm\', \'Each person connected to this scene will be given a robotic manipulator and a task to complete. \', \'robot.babylon\')');
+      db.run('INSERT INTO scenes (id, name, description, file, owner, public) VALUES ' +
+        '(2, \'Robot Arm\', \'Each person connected to this scene will be given a robotic manipulator and a task to complete. \', \'robot.babylon\', 1, 1)');
 
       db.run('DROP TABLE IF EXISTS users');
-      db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT)');
-      db.run('INSERT INTO users (id, name, email) VALUES (1, \'Oliver Hruby\', \'oliverhruby@gmail.com\')');
-      db.run('INSERT INTO users (id, name, email) VALUES (2, \'Joe Example\', \'joe.example@gmail.com\')');
+      db.run('CREATE TABLE users (id INTEGER, name TEXT, email TEXT, lastActivity DATETIME)');
+      db.run('INSERT INTO users (id, name, email, lastActivity) VALUES (1, \'Oliver Hruby\', \'oliverhruby@gmail.com\', NULL)');
+      db.run('INSERT INTO users (id, name, email, lastActivity) VALUES (2, \'Joe Example\', \'joe.example@gmail.com\', NULL)');
 
     });
     db.close();
