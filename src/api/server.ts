@@ -112,7 +112,7 @@ export class Server {
    */
   private databases(): void {
     let fs = require('fs');
-    let file = path.join(path.resolve(__dirname, 'database/marvin.db'));
+    let file = path.join(path.resolve(__dirname, 'marvin.db'));
     let exists = fs.existsSync(file);
     sqlite3.verbose();
     let db = new sqlite3.Database(file);
