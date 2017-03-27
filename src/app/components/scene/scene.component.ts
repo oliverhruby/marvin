@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import * as BABYLON from 'app/vendor/babylonjs/babylon';
 
@@ -34,13 +35,23 @@ export class SceneComponent implements AfterViewInit {
   @ViewChild('mainCanvas') mainCanvas: ElementRef;
 
   constructor(
-    private store: Store < State >
+    private route: ActivatedRoute,
+    private store: Store<State>
   ) {
 
   }
 
   ngAfterViewInit() {
-    // get the reference to the rendering canvas
+
+    this.route.params.subscribe(params => {
+      if (params['id'] === '1') {
+        this.load();
+      }
+    });
+  }
+
+  load() {
+        // get the reference to the rendering canvas
     let canvas: HTMLCanvasElement = this.mainCanvas.nativeElement;
     // Load the BABYLON 3D engine
     // TODO: preserveDrawingBuffer should kill the performance, is there any other way to make a screenshot?
@@ -115,7 +126,7 @@ export class SceneComponent implements AfterViewInit {
     // marvin.position = godrays.mesh.position;
 
     // example loading of scene based on the state
-    this.store.select < SceneState > ('scene').subscribe(
+    this.store.select<SceneState>('scene').subscribe(
       () =>
       // import objects from a file
       BABYLON.SceneLoader.ImportMesh('', 'assets/models/robot/', 'robot.babylon',
@@ -144,5 +155,4 @@ export class SceneComponent implements AfterViewInit {
   onResize(event) {
     this._engine.resize();
   }
-
 }

@@ -24,8 +24,11 @@ export class ScenesComponent extends WidgetComponent {
     this.scenes = apiService.getAllScenes();
   }
 
-  load() {
-    this.store.dispatch(go('/scene/1'));
+  load(id) {
+    this.store.dispatch(go('/scene/' + id));
   }
 
+  new() {
+
+  }
 }

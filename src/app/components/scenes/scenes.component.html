@@ -5,7 +5,9 @@
       <span style="text-transform: uppercase">{{scene.name}}</span><br>
       <small>{{scene.description}}</small>
     </div>
-    <button class="btn btn-default" (click)="load()">Load</button>
+    <button class="btn btn-default" (click)="load(scene.id)">Load</button>
     <div *ngIf="scene.public==1">public</div>{{scene.owner}}
   </div>
 </div>
+<button class="btn btn-default" (click)="new()">Create Scene</button>
+
