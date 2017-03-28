@@ -3,12 +3,6 @@ import { Repository } from './repository';
 
 export default class SceneService extends Repository<Scene> {
 
-  private _scenes: Scene[] = [
-    // tslint:disable-next-line:max-line-length
-    { id: 1, name: 'Marvin', definition: 'Example scene that visualizes a robotic rover vehicle', owner: 'oliverhruby@gmail.com', public: true },
-    { id: 2, name: 'Robot Arm', definition: 'Visualisation of an example industrial manipulator', owner: 'oliverhruby@gmail.com', public: true }
-  ];
-
   retrieveAll(): Promise<Scene[]> {
     return new Promise((resolve, reject) => {
       this.db.all('SELECT * FROM scenes', function(err: any, rows: any) {
@@ -27,43 +21,30 @@ export default class SceneService extends Repository<Scene> {
 
   create(scene: Scene): Promise<Scene> {
     return new Promise((resolve, reject) => {
-      if (this.getScene(scene.id) !== null) {
-        reject(`Scene exists with id: ${scene.id}`);
-      }
-      this._scenes.push(scene);
-      resolve(scene);
+      this.db.each('INSERT INTO scenes (id, name) VALUES (?, ?)', [scene.id, scene.name], function(err: any, rows: any) {
+        resolve(rows);
+      });
     });
   }
 
   delete(id: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      if (this.getScene(id) === null) {
-        reject(`Invalid id: ${id}`);
-      }
-      this._scenes.splice(id - 1, 1);
-      resolve();
+      this.db.each('DELETE FROM scenes WHERE id = ?', [id], function(err: any, rows: any) {
+        resolve(rows);
+      });
     });
   }
 
   update(scene: Scene): Promise<Scene> {
     return new Promise((resolve, reject) => {
-      let existingScene = this.getScene(scene.id);
-      if (existingScene === null) {
-        reject(`Invalid id: ${scene.id}`);
-      }
-      let index = this._scenes.indexOf(existingScene);
-      this._scenes[index] = scene;
+      // let existingScene = this.getScene(scene.id);
+      // if (existingScene === null) {
+      //   reject(`Invalid id: ${scene.id}`);
+      // }
+      // let index = this._scenes.indexOf(existingScene);
+      // this._scenes[index] = scene;
       resolve(scene);
     });
-  }
-
-  private getScene(id: number): Scene | null {
-    let scenes: Scene[] = this._scenes
-      .filter(u => u.id === id);
-    if (scenes.length > 0) {
-      return scenes[0];
-    }
-    return null;
   }
 
 }

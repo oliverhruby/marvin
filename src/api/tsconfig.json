@@ -6,6 +6,8 @@
     "removeComments": true,
     "noImplicitAny": true,
     "rootDir": ".",
-    "outDir": "../../dist/api"
+    "outDir": "../../dist/api",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   }
 }

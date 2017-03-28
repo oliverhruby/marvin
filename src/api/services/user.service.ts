@@ -19,45 +19,32 @@ export default class UserService extends Repository<User> {
     });
   }
 
-  // create(user: User): Promise<User> {
-  //   return new Promise((resolve, reject) => {
-  //     if (this.getUser(user.id) !== null) {
-  //       reject(`User exists with id: ${user.id}`);
-  //     }
-  //     this._users.push(user);
-  //     resolve(user);
-  //   });
-  // }
+  create(user: User): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.db.each('INSERT INTO users (id, name, email) VALUES (?, ?, ?)', [user.id, user.name, user.email], function(err: any, rows: any) {
+        resolve(rows);
+      });
+    });
+  }
 
-  // delete(id: number): Promise<any> {
-  //   return new Promise((resolve, reject) => {
-  //     if (this.getUser(id) === null) {
-  //       reject(`Invalid id: ${id}`);
-  //     }
-  //     this._users.splice(id - 1, 1);
-  //     resolve();
-  //   });
-  // }
+  delete(id: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.db.each('DELETE FROM users WHERE id = ?', [id], function(err: any, rows: any) {
+        resolve(rows);
+      });
+    });
+  }
 
-  // update(user: User): Promise<User> {
-  //   return new Promise((resolve, reject) => {
+  update(user: User): Promise<User> {
+    return new Promise((resolve, reject) => {
   //     let existingUser = this.getUser(user.id);
   //     if (existingUser === null) {
   //       reject(`Invalid id: ${user.id}`);
   //     }
   //     let index = this._users.indexOf(existingUser);
   //     this._users[index] = user;
-  //     resolve(user);
-  //   });
-  // }
-
-  // private getUser(id: number): User | null {
-  //   let users: User[] = this._users
-  //     .filter(u => u.id === id);
-  //   if (users.length > 0) {
-  //     return users[0];
-  //   }
-  //   return null;
-  // }
+      resolve(user);
+    });
+  }
 
 }
