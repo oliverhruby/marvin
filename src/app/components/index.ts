@@ -2,6 +2,7 @@ export * from './audioanalyzer';
 export * from './battery';
 export * from './chat';
 export * from './chart';
+export * from './compass';
 export * from './gamepad';
 export * from './gyroscope';
 export * from './keyboard';
