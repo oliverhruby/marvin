@@ -37,6 +37,9 @@
     }
   },
   "test": {
+    "codeCoverage": {
+      "exclude": ["src/app/vendor/babylonjs/babylon.js"]
+    },
     "karma": {
       "config": "./karma.conf.js"
     }
