@@ -1,17 +1,19 @@
 <canvas class="mainCanvas" #mainCanvas (window:resize)="onResize($event)"></canvas>
 
 <div class="controls" style="left:400px;">
+  <!--<app-state [dragula]='"controls-panel"'></app-state>-->
   <!--<app-stopwatch [dragula]='"controls-panel"'></app-stopwatch>-->
-  <app-users [dragula]='"controls-panel"'></app-users>
-  <app-chat [dragula]='"controls-panel"'></app-chat>
+  <!--<app-users [dragula]='"controls-panel"'></app-users>
+  <app-chat [dragula]='"controls-panel"'></app-chat>-->
   <!--<app-midi [dragula]='"controls-panel"'></app-midi>-->
   <!--<app-mosquitto [dragula]='"controls-panel"'></app-mosquitto>-->
-  <app-speech [dragula]='"controls-panel"'></app-speech>
+  <!--<app-speech [dragula]='"controls-panel"'></app-speech>-->
+  <app-sonar [dragula]='"controls-panel"'></app-sonar>
   <app-compass [dragula]='"controls-panel"'></app-compass>
-  <app-log-browser [dragula]='"controls-panel"'></app-log-browser>
-  <app-gyroscope [dragula]='"controls-panel"'></app-gyroscope>
-  <app-battery [dragula]='"controls-panel"'></app-battery>
-  <!--<app-keyboard [dragula]='"controls-panel"'></app-keyboard>-->
+  <!--<app-log-browser [dragula]='"controls-panel"'></app-log-browser>
+  <app-gyroscope [dragula]='"controls-panel"'></app-gyroscope>-->
+  <!--<app-battery [dragula]='"controls-panel"'></app-battery>
+  <app-keyboard [dragula]='"controls-panel"'></app-keyboard>-->
 </div>
 <!--<div class="controls" style="left:800px;">
   <app-gamepad [dragula]='"controls-panel"'></app-gamepad>
