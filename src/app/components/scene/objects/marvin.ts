@@ -10,6 +10,7 @@ import { VehicleState, VEHICLE_UPDATE } from 'app/reducers/vehicle';
 export class Marvin {
 
   public position: BABYLON.Vector3;
+  public rotation: BABYLON.Vector3;
   public speed = 0;
   public direction = 0;
   public radarAngle = 0;
@@ -191,8 +192,12 @@ export class Marvin {
       body.position.z += Math.cos(angRad) * me.speed;
       body.rotation.y = angRad - Math.PI / 2;
       me.position = body.position;
+      me.rotation = body.rotation;
 
-      me.store.dispatch({ type: VEHICLE_UPDATE, payload: [me.position.x, me.position.y, me.position.z] });
+      me.store.dispatch({
+        type: VEHICLE_UPDATE,
+        payload: [me.position.x, me.position.y, me.position.z, me.rotation.x, me.rotation.y, me.rotation.z]
+      });
     });
   }
 

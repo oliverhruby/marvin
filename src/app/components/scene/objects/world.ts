@@ -38,6 +38,19 @@ export class World {
 
     ground.material = groundMaterial;
 
+    // let ground2 = BABYLON.Mesh.CreateGroundFromHeightMap(
+    //   'your-mesh-name',
+    //   '/assets/images/heightmap.jpg',
+    //   1000, // width of the ground mesh (x axis)
+    //   1000, // depth of the ground mesh (z axis)
+    //   40,  // number of subdivisions
+    //   0,   // min height
+    //   20,  // max height
+    //   this.scene,
+    //   false, // updateable?
+    //   null // callback when mesh is ready
+    // );
+
     // ground physics
     // ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsEngine.BoxImpostor, {
     //   mass: 0

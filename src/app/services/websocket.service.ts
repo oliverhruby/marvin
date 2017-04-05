@@ -13,7 +13,10 @@ export class WebSocketService {
   private receivedMsg: any;
 
   constructor() {
-    this.websocket = this.createWebSocket('/?access_token=secret_access_token');
+    // tslint:disable-next-line:max-line-length
+    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaW9zdHJlYW1lciIsImlhdCI6MTQ5MTM5MzQ5OCwiZXhwIjoxMzEwOTEzOTM0OTh9.6H_o4JWy_piv9D-ch3jsrn8bh9lmuMBCyvnQwX3ngDc';
+    // TODO: replace with real user token
+    this.websocket = this.createWebSocket('/?access_token=' + token);
     this.websocket.onopen = (evt) => {
       this.websocket.send('Hello World');
     };

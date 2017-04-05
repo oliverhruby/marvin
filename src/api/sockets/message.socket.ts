@@ -16,19 +16,19 @@ export class MessageSocket extends BaseSocket {
     super(config);
     this.socket.on('connection', (ws: any) => {
       this.usersConnected++;
-      const location = url.parse(ws.upgradeReq.url, true);
-      Log.info('SOCKET', 'Socket connection with token ' + chalk.gray(location.query.access_token));
 
-      // START: Testing tokens -----------
-      let token = jwt.sign({name: 'iostreamer'}, 'secret-key', {
-        expiresIn : 15 * 24 * 60 * 60 * 1000 // 15 days
-      });
-      Log.info('TOKEN', 'Signed: ' + chalk.gray(token));
+      let location = url.parse(ws.upgradeReq.url, true);
+      let token = location.query.access_token;
+      Log.info('SOCKET', 'Socket connection, token: ' + chalk.gray(token));
 
-      jwt.verify(token, 'secret-key', function(err, decoded) {
-        Log.info('TOKEN', 'Verified: ' + chalk.gray(decoded.name));
-      });
-      // END: Testing tokens -------------
+      try {
+        let user = jwt.decode(token, 'secret-key');
+        // TODO: validate user
+        Log.info('SOCKET', 'User identified: ' + chalk.gray(user.name));
+      } catch (err) {
+        ws.close();
+        Log.error('SOCKET', 'Error decoding token: ' + err);
+      }
 
       ws.on('message', (message: any) => {
         Log.info('SOCKET', 'Socket message: ' + chalk.gray(message));
