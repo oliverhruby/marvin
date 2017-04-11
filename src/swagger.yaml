@@ -1,0 +1,32 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: Marvin
+  description: Browser-based 3D simulation of a robotic vehicle controlled by various input methods
+  contact:
+    name: Oliver Hrubý
+    url: https://github.com/oliverhruby/marvin
+
+host: localhost:3000
+basePath: /api
+
+schemes:
+  - http
+  - https
+
+paths:
+  /version:
+    get:
+      description: |
+        Gets the backend system information
+      responses:
+        200:
+          description: Successful response
+  /users:
+    get:
+      description: |
+        Retrieves the registered users of the system
+      responses:
+        200:
+          description: Successful response

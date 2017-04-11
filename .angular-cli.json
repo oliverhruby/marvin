@@ -8,7 +8,9 @@
     "outDir": "dist",
     "assets": [
       "assets",
-      "marvin.ico"
+      "marvin.ico",
+      "swagger",
+      "swagger.yaml"
     ],
     "index": "index.html",
     "main": "main.ts",
