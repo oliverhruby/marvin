@@ -65,7 +65,7 @@ export class UserController extends EntityController<User> {
   }
 
   async update(request: Request, response: Response) {
-    Log.info('API', `Updating user id ${request.body.userId} to: ${JSON.stringify(request.body)}`);
+    Log.info('API', `Updating user id ${request.body.id} to: ${JSON.stringify(request.body)}`);
     try {
       let user = await userService.update(request.body);
       response.json(user);

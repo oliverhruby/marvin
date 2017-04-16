@@ -10,8 +10,12 @@ export class SoundService {
   private _motorSoundService: MotorSoundService;
 
   constructor() {
-    let context = new AudioContext();
-    this._motorSoundService = new MotorSoundService(context);
+    try {
+      let context = new AudioContext();
+      this._motorSoundService = new MotorSoundService(context);
+    } catch (ex) {
+      console.warn('Web audio not initialized');
+    }
   }
 
   /**

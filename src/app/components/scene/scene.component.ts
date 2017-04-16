@@ -17,6 +17,7 @@ import { Laser } from './objects/laser';
 import { Camera } from './objects/camera';
 import { Axis } from './objects/axis';
 import { Fire } from './objects/fire';
+import { WebSocketService } from 'app/services';
 
 /**
  * This component represents the overall 3D visualization scene rendered on a canvas
@@ -36,7 +37,8 @@ export class SceneComponent implements AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<State>
+    private store: Store<State>,
+    private webSocketService: WebSocketService
   ) {
 
   }
@@ -130,7 +132,12 @@ export class SceneComponent implements AfterViewInit {
       () =>
       // import objects from a file
       BABYLON.SceneLoader.ImportMesh('', 'assets/models/robot/', 'robot.babylon',
-        this._scene, function (meshes) {}, null, function (sc, message, exception) {})
+        this._scene, function (meshes) {
+          for(let i = 0; i < meshes.length; i++) {
+            let mesh = meshes[i];
+            mesh.scaling = new BABYLON.Vector3(2, 2, 2);
+          }
+        }, null, function (sc, message, exception) {})
     );
 
     // post processing
@@ -143,6 +150,8 @@ export class SceneComponent implements AfterViewInit {
       type: SCENE_UPDATE,
       payload: serializedScene
     });
+
+    this.webSocketService.send('MARVIN ready');
 
     // scene.debugLayer.show();
 

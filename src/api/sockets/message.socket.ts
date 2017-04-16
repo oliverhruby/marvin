@@ -10,16 +10,14 @@ import * as ws from 'ws';
  */
 export class MessageSocket extends BaseSocket {
 
-  private usersConnected: number;
-
-  constructor(config: any) {
+   constructor(config: any) {
     super(config);
     this.socket.on('connection', (ws: any) => {
-      this.usersConnected++;
+      this.clients++;
 
       let location = url.parse(ws.upgradeReq.url, true);
       let token = location.query.access_token;
-      Log.info('SOCKET', 'Socket connection, token: ' + chalk.gray(token));
+      Log.info('SOCKET', 'Socket connection #' + this.clients + ' token: ' + chalk.gray(token));
 
       try {
         let user = jwt.decode(token, 'secret-key');
@@ -36,8 +34,8 @@ export class MessageSocket extends BaseSocket {
 
       let me = this;
       ws.on('close', function(reasonCode: any, description: any) {
-        me.usersConnected--;
-        Log.info('SOCKET', 'Peer disconnected.');
+        Log.info('SOCKET', 'Peer #' + me.clients + ' disconnected.');
+        me.clients--;
       });
     });
   }

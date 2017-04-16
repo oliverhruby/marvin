@@ -7,10 +7,12 @@ export class SpeechSynthesisService {
   private voices: SpeechSynthesisVoice[];
 
   constructor() {
-    if (speechSynthesis) {
+    try {
       // retrieve the speech synthesis provider
       this.speech = speechSynthesis;
       this.voices = this.speech.getVoices();
+    } catch (ex) {
+      console.warn('Speech synthesis not available');
     }
   }
 
