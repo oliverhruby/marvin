@@ -37,12 +37,12 @@ export default class UserService extends Repository<User> {
 
   update(user: User): Promise<User> {
     return new Promise((resolve, reject) => {
-  //     let existingUser = this.getUser(user.id);
-  //     if (existingUser === null) {
-  //       reject(`Invalid id: ${user.id}`);
-  //     }
-  //     let index = this._users.indexOf(existingUser);
-  //     this._users[index] = user;
+      // let existingUser = this.retrieve(user.id);
+      // if (existingUser === null) {
+      //   reject(`Invalid id: ${user.id}`);
+      // }
+      // let index = this._users.indexOf(existingUser);
+      // this._users[index] = user;
       resolve(user);
     });
   }
