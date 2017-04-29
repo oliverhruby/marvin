@@ -14,7 +14,7 @@ import { GyroscopeState } from 'app/reducers/gyroscope';
 })
 export class GyroscopeComponent extends WidgetComponent {
 
-  rotation: number = 0;
+  rotation = 0;
 
   constructor(
     private store: Store<State>

@@ -6,7 +6,7 @@ import * as ws from 'ws';
  */
 export abstract class BaseSocket {
 
-    socket: any;
+    socket: ws.Server;
     clients = 0;
 
     constructor(config: any) {

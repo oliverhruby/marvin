@@ -8,15 +8,16 @@ import { State } from 'app/reducers';
 import { SceneState, SCENE_UPDATE } from 'app/reducers/scene';
 
 // scene objects
-import { Sector } from './objects/sector';
+import { Axis } from './objects/axis';
+import { Camera } from './objects/camera';
+import { Fire } from './objects/fire';
+import { Laser } from './objects/laser';
+import { Marvin } from './objects/marvin';
 import { Obstacle } from './objects/obstacle';
 import { Path } from './objects/path';
+import { Sector } from './objects/sector';
 import { World } from './objects/world';
-import { Marvin } from './objects/marvin';
-import { Laser } from './objects/laser';
-import { Camera } from './objects/camera';
-import { Axis } from './objects/axis';
-import { Fire } from './objects/fire';
+
 import { WebSocketService } from 'app/services';
 
 /**
@@ -109,14 +110,16 @@ export class SceneComponent implements AfterViewInit {
     //   dof_darken: 0.25
     // }, scene, 1.0, [camera]);
 
-    // add the custom models to the scene
     let world = new World(scene);
     let sector = new Sector(scene);
     let obstacle = new Obstacle(scene);
     let path = new Path(scene);
     let axis = new Axis(scene);
     let fire = new Fire(scene);
-    let marvin = new Marvin(scene, this.store);
+
+    this.webSocketService.GetInstanceStatus().subscribe(data => {
+      let marvin = new Marvin(scene, this.store);
+    });
 
     // let camera = new Camera(scene, canvas);
 
@@ -133,10 +136,10 @@ export class SceneComponent implements AfterViewInit {
       // import objects from a file
       BABYLON.SceneLoader.ImportMesh('', 'assets/models/robot/', 'robot.babylon',
         this._scene, function (meshes) {
-          for(let i = 0; i < meshes.length; i++) {
-            let mesh = meshes[i];
-            mesh.scaling = new BABYLON.Vector3(2, 2, 2);
-          }
+          // for(let i = 0; i < meshes.length; i++) {
+          //   let mesh = meshes[i];
+          //   mesh.scaling = new BABYLON.Vector3(2, 2, 2);
+          // }
         }, null, function (sc, message, exception) {})
     );
 
@@ -150,8 +153,6 @@ export class SceneComponent implements AfterViewInit {
       type: SCENE_UPDATE,
       payload: serializedScene
     });
-
-    this.webSocketService.send('MARVIN ready');
 
     // scene.debugLayer.show();
 

@@ -9,8 +9,9 @@ import { Observable } from 'rxjs/Rx';
 export class WebSocketService {
 
   private actionUrl: string;
-  private websocket: any;
   private receivedMsg: any;
+
+  public websocket: any;
 
   constructor() {
     // tslint:disable-next-line:max-line-length

@@ -11,15 +11,15 @@ export class UserController extends EntityController<User> {
   async get(request: Request, response: Response) {
     Log.info('API', `Retrieving user id ${request.params.id}`);
     try {
-        let user = await userService.retrieve(request.params.id);
-        response.json(user);
+      let user = await userService.retrieve(request.params.id);
+      response.json(user);
     } catch (error) {
-        Log.error('API', error);
-        if (error.indexOf('Invalid id') > -1) {
-            response.sendStatus(404);
-            return;
-        }
-        response.sendStatus(500);
+      Log.error('API', error);
+      if (error.indexOf('Invalid id') > -1) {
+        response.sendStatus(404);
+        return;
+      }
+      response.sendStatus(500);
     }
   }
 
