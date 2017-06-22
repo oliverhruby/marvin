@@ -4,6 +4,7 @@ import * as chalk from 'chalk';
 import * as jwt from 'jsonwebtoken';
 import * as url from 'url';
 import * as ws from 'ws';
+import { IncomingMessage } from 'http';
 
 /**
  * Socket controller for the main application chat
@@ -12,15 +13,15 @@ export class MessageSocket extends BaseSocket {
 
    constructor(config: any) {
     super(config);
-    this.socket.on('connection', (ws: any) => {
+    this.socket.on('connection', (ws: ws, request: IncomingMessage) => {
       this.clients++;
 
-      let location = url.parse(ws.upgradeReq.url, true);
+      let location = url.parse(request.url, true);
       let token = location.query.access_token;
       Log.info('SOCKET', 'Socket connection #' + this.clients + ' token: ' + chalk.gray(token));
 
       try {
-        let user = jwt.decode(token, 'secret-key');
+        let user: any = jwt.decode(token, 'secret-key');
         // TODO: validate user
         Log.info('SOCKET', 'User identified: ' + chalk.gray(user.name));
       } catch (err) {

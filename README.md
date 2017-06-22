@@ -38,7 +38,6 @@ Application architecture - Server
 * [Knex.js](https://knexjs.org) - A SQL Query Builder for Javascript
 * [Auth0](https://auth0.com) - Single sign on & token based authentication provider
 
-
 Tools used:
 * [TypeScript](https://www.typescriptlang.org/index.html) - typed superset of JavaScript that compiles into plain JavaScript
 * [Webpack](https://webpack.js.org) - module bundler
@@ -47,29 +46,18 @@ Tools used:
 * [Jasmine](https://jasmine.github.io) - testing framework
 * [Karma](http://karma-runner.github.io/1.0/index.html) - test runner
 
+## Running the application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
+Run `npm install -g @angular/cli typescript gulp` to install the command line tools globally.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone the source code and run `npm install` to install the dependencies.
 
-## Code scaffolding
+Run `ng build --watch` to start build the frontend application and watch for changes. The app will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+Run `gulp serve-api` after the frontend part has been built to build to start the backend.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Open `http:\\localhost:3000` in the browser to access the application.
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md). 
