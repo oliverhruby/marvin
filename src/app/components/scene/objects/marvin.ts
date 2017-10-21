@@ -2,7 +2,7 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 import { Store } from '@ngrx/store';
 import { Laser } from './laser';
 import { State } from 'app/reducers';
-import { VehicleState, VEHICLE_UPDATE } from 'app/reducers/vehicle';
+import * as vehicle from '../../../actions/VehicleAction';
 
 /**
  * Main robot object
@@ -194,10 +194,7 @@ export class Marvin {
       me.position = body.position;
       me.rotation = body.rotation;
 
-      me.store.dispatch({
-        type: VEHICLE_UPDATE,
-        payload: [me.position.x, me.position.y, me.position.z, me.rotation.x, me.rotation.y, me.rotation.z]
-      });
+      me.store.dispatch(new vehicle.Update([me.position.x, me.position.y, me.position.z, me.rotation.x, me.rotation.y, me.rotation.z]));
     });
   }
 

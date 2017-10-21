@@ -1,11 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const GAMEPAD_BUTTON_DOWN = 'GAMEPAD_BUTTON_DOWN';
-export const GAMEPAD_BUTTON_UP = 'GAMEPAD_BUTTON_UP';
-export const GAMEPAD_CONNECT = 'GAMEPAD_CONNECT';
-export const GAMEPAD_DISCONNECT = 'GAMEPAD_DISCONNECT';
-export const GAMEPAD_UPDATE_LS = 'GAMEPAD_UPDATE_LS';
-export const GAMEPAD_UPDATE_RS = 'GAMEPAD_UPDATE_RS';
+import * as gamepad from '../actions/GamepadAction';
 
 export interface GamepadState {
   index: number;
@@ -14,9 +7,11 @@ export interface GamepadState {
   ls: any;
   rs: any;
   buttons: any;
+  gamepad: any;
 };
 
 export const initialState: GamepadState = {
+  gamepad: null,
   index: null,
   timestamp: null,
   connected: null,
@@ -25,26 +20,27 @@ export const initialState: GamepadState = {
   buttons: null
 };
 
-export default function (state = initialState, action: Action): GamepadState {
+export function reducer(state = initialState, action: gamepad.GamepadAction): GamepadState {
   switch (action.type) {
-    case GAMEPAD_BUTTON_DOWN:
+    case gamepad.GAMEPAD_BUTTON_DOWN:
       state.buttons = action.payload;
       return state;
-    case GAMEPAD_BUTTON_UP:
-      state.buttons = action.payload;
+    case gamepad.GAMEPAD_BUTTON_UP:
+      state.buttons = 0;
       return state;
-    case GAMEPAD_CONNECT:
+    case gamepad.GAMEPAD_CONNECT:
       state.connected = true;
+      state.gamepad = action.payload;
       return state;
-    case GAMEPAD_DISCONNECT:
+    case gamepad.GAMEPAD_DISCONNECT:
       state.connected = false;
       return state;
-    case GAMEPAD_UPDATE_LS:
-      state.ls = action.payload;
-      return state;
-    case GAMEPAD_UPDATE_RS:
-      state.rs = action.payload;
-      return state;
+    case gamepad.GAMEPAD_UPDATE_LS:
+       state.ls = action.payload;
+       return state;
+    case gamepad.GAMEPAD_UPDATE_RS:
+       state.rs = action.payload;
+       return state;
     default:
       return state;
   }

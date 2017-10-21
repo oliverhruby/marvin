@@ -1,6 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const LASER_UPDATE = 'LASER_UPDATE';
+import * as laser from '../actions/LaserAction';
 
 export interface LaserState {
   angle: number;
@@ -12,9 +10,9 @@ export const initialState: LaserState = {
   distance: 10000000
 };
 
-export default function (state = initialState, action: Action): LaserState {
+export function reducer (state = initialState, action: laser.LaserAction): LaserState {
   switch (action.type) {
-    case LASER_UPDATE:
+    case laser.LASER_UPDATE:
       return { angle: (state.angle + 1) % 100, distance: Math.floor(Math.random() * 1000) };
     default:
       return state;

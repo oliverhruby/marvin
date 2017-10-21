@@ -1,7 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_LOGOUT = 'USER_LOGOUT';
+import * as user from '../actions/UserAction';
 
 export interface UserState {
   authenticated: boolean;
@@ -13,14 +10,14 @@ export const initialState: UserState = {
   profile: null
 };
 
-export default function (state = initialState, action: Action): UserState {
+export function reducer (state = initialState, action: user.UserAction): UserState {
   switch (action.type) {
-    case USER_LOGIN:
+    case user.USER_LOGIN:
       return Object.assign({}, state, {
         authenticated: true,
         profile: action.payload
       });
-    case USER_LOGOUT:
+    case user.USER_LOGOUT:
       return initialState;
     default:
       return state;

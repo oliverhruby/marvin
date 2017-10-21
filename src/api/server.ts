@@ -56,8 +56,7 @@ export class Server {
    * Configuration
    */
   private config(): void {
-    // By default the port should be 3000
-    this.port = process.env.PORT || 3000;
+    this.port = parseInt(process.env.PORT) || 3500;
 
     // root path is under ../../target
     this.root = path.join(path.resolve(__dirname, '../../target'));

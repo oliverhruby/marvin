@@ -6,7 +6,6 @@ export * from './config.service';
 export * from './gamepad.service';
 export * from './gyroscope.service';
 export * from './keyboard.service';
-export * from './logger.service';
 export * from './midi.service';
 export * from './motorsound.service';
 export * from './simulation.service';

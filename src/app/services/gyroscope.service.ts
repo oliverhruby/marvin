@@ -1,12 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import {
-  GyroscopeState,
-  GYROSCOPE_UPDATE_MOTION,
-  GYROSCOPE_UPDATE_ORIENTATION
-} from 'app/reducers/gyroscope';
-
+import * as gyroscope from '../actions/GyroscopeAction';
 
 /**
  * This service provides the access to gyroscopic sensors
@@ -20,10 +15,10 @@ export class GyroscopeService {
   ) {
     let me = this;
       window.ondeviceorientation = function (data) {
-      me.zone.run(() => me.store.dispatch({ type: GYROSCOPE_UPDATE_ORIENTATION, payload: data }));
+      me.zone.run(() => me.store.dispatch(new gyroscope.Orientation(data)));
     };
     window.ondevicemotion = function (data) {
-      me.zone.run(() => me.store.dispatch({ type: GYROSCOPE_UPDATE_MOTION, payload: data.accelerationIncludingGravity }));
+      me.zone.run(() => me.store.dispatch(new gyroscope.Motion(data.accelerationIncludingGravity)));
     };
 
   }

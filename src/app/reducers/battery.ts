@@ -1,6 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const BATTERY_UPDATE = 'BATTERY_UPDATE';
+import * as battery from '../actions/BatteryAction';
 
 export interface BatteryState {
   charging: boolean;
@@ -16,9 +14,9 @@ export const initialState: BatteryState = {
   level: 1
 };
 
-export default function (state = initialState, action: Action): BatteryState {
+export function reducer (state = initialState, action: battery.BatteryAction): BatteryState {
   switch (action.type) {
-    case BATTERY_UPDATE:
+    case battery.BATTERY_UPDATE:
       return Object.assign({}, state, {
         charging: action.payload.charging,
         chargingTime: action.payload.chargingTime,

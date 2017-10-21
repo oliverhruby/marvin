@@ -1,7 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const MQTT_TOPIC = 'MQTT_TOPIC';
-export const MQTT_STATUS = 'MQTT_STATUS';
+import * as mqtt from '../actions/MqttAction';
 
 export interface MqttState {
   connected: boolean;
@@ -13,12 +10,12 @@ export const initialState: MqttState = {
   topics: {}
 };
 
-export default function (state = initialState, action: Action): MqttState {
+export function reducer (state = initialState, action: mqtt.MqttAction): MqttState {
   switch (action.type) {
-    case MQTT_STATUS:
+    case mqtt.MQTT_STATUS:
       state.connected = action.payload;
       return state;
-    case MQTT_TOPIC:
+    case mqtt.MQTT_TOPIC:
       return state;
     default:
       return state;

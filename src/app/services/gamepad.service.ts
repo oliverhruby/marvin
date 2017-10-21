@@ -3,14 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import * as BABYLON from 'app/vendor/babylonjs/babylon';
 import { State } from 'app/reducers';
-import {
-  GAMEPAD_BUTTON_DOWN,
-  GAMEPAD_BUTTON_UP,
-  GAMEPAD_CONNECT,
-  GAMEPAD_DISCONNECT,
-  GAMEPAD_UPDATE_LS,
-  GAMEPAD_UPDATE_RS
-} from 'app/reducers/gamepad';
+import * as gamepad from '../actions/GamepadAction';
 
 /**
  * Service for providing the gamepad control using the BABYLON library.
@@ -25,18 +18,18 @@ export class GamepadService {
   ) {
     let gamepadConnected = function (gamepad) {
       store.dispatch({
-        type: GAMEPAD_CONNECT
+        type: gamepad.GAMEPAD_CONNECT
       });
       if (gamepad.index === 0) {
         gamepad.onleftstickchanged(function (values) {
           store.dispatch({
-            type: GAMEPAD_UPDATE_LS,
+            type: gamepad.GAMEPAD_UPDATE_LS,
             payload: values
           });
         });
         gamepad.onrightstickchanged(function (values) {
           store.dispatch({
-            type: GAMEPAD_UPDATE_RS,
+            type: gamepad.GAMEPAD_UPDATE_RS,
             payload: values
           });
         });
@@ -150,18 +143,18 @@ export class GamepadService {
           //     }
           //   });
           // } else {
-          gamepad.onbuttondown(function (buttonIndex) {
-            store.dispatch({
-              type: GAMEPAD_BUTTON_DOWN,
-              payload: buttonIndex
-            });
-          });
-          gamepad.onbuttonup(function (buttonIndex) {
-            store.dispatch({
-              type: GAMEPAD_BUTTON_UP,
-              payload: buttonIndex
-            });
-          });
+          // gamepad.onbuttondown(function (buttonIndex) {
+          //   store.dispatch({
+          //     type: GAMEPAD_BUTTON_DOWN,
+          //     payload: buttonIndex
+          //   });
+          // });
+          // gamepad.onbuttonup(function (buttonIndex) {
+          //   store.dispatch({
+          //     type: gamepad.GAMEPAD_BUTTON_UP,
+          //     payload: buttonIndex
+          //   });
+          // });
         }
       }
     }

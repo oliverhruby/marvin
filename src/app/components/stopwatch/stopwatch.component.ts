@@ -23,7 +23,7 @@ export class StopwatchComponent extends WidgetComponent {
     private stopwatchService: StopwatchService
   ) {
     super();
-    store.select<StopwatchState>('stopwatch').subscribe(
+    store.select('stopwatch').subscribe(
       (data) => this.data = data  ? new Date(data.time) : null
     );
   }

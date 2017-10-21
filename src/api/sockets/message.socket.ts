@@ -21,7 +21,7 @@ export class MessageSocket extends BaseSocket {
       Log.info('SOCKET', 'Socket connection #' + this.clients + ' token: ' + chalk.gray(token));
 
       try {
-        let user: any = jwt.decode(token, 'secret-key');
+        let user: any = jwt.decode(token);
         // TODO: validate user
         Log.info('SOCKET', 'User identified: ' + chalk.gray(user.name));
       } catch (err) {

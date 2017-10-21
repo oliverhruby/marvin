@@ -24,7 +24,7 @@ export class SpeechComponent extends WidgetComponent implements OnInit {
     private speechSynthesisService: SpeechSynthesisService
   ) {
     super();
-    this.store.select<CommandState>('command').subscribe((data) => this.text = data.command);
+    this.store.select('command').subscribe((data) => this.text = data.command);
   }
 
   ngOnInit() {
@@ -41,7 +41,7 @@ export class SpeechComponent extends WidgetComponent implements OnInit {
     }
 
     // subscribe to commands, retrieve response from wit.ai and speak it
-    this.store.select<CommandState>('command').subscribe(data => {
+    this.store.select('command').subscribe(data => {
       if (data.command.length > 0) {
         // this.witAiService.getResponse(data.command).subscribe(data => {
         //   this.speechSynthesisService.speak(data);

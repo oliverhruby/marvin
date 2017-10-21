@@ -11,21 +11,10 @@ import { MomentModule } from 'angular2-moment';
 import { routes } from './app.routes';
 
 // state management
-import { routerReducer, RouterStoreModule } from '@ngrx/router-store';
-// TODO: do we need this "* as xxxx" ?
-import batteryReducer, * as fromBattery from './reducers/battery';
-import commandReducer, * as fromCommand from './reducers/command';
-import counterReducer, * as fromCounter from './reducers/counter';
-import gamepadReducer, * as fromGamepad from './reducers/gamepad';
-import gyroscopeReducer, * as fromGyroscope from './reducers/gyroscope';
-import keyboardReducer, * as fromKeyboard from './reducers/keyboard';
-import laserReducer, * as fromLaser from './reducers/laser';
-import midiReducer, * as fromMidi from './reducers/midi';
-import mqttReducer, * as fromMqtt from './reducers/mqtt';
-import sceneReducer, * as fromScene from './reducers/scene';
-import stopwatchReducer, * as fromStopwatch from './reducers/stopwatch';
-import userReducer, * as fromUser from './reducers/user';
-import vehicleReducer, * as fromVehicle from './reducers/vehicle';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+
+//import { reducers, metaReducers } from './reducers';
+import { reducers } from './reducers';
 
 // providers
 import {
@@ -36,7 +25,6 @@ import {
   ConfigService,
   GamepadService,
   GyroscopeService,
-  LoggerService,
   KeyboardService,
   MidiService,
   SoundService,
@@ -120,36 +108,17 @@ import {
      * @ngrx/router-store keeps router state up-to-date in the store and uses
      * the store as the single source of truth for the router's state.
      */
-    RouterStoreModule.connectRouter(),
+    StoreRouterConnectingModule,
 
     /**
-     * StoreModule.provideStore is imported once in the root module, accepting a reducer
+     * StoreModule.forRoot is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
      * reducers, combineReducers will be run creating your application
      * meta-reducer. This returns all providers for an @ngrx/store
      * based application.
      */
-    StoreModule.provideStore(
-      {
-        battery: batteryReducer,
-        counter: counterReducer,
-        command: commandReducer,
-        keyboard: keyboardReducer,
-        gamepad: gamepadReducer,
-        gyroscope: gyroscopeReducer,
-        midi: midiReducer,
-        mqtt: mqttReducer,
-        router: routerReducer,
-        scene: sceneReducer,
-        stopwatch: stopwatchReducer,
-        user: userReducer,
-        vehicle: vehicleReducer
-      }, {
-        router: {
-         path: window.location.pathname + window.location.search
-        }
-      }
-    )
+    //StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers)
   ],
   providers: [
     ApiService,
@@ -159,7 +128,6 @@ import {
     ConfigService,
     GamepadService,
     GyroscopeService,
-    LoggerService,
     KeyboardService,
     MidiService,
     SoundService,

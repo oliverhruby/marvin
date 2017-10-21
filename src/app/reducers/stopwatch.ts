@@ -1,9 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const STOPWATCH_START = 'STOPWATCH_START';
-export const STOPWATCH_STOP = 'STOPWATCH_STOP';
-export const STOPWATCH_RESET = 'STOPWATCH_RESET';
-export const STOPWATCH_TIME = 'STOPWATCH_TIME';
+import * as stopwatch from '../actions/StopwatchAction';
 
 export interface StopwatchState {
   time: number;
@@ -17,19 +12,19 @@ export const initialState: StopwatchState = {
   elapsed: 0
 };
 
-export default function (state = initialState, action: Action): StopwatchState {
+export function reducer (state = initialState, action: stopwatch.StopwatchAction): StopwatchState {
   switch (action.type) {
-    case STOPWATCH_START:
+    case stopwatch.STOPWATCH_START:
       return Object.assign({}, state, {
         running: true
       });
-    case STOPWATCH_STOP:
+    case stopwatch.STOPWATCH_STOP:
       return Object.assign({}, state, {
         running: false
       });
-    case STOPWATCH_RESET:
+    case stopwatch.STOPWATCH_RESET:
       return initialState;
-    case STOPWATCH_TIME:
+    case stopwatch.STOPWATCH_TIME:
       return Object.assign({}, state, {
         time: new Date().getTime()
       });

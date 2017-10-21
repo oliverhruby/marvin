@@ -21,7 +21,7 @@ export class CompassComponent extends WidgetComponent {
     private store: Store<State>
   ) {
     super();
-    store.select<VehicleState>('vehicle').subscribe((data) => this.heading = -data.rotation[1] * 180 / Math.PI);
+    store.select('vehicle').subscribe((data) => this.heading = -data.rotation[1] * 180 / Math.PI);
   }
 
 }

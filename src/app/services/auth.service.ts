@@ -2,7 +2,7 @@ import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { UserState, USER_LOGIN, USER_LOGOUT } from 'app/reducers/user';
+import * as user from '../actions/UserAction';
 
 import Auth0Lock from 'auth0-lock';
 
@@ -28,7 +28,7 @@ export class AuthService {
         if (error) {
           console.log(error);
         }
-        this.store.dispatch({ type: USER_LOGIN, payload: profile });
+        this.store.dispatch(new user.Logout(profile));
         localStorage.setItem('profile', JSON.stringify(profile));
       });
 

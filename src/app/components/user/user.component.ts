@@ -24,6 +24,6 @@ export class UserComponent extends WidgetComponent {
   ) {
     super();
 
-    this.state = this.store.select<UserState>('user');
+    this.state = this.store.select('user');
   }
 }

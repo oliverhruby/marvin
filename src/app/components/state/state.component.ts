@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { WidgetComponent } from '../widget/widget.component';
 import { State } from 'app/reducers';
-import { INCREMENT } from 'app/reducers/counter';
 
 /**
  * This component shows the complete state information.

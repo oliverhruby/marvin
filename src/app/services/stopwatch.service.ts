@@ -3,10 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import {
-  STOPWATCH_START, STOPWATCH_STOP, STOPWATCH_RESET, STOPWATCH_TIME,
-  StopwatchState
-} from 'app/reducers/stopwatch';
+import * as stopwatch from '../actions/StopwatchAction';
 
 /**
  * Stopwatch functionality
@@ -23,19 +20,19 @@ export class StopwatchService {
 
   // starts the timer
   start() {
-    this.sub = this.timer.subscribe(t => this.store.dispatch({ type: STOPWATCH_TIME }));
-    this.store.dispatch({ type: STOPWATCH_START });
+    this.sub = this.timer.subscribe(t => this.store.dispatch({ type: stopwatch.STOPWATCH_TIME }));
+    this.store.dispatch({ type: stopwatch.STOPWATCH_START });
   }
 
   // stops the timer
   stop() {
     this.sub.unsubscribe();
-    this.store.dispatch({ type: STOPWATCH_STOP });
+    this.store.dispatch({ type: stopwatch.STOPWATCH_STOP });
   }
 
   // resets the timer to 0
   reset() {
-    this.store.dispatch({ type: STOPWATCH_RESET });
+    this.store.dispatch({ type: stopwatch.STOPWATCH_RESET });
   }
 
 }

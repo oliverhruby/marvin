@@ -20,7 +20,9 @@ export class GyroscopeComponent extends WidgetComponent {
     private store: Store<State>
   ) {
     super();
-    store.select<GyroscopeState>('gyroscope').subscribe((data) => this.rotation = data.deviceOrientation.alpha);
+    store.select('gyroscope').subscribe(
+      (data) => this.rotation = data.deviceOrientation.alpha
+    );
   }
 
 }

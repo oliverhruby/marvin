@@ -22,6 +22,6 @@ export class BatteryComponent extends WidgetComponent {
     private store: Store<State>
   ) {
     super();
-    this.store.select<BatteryState>('battery').subscribe((data) => this.battery = data);
+    this.store.select('battery').subscribe((data) => this.battery = data);
   }
 }

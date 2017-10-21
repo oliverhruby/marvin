@@ -1,7 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const GYROSCOPE_UPDATE_ORIENTATION = 'GYROSCOPE_UPDATE_ORIENTATION';
-export const GYROSCOPE_UPDATE_MOTION = 'GYROSCOPE_UPDATE_MOTION';
+import * as gyroscope from '../actions/GyroscopeAction';
 
 export interface GyroscopeState {
   deviceOrientation: {
@@ -29,16 +26,16 @@ export const initialState: GyroscopeState = {
   }
 };
 
-export default function (state = initialState, action: Action): GyroscopeState {
+export function reducer (state = initialState, action: gyroscope.GyroscopeAction): GyroscopeState {
   switch (action.type) {
-    case GYROSCOPE_UPDATE_ORIENTATION:
+    case gyroscope.GYROSCOPE_UPDATE_ORIENTATION:
       state.deviceOrientation = {
           alpha: action.payload.alpha,
           beta: action.payload.beta,
           gamma: action.payload.gamma
       };
       return state;
-    case GYROSCOPE_UPDATE_MOTION:
+    case gyroscope.GYROSCOPE_UPDATE_MOTION:
       state.accelerationIncludingGravity = {
           x: action.payload.x,
           y: action.payload.y,

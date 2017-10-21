@@ -1,7 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const KEYBOARD_DOWN = 'KEYBOARD_DOWN';
-export const KEYBOARD_UP = 'KEYBOARD_UP';
+import * as keyboard from '../actions/KeyboardAction';
 
 export interface KeyboardState {
   pressed: boolean;
@@ -13,9 +10,9 @@ export const initialState: KeyboardState = {
   keys: []
 };
 
-export default function (state = initialState, action: Action): KeyboardState {
+export function reducer (state = initialState, action: keyboard.KeyboardAction): KeyboardState {
   switch (action.type) {
-    case KEYBOARD_DOWN:
+    case keyboard.KEYBOARD_DOWN:
       state = Object.assign({}, state, {
         pressed: true,
         ctrlKey: action.payload.ctrlKey
@@ -26,7 +23,7 @@ export default function (state = initialState, action: Action): KeyboardState {
         });
       }
       return state;
-    case KEYBOARD_UP:
+    case keyboard.KEYBOARD_UP:
       return Object.assign({}, state, {
         pressed: true,
         keys: state.keys.filter(element => element !== action.payload.code),

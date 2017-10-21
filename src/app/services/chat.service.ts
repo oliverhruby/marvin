@@ -2,7 +2,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 export class ChatService {
-  private url = 'http://localhost:3000';
+  private url = 'http://localhost:3500';
   // private socket;
 
   sendMessage(message){

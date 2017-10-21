@@ -1,6 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const MIDI_UPDATE = 'MIDI_UPDATE';
+import * as midi from '../actions/MidiAction';
 
 export interface MidiState {
   isConnected: boolean;
@@ -10,9 +8,9 @@ export const initialState: MidiState = {
   isConnected: false
 };
 
-export default function (state = initialState, action: Action): MidiState {
+export function reducer (state = initialState, action: midi.MidiAction): MidiState {
   switch (action.type) {
-    case MIDI_UPDATE:
+    case midi.MIDI_UPDATE:
       return { isConnected: false };
     default:
       return state;

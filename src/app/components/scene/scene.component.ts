@@ -5,7 +5,7 @@ import * as BABYLON from 'app/vendor/babylonjs/babylon';
 // state management
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { SceneState, SCENE_UPDATE } from 'app/reducers/scene';
+import * as sceneAction from '../../actions/SceneAction';
 
 // scene objects
 import { Axis } from './objects/axis';
@@ -131,7 +131,7 @@ export class SceneComponent implements AfterViewInit {
     // marvin.position = godrays.mesh.position;
 
     // example loading of scene based on the state
-    this.store.select<SceneState>('scene').subscribe(
+    this.store.select('scene').subscribe(
       () =>
       // import objects from a file
       BABYLON.SceneLoader.ImportMesh('', 'assets/models/robot/', 'robot.babylon',
@@ -149,10 +149,7 @@ export class SceneComponent implements AfterViewInit {
 
     // Persisting the scene
     let serializedScene = BABYLON.SceneSerializer.Serialize(scene);
-    this.store.dispatch({
-      type: SCENE_UPDATE,
-      payload: serializedScene
-    });
+    this.store.dispatch(new sceneAction.Update(serializedScene));
 
     // scene.debugLayer.show();
 

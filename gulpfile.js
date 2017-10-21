@@ -28,7 +28,7 @@ gulp.task('build-api', function (done) {
 });
 
 gulp.task('build-api-no-clean', function (done) {
-    runSequence('vet-api', 'compile-api', done);
+    runSequence('compile-api', done);
 });
 
 gulp.task('watch-api', ['build-api-no-clean'], function () {

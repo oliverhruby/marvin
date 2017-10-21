@@ -1,6 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
-export const SCENE_UPDATE = 'SCENE_UPDATE';
+import * as scene from '../actions/SceneAction';
 
 export interface SceneState {
   loaded: boolean;
@@ -12,9 +10,9 @@ export const initialState: SceneState = {
   name: ''
 };
 
-export default function (state = initialState, action: Action): SceneState {
+export function reducer (state = initialState, action: scene.SceneAction): SceneState {
   switch (action.type) {
-    case SCENE_UPDATE:
+    case scene.SCENE_UPDATE:
       return Object.assign({}, state, {
         loaded: true,
         name: 'test',

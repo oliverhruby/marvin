@@ -1,45 +1,57 @@
-import { compose } from '@ngrx/core/compose';
-import { combineReducers } from '@ngrx/store';
+import { ActionReducerMap } from '@ngrx/store';
 
-import batteryReducer, * as fromBattery from './battery';
-import commandReducer, * as fromCommand from './command';
-import counterReducer, * as fromCounter from './counter';
-import gamepadReducer, * as fromGamepad from './gamepad';
-import gyroscopeReducer, * as fromGyroscope from './gyroscope';
-import laserReducer, * as fromLaser from './laser';
-import mqttReducer, * as fromMqtt from './mqtt';
-import sceneReducer, * as fromScene from './scene';
-import stopwatchReducer, * as fromStopwatch from './stopwatch';
-import userReducer, * as fromUser from './user';
-import vehicleReducer, * as fromVehicle from './vehicle';
+/**
+ * Every reducer module's default export is the reducer function itself. In
+ * addition, each module should export a type or interface that describes
+ * the state of the reducer plus any selector functions. The `* as`
+ * notation packages up all of the exports into a single object.
+ */
+import * as fromBattery from './battery';
+import * as fromCommand from './command';
+import * as fromGamepad from './gamepad';
+import * as fromGyroscope from './gyroscope';
+import * as fromLaser from './laser';
+import * as fromMidi from './midi';
+import * as fromMqtt from './mqtt';
+import * as fromScene from './scene';
+import * as fromStopwatch from './stopwatch';
+import * as fromUser from './user';
+import * as fromVehicle from './vehicle';
 
-/** State interface */
+/**
+ * As mentioned, we treat each reducer like a table in a database. This means
+ * our top level state interface is just a map of keys to inner state types.
+ */
 export interface State {
    battery: fromBattery.BatteryState;
    command: fromCommand.CommandState;
-   counter: fromCounter.CounterState;
    gamepad: fromGamepad.GamepadState;
    gyroscope: fromGyroscope.GyroscopeState;
    laser: fromLaser.LaserState;
    mqtt: fromMqtt.MqttState;
+   midi: fromMidi.MidiState;
    scene: fromScene.SceneState;
    stopwatch: fromStopwatch.StopwatchState;
    user: fromUser.UserState;
    vehicle: fromVehicle.VehicleState;
 };
 
-export default compose(combineReducers)({
-    battery: batteryReducer,
-    command: commandReducer,
-    counter: counterReducer,
-    gamepad: gamepadReducer,
-    gyroscope: gyroscopeReducer,
-    laser: laserReducer,
-    mqtt: mqttReducer,
-    scene: sceneReducer,
-    stopwatch: stopwatchReducer,
-    user: userReducer,
-    vehicle: vehicleReducer
-});
+/**
+ * Our state is composed of a map of action reducer functions.
+ * These reducer functions are called with each dispatched action
+ * and the current or initial state and return a new immutable state.
+ */
+export const reducers: ActionReducerMap<State> = {
+    battery: fromBattery.reducer,
+    command: fromCommand.reducer,
+    gamepad: fromGamepad.reducer,
+    gyroscope: fromGyroscope.reducer,
+    laser: fromLaser.reducer,
+    mqtt: fromMqtt.reducer,
+    midi: fromMidi.reducer,
+    scene: fromScene.reducer,
+    stopwatch: fromStopwatch.reducer,
+    user: fromUser.reducer,
+    vehicle: fromVehicle.reducer
+};
 
-// TODO: look at http://bodiddlie.github.io/ng-2-toh-with-ngrx-suite/

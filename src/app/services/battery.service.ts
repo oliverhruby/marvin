@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
-import { BatteryState, BATTERY_UPDATE } from 'app/reducers/battery';
+import * as battery from '../actions/BatteryAction';
 
 interface BatteryManager {
   charging: boolean;
@@ -40,16 +40,16 @@ export class BatteryService {
       me.zone.run(function () {
         (<any>navigator).getBattery().then(function(battery) {
           battery.onchargingchange = function() {
-            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+            me.store.dispatch({ type: battery.BATTERY_UPDATE, payload: battery });
           };
           battery.onchargingtimechange = function() {
-            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+            me.store.dispatch({ type: battery.BATTERY_UPDATE, payload: battery });
           };
           battery.ondischargingtimechange = function() {
-            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+            me.store.dispatch({ type: battery.BATTERY_UPDATE, payload: battery });
           };
           battery.levelchange = function() {
-            me.store.dispatch({ type: BATTERY_UPDATE, payload: battery });
+            me.store.dispatch({ type: battery.BATTERY_UPDATE, payload: battery });
           };
         });
       });

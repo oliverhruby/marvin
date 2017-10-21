@@ -22,7 +22,7 @@ export class MidiComponent extends WidgetComponent {
   ) {
     super();
 
-    this.state = store.select<MidiState>('midi');
+    this.state = store.select('midi');
   }
 
 }
