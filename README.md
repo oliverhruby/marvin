@@ -6,9 +6,10 @@
 
 Marvin is a browser-based application for 3D visualization of a robot vehicle and its ambient world, obstacles, paths, etc. The application can also be used to control the vehicle using any input method you can think of. Being all JavaScript based it is portable and can be run anywhere on a desktop or mobile using a browser that suports WebGL, Web Audio, Web Sockets, gamepad API, etc.
 
+__Please note that in this is still in PoC stage, I'm testing various features and architectural blocks.__
+
 The main purpose is to demonstrate the possibilities of pure browser based technologies for this kind of rich experience.
-It is built with focus on patterns and continuous integration. The application or parts of it can serve as a base
-for building your own projects or modules. 
+It is built with focus on patterns and continuous integration. The application or parts of it can serve as a base for building your own projects or modules. 
 
 Technologies used:
 * [WebGL](https://en.wikipedia.org/wiki/WebGL) - browser based technology that supports hardware accelerated 3D graphics
