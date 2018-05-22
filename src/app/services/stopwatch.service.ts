@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable, interval } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
@@ -15,7 +15,7 @@ export class StopwatchService {
   sub: Subscription;
 
   constructor(private store: Store<State>) {
-    this.timer = Observable.timer(0, 1000);
+    this.timer = interval(1000);
   }
 
   // starts the timer

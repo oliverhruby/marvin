@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Jsonp, Response, Headers } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 /**
  * Service for communication with Wit.ai

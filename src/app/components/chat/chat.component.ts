@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { WidgetComponent } from '../widget/widget.component';
 import { WebSocketService } from 'app/services';
 

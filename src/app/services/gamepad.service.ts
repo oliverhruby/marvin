@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as BABYLON from 'app/vendor/babylonjs/babylon';
 import { State } from 'app/reducers';

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WidgetComponent } from '../widget/widget.component';
 import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs/Rx';
+import { Observable, interval } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 
@@ -25,7 +25,7 @@ export class LogBrowserComponent extends WidgetComponent implements OnInit, OnDe
   }
 
   ngOnInit() {
-    let timer = Observable.timer(0, 1000);
+    let timer = interval(1000);
     this.subscription = timer.subscribe(t => this.ticks = t);
   }
 

@@ -1,6 +1,6 @@
 import { BaseSocket } from './base.socket';
 import { Log } from '../services/log';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import * as jwt from 'jsonwebtoken';
 import * as url from 'url';
 import * as ws from 'ws';
@@ -18,10 +18,10 @@ export class MessageSocket extends BaseSocket {
 
       let location = url.parse(request.url, true);
       let token = location.query.access_token;
-      Log.info('SOCKET', 'Socket connection #' + this.clients + ' token: ' + chalk.gray(token));
+      Log.info('SOCKET', 'Socket connection #' + this.clients + ' token: ' + chalk.gray(token[0]));
 
       try {
-        let user: any = jwt.decode(token);
+        let user: any = jwt.decode(token[0]);
         // TODO: validate user
         Log.info('SOCKET', 'User identified: ' + chalk.gray(user.name));
       } catch (err) {

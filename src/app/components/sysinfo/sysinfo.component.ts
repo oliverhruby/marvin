@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WidgetComponent } from 'app/components';
 import { ApiService } from 'app/services';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 /**
  * System information

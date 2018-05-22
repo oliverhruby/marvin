@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-
+import { Observable } from 'rxjs';
+const { map, share } = require('rxjs/operators')
+const { pipe } = require('rxjs/Rx')
 /**
  * Service for communication using websockets
  * Some examples here: http://plnkr.co/edit/MjZA5HOfllvMPjoCxe3I?p=preview&open=app%2Fapp.component.ts
@@ -34,8 +35,10 @@ export class WebSocketService {
         observer.next(evt);
       };
     })
-      .map(res => 'From WS: ' + res.data)
-      .share();
+      .pipe(
+        map(res => 'From WS: ' + res.data),
+        share()
+      );
   }
 
   public send(message: string) {

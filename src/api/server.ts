@@ -3,7 +3,7 @@ import * as http from 'http';
 import * as url from 'url';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import * as os from 'os';
 import * as path from 'path';
 import * as sqlite3 from 'sqlite3';

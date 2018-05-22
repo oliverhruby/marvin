@@ -1,6 +1,6 @@
 import { User } from 'app/models/user.model';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { WidgetComponent } from '../widget/widget.component';
 import { State } from 'app/reducers';

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WidgetComponent } from '../widget/widget.component';
 import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { GamepadState } from 'app/reducers/gamepad';

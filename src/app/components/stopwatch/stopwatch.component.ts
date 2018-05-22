@@ -1,5 +1,5 @@
 import { Component, OnInit, Attribute } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { StopwatchState } from 'app/reducers/stopwatch';

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { MqttService, MqttMessage } from 'angular2-mqtt';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IMqttMessage, MqttService } from 'ngx-mqtt';
 import { Store } from '@ngrx/store';
 import { State } from 'app/reducers';
 import { WidgetComponent } from '../widget/widget.component';

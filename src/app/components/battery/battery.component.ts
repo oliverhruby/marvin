@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { WidgetComponent } from '../widget/widget.component';
 import { State } from 'app/reducers';
